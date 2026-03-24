@@ -6,7 +6,7 @@ title: Lance Club
 
 ## Lance的数模训练营
 
-> 训练营主理人：蔡汉霖 Lance
+> 训练营主理人：范朝宇 Lance
 >
 > 报名、咨询方式见文末
 
@@ -42,7 +42,7 @@ title: Lance Club
   - 可持续提供辅导，论文排名，由团队成员自行决定
 - 公开所有报名费来源，以及最终获奖情况，保障落实承诺！
 - 并且，最终收费的5%，将用于资助福州大学野生猫狗养育计划
-- 试听课程：[2024年直播课程二-蔡汉霖团队分享🔗](https://meeting.tencent.com/user-center/shared-record-info?id=6a5b1dea-3b04-45eb-889b-8c2d347215af&from=3)
+- 试听课程：[2024年直播课程二-范朝宇团队分享🔗](https://meeting.tencent.com/user-center/shared-record-info?id=6a5b1dea-3b04-45eb-889b-8c2d347215af&from=3)
 
 <br>
 
@@ -71,7 +71,7 @@ title: Lance Club
 
 ## 2024年课程分享
 
-【数模讨论班汇总-蔡汉霖】
+【数模讨论班汇总-范朝宇】
 
 - 第一次 12.19 20:30-22:00 学员基础分析，论文写作，准备工作
 - 第二次 01.23 15:00-17:00  福大公开讲座，图片绘制入门，美赛新规分析
@@ -83,31 +83,31 @@ title: Lance Club
 
 - 【第一次课程录播】<br>
   【内容：团队情况分析，论文写作】<br>
-  录制: 数学建模讨论班（课程一）蔡汉霖<br>
+  录制: 数学建模讨论班（课程一）范朝宇<br>
   日期: 2023-12-19 20:29:08<br>录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=972bc50d-bef0-4d27-8008-5962c5cdf08e&from=3&record_type=2
 - 【第二次课程录播】<br>
   【内容：公开讲座，论文图片，AI工具，美赛新规分析】<br>
-  录制: 2024年美赛集训五：2023年F奖蔡汉霖队伍分享<br>
+  录制: 2024年美赛集训五：2023年F奖范朝宇队伍分享<br>
   日期: 2024-01-23 14:30:25<br>
   录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=6a5b1dea-3b04-45eb-889b-8c2d347215af&from=3
 - 【第三次课程录播】<br>
   【内容：团队配合与沟通、信息搜集、布置作业】<br>
-  录制: 数学建模讨论班（课程三）蔡汉霖<br>
+  录制: 数学建模讨论班（课程三）范朝宇<br>
   日期: 2024-01-25 20:09:40<br>
   录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=fb89ff5a-4eee-49f5-a13d-2436750fb32b&from=3&record_type=2
 - 【第四次课程录播】<br>
   【内容：AI Report分析、作业点评、图片绘制进阶】<br>
-  录制: 数学建模讨论班（课程四）蔡汉霖<br>
+  录制: 数学建模讨论班（课程四）范朝宇<br>
   录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=8b8e1632-70bf-4cbf-87f1-a4efde033948&from=3&record_type=2
 - 【第五次课程录播】<br>
   【内容：AI Report独家模版、绘图模版、赛前答疑】<br>
-  录制: 最后一节课，数学建模讨论班（课程五）蔡汉霖<br>
+  录制: 最后一节课，数学建模讨论班（课程五）范朝宇<br>
   日期: 2024-02-01 10:03:54<br>
   录制文件：https://meeting.tencent.com/v2/cloud-record/share?id=fc38e655-4083-41f2-82d1-50d956105446&from=3&record_type=2
 
 ---
 
-### 蔡汉霖的美赛开源材料（进阶版本）
+### 范朝宇的美赛开源材料（进阶版本）
 
 > 谢谢你看到这里，这是笔者最宝贵的材料。希望对你有所帮助。
 

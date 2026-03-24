@@ -1,6 +1,6 @@
 # GuangLun means Nimbus in Chinese ✨
 
-Here is **Chaoyu Fan (Lance, 蔡汉霖)**. This is my personal web repo. If you like it, please star it! 🥰
+Here is **Chaoyu Fan (Lance, 范朝宇)**. This is my personal web repo. If you like it, please star it! 🥰
 
 ## Update and News
 
