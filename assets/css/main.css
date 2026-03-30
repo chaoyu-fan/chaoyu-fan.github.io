@@ -442,12 +442,6 @@ a:focus-visible,.btn:focus-visible,.top-navigation a:focus-visible{outline:3px s
 .compact-hero{padding:1.8em 2em 1.7em;}
 .compact-hero h1{font-size:2.5rem;max-width:12em;margin-bottom:0.3em;}
 .compact-hero .hero-lead{max-width:34rem;margin-bottom:0.8em;}
-.hero-split{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(18rem,0.9fr);gap:1.25rem;align-items:stretch;}
-.hero-main{display:flex;flex-direction:column;justify-content:space-between;min-height:100%;}
-.hero-side{display:grid;grid-template-columns:1fr;gap:0.8rem;}
-.hero-side-card{display:flex;flex-direction:column;justify-content:center;padding:1rem 1.05rem;background:rgba(255,255,255,0.72);border:1px solid rgba(28,63,90,0.14);border-radius:12px;min-height:5.5rem;}
-.hero-side-label{margin:0 0 0.25rem;font-family:'Source Sans 3',sans-serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;color:#5b6f80;}
-.hero-side-value{margin:0;font-size:1.05rem;line-height:1.35;color:#183247;font-weight:600;}
 .profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1rem;}
 .profile-card{background:#fffdf9;border:1px solid #dbe4ea;border-radius:14px;padding:1.15em 1.2em;box-shadow:0 10px 28px rgba(25,36,48,0.05);}
 .profile-card h2{margin-bottom:0.55em;font-size:1.45rem;}
@@ -469,7 +463,7 @@ a:focus-visible,.btn:focus-visible,.top-navigation a:focus-visible{outline:3px s
 @media only screen and (max-width:48em){
   .compact-hero{padding:1.25em;}
   .compact-hero h1{font-size:2rem;}
-  .hero-split,.profile-grid,.mini-grid{grid-template-columns:1fr;}
+  .profile-grid,.mini-grid{grid-template-columns:1fr;}
   .compact-project-card{min-height:auto;}
 }
 

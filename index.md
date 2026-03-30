@@ -2,30 +2,14 @@
 layout: page
 ---
 
-<section class="hero-card compact-hero hero-split">
-  <div class="hero-main">
-    <p class="eyebrow">Chaoyu Fan / 范朝宇</p>
-    <h1>PhD Student in Intelligent Science and Technology</h1>
-    <p class="hero-lead">Tongji University. Researching agent systems, machine learning, and engineering optimization.</p>
-    <div class="hero-actions">
-      <a class="btn" href="mailto:2410202@tongji.edu">Email</a>
-      <a class="btn" href="https://github.com/JakeFn123">GitHub</a>
-      <a class="btn" href="/awards/">Academic Profile</a>
-    </div>
-  </div>
-  <div class="hero-side">
-    <div class="hero-side-card">
-      <p class="hero-side-label">Affiliation</p>
-      <p class="hero-side-value">Tongji University</p>
-    </div>
-    <div class="hero-side-card">
-      <p class="hero-side-label">Advisor</p>
-      <p class="hero-side-value">Prof. Qi Kang</p>
-    </div>
-    <div class="hero-side-card">
-      <p class="hero-side-label">Focus</p>
-      <p class="hero-side-value">Agents, ML, Optimization</p>
-    </div>
+<section class="hero-card compact-hero">
+  <p class="eyebrow">Chaoyu Fan / 范朝宇</p>
+  <h1>PhD Student in Intelligent Science and Technology</h1>
+  <p class="hero-lead">Tongji University. Researching agent systems, machine learning, and engineering optimization.</p>
+  <div class="hero-actions">
+    <a class="btn" href="mailto:2410202@tongji.edu">Email</a>
+    <a class="btn" href="https://github.com/JakeFn123">GitHub</a>
+    <a class="btn" href="/awards/">Academic Profile</a>
   </div>
 </section>
 
