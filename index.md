@@ -2,119 +2,105 @@
 layout: page
 ---
 
-<section class="hero-card">
+<section class="hero-card compact-hero">
   <p class="eyebrow">Chaoyu Fan / 范朝宇</p>
-  <h1>PhD student in Intelligent Science and Technology, Tongji University.</h1>
-  <p class="hero-lead">Chaoyu Fan is a doctoral student in Electronic Information, Intelligent Science and Technology at Tongji University. His current work focuses on agent systems, machine learning, and engineering optimization.</p>
+  <h1>PhD Student in Intelligent Science and Technology</h1>
+  <p class="hero-lead">Tongji University. Researching agent systems, machine learning, and engineering optimization.</p>
   <div class="hero-actions">
-    <a class="btn" href="mailto:2410202@tongji.edu">Email Me</a>
+    <a class="btn" href="mailto:2410202@tongji.edu">Email</a>
     <a class="btn" href="https://github.com/JakeFn123">GitHub</a>
-  </div>
-  <div class="tag-row">
-    <span>AI systems</span>
-    <span>Research tools</span>
-    <span>Multi-agent workflows</span>
-    <span>Machine learning</span>
-    <span>Software systems</span>
+    <a class="btn" href="/awards/">Academic Profile</a>
   </div>
 </section>
 
 <section class="section-block">
-  <h2>Biography</h2>
-  <p>范朝宇，1998年出生，2020年美国普渡大学获电子信息工程本科荣誉学位，2023年美国哥伦比亚大学获电子与计算机工程硕士学位，现攻读同济大学电子信息智能科学与技术博士学位。</p>
-  <p>曾就职于卡特彼勒中国(研发)中心、华为等世界500强公司，任工程师。现师从爱思唯尔全球前2％顶尖科学家同济大学康琦教授，主要研究智能体系统、机器学习与工程优化等。曾获中国国际大学生创新大赛金奖。</p>
-  <ul class="fact-list">
-    <li><strong>Affiliation:</strong> Tongji University</li>
-    <li><strong>Program:</strong> PhD in Electronic Information, Intelligent Science and Technology</li>
-    <li><strong>Location:</strong> Shanghai, China</li>
-    <li><strong>Advisor:</strong> Prof. Qi Kang</li>
-    <li><strong>Focus:</strong> Agent systems, machine learning, and engineering optimization</li>
-  </ul>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h2>Biography</h2>
+      <p>范朝宇，1998年出生。2020年获美国普渡大学电子信息工程本科荣誉学位，2023年获美国哥伦比亚大学电子与计算机工程硕士学位，现攻读同济大学电子信息智能科学与技术博士学位。</p>
+      <p>曾任卡特彼勒中国(研发)中心、华为工程师，现师从同济大学康琦教授，研究方向为智能体系统、机器学习与工程优化。</p>
+    </div>
+    <div class="profile-card facts-card">
+      <h2>Quick Facts</h2>
+      <ul class="fact-list compact-list">
+        <li><strong>Born:</strong> 1998</li>
+        <li><strong>Affiliation:</strong> Tongji University</li>
+        <li><strong>Program:</strong> PhD, Electronic Information</li>
+        <li><strong>Track:</strong> Intelligent Science and Technology</li>
+        <li><strong>Advisor:</strong> Prof. Qi Kang</li>
+        <li><strong>Award:</strong> Gold Award, China International College Students' Innovation Competition</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <section class="section-block">
   <h2>Research Interests</h2>
-  <div class="feature-grid">
-    <div class="feature-card">
+  <div class="mini-grid">
+    <div class="mini-card">
       <h3>Agent Systems</h3>
-      <p>I am interested in intelligent agent systems that integrate planning, memory, tool use, and human-in-the-loop decision making.</p>
+      <p>Planning, memory, tool use, and human-in-the-loop interaction.</p>
     </div>
-    <div class="feature-card">
+    <div class="mini-card">
       <h3>Machine Learning</h3>
-      <p>I work on machine learning methods and system-level workflows that improve model usefulness, adaptability, and practical deployment value.</p>
+      <p>Learning methods with practical value in real systems.</p>
     </div>
-    <div class="feature-card">
+    <div class="mini-card">
       <h3>Engineering Optimization</h3>
-      <p>I care about optimization problems arising in real engineering systems, especially where intelligent methods can improve efficiency and decision quality.</p>
+      <p>Optimization under real engineering constraints and objectives.</p>
     </div>
   </div>
 </section>
 
 <section class="section-block">
   <h2>Selected Projects</h2>
-  <p class="section-note">Based on my three most recently updated GitHub repositories as of March 30, 2026, excluding this website repository.</p>
-  <div class="project-grid">
-    <div class="project-card">
-      <p class="project-meta">Updated March 29, 2026</p>
+  <p class="section-note">Latest updated GitHub projects excluding this website.</p>
+  <div class="project-grid compact-project-grid">
+    <div class="project-card compact-project-card">
+      <p class="project-meta">Mar 29, 2026</p>
       <h3><a href="https://github.com/JakeFn123/research_nanobot">research_nanobot</a></h3>
-      <p>An ultra-lightweight personal AI assistant and research workflow framework, centered on multi-agent coordination, tool use, and structured execution.</p>
-      <p class="project-tags">Python · Multi-Agent Systems · AI Assistant Infrastructure</p>
+      <p>Lightweight AI assistant and multi-agent workflow framework.</p>
+      <p class="project-tags">Python · Agents · Workflow Systems</p>
     </div>
-    <div class="project-card">
-      <p class="project-meta">Updated March 29, 2026</p>
+    <div class="project-card compact-project-card">
+      <p class="project-meta">Mar 29, 2026</p>
       <h3><a href="https://github.com/JakeFn123/openspec-zh-tutorial">openspec-zh-tutorial</a></h3>
-      <p>A Chinese tutorial project that explains OpenSpec from fundamentals to practical usage, with emphasis on AI-assisted specification and structured software workflows.</p>
-      <p class="project-tags">Specification Engineering · AI Collaboration · Chinese Technical Writing</p>
+      <p>Chinese tutorial project for OpenSpec and specification-first AI workflows.</p>
+      <p class="project-tags">Specs · AI Collaboration · Technical Writing</p>
     </div>
-    <div class="project-card">
-      <p class="project-meta">Updated March 24, 2026</p>
+    <div class="project-card compact-project-card">
+      <p class="project-meta">Mar 24, 2026</p>
       <h3><a href="https://github.com/JakeFn123/paperrank">paperrank</a></h3>
-      <p>A paper search and evaluation agent for decomposing research questions, retrieving evidence, ranking relevance, and producing evidence-backed synthesis.</p>
-      <p class="project-tags">Python · Literature Analysis · Evidence Synthesis</p>
+      <p>Paper search and evaluation agent for evidence-backed synthesis.</p>
+      <p class="project-tags">Literature Analysis · Retrieval · Synthesis</p>
     </div>
   </div>
 </section>
 
 <section class="section-block">
-  <h2>Selected Scholarly Records</h2>
-  <p class="section-note">Publicly searchable records associated with the name Chaoyu Fan. A public Google Scholar profile link has not yet been clearly confirmed.</p>
-  <div class="timeline-list">
-    <div class="timeline-item">
-      <strong>WOCC 2025</strong>
-      <p><a href="https://www.wocc.org/wocc2025/technical-program/details.pdf">Class Incremental Learning via Feature Knowledge Prompts</a>, listed with authors Jun Ma, Chaoyu Fan, Lihua Shi, Kefan Wang, and Qi Kang.</p>
+  <div class="profile-grid">
+    <div class="profile-card">
+      <h2>Education</h2>
+      <ul class="compact-list">
+        <li>2023, M.S. in Electrical and Computer Engineering, Columbia University</li>
+        <li>2020, Honors B.S. in Electronic Information Engineering, Purdue University</li>
+      </ul>
     </div>
-    <div class="timeline-item">
-      <strong>Computers, Materials & Continua, 2023</strong>
-      <p><a href="https://www.techscience.com/cmc/v77n2/54810/html">The Entity Relationship Extraction Method Using Improved RoBERTa and Multi-Task Learning</a>, indexed as C. Fan in Tech Science Press.</p>
-    </div>
-  </div>
-</section>
-
-<section class="section-block">
-  <h2>Technical Background</h2>
-  <div class="timeline-list">
-    <div class="timeline-item">
-      <strong>Academic training</strong>
-      <p>Honors B.S. in Electronic Information Engineering from Purdue University and M.S. in Electrical and Computer Engineering from Columbia University.</p>
-    </div>
-    <div class="timeline-item">
-      <strong>Industrial experience</strong>
-      <p>Engineering experience at Caterpillar China R&D Center and Huawei, with exposure to real-world technical systems and product-oriented engineering practice.</p>
-    </div>
-    <div class="timeline-item">
-      <strong>Current direction</strong>
-      <p>My present doctoral work centers on intelligent agents, machine learning, and engineering optimization, with an emphasis on practical systems and research-facing tooling.</p>
+    <div class="profile-card">
+      <h2>Industry Experience</h2>
+      <ul class="compact-list">
+        <li>Caterpillar China R&D Center, Engineer</li>
+        <li>Huawei, Engineer</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section class="section-block contact-panel">
+<section class="section-block contact-panel slim-contact">
   <h2>Contact</h2>
-  <p>If your interests overlap with AI systems, research tooling, or computational workflows, I would be glad to connect.</p>
-  <ul class="contact-list">
+  <ul class="contact-list compact-list">
     <li>Email: <a href="mailto:2410202@tongji.edu">2410202@tongji.edu</a></li>
     <li>GitHub: <a href="https://github.com/JakeFn123">github.com/JakeFn123</a></li>
     <li>LinkedIn: <a href="https://linkedin.com/in/chaoyu-fan">linkedin.com/in/chaoyu-fan</a></li>
-    <li>Instagram: <a href="https://instagram.com/jakefan45">@jakefan45</a></li>
   </ul>
 </section>
