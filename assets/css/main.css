@@ -466,3 +466,15 @@ a:focus-visible,.btn:focus-visible,.top-navigation a:focus-visible{outline:3px s
   .profile-grid,.mini-grid{grid-template-columns:1fr;}
   .compact-project-card{min-height:auto;}
 }
+
+/* Wider desktop content area */
+.article-wrap{max-width:64rem;}
+@media only screen and (min-width:37.5em){
+  #main article{width:62%;margin-left:0;margin-right:0;}
+  .article-author-top{width:20%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;}
+}
+@media only screen and (min-width:86.375em){
+  #main article{width:58.3333333333%;margin-left:0;margin-right:0;}
+  .article-author-top{width:12.5%;margin-left:10.4166666667%;margin-right:4.1666666667%;}
+  .footer-wrap footer{width:58.3333333333%;margin-left:25%;margin-right:16.6666666667%;}
+}
