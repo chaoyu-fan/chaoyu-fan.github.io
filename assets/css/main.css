@@ -751,14 +751,14 @@ a:focus-visible,.btn:focus-visible,.top-navigation a:focus-visible{outline:3px s
 }
 
 /* ---- SIDEBAR (author-bio) ---- */
-/* Reset p+p indent/margin that causes misaligned sidebar text */
-.article-author-top p{
-  color:#2e4a5e !important;
-  text-indent:0 !important;
-  margin-top:0 !important;
-  margin-bottom:.4rem !important;
-  font-size:.82rem !important;
-  line-height:1.5 !important;
+/* Hide sidebar on homepage — hero + about sections cover all the same info */
+.page .article-author-top{display:none !important;}
+/* Expand article to full usable width when sidebar is hidden */
+@media only screen and (min-width:37.5em){
+  .page #main article{width:86%;margin-left:7%;margin-right:7%;}
+}
+@media only screen and (min-width:86.375em){
+  .page #main article{width:72%;margin-left:14%;margin-right:14%;}
 }
 
 /* ---- RESPONSIVE ---- */
