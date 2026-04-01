@@ -525,9 +525,9 @@ a:focus-visible,.btn:focus-visible,.top-navigation a:focus-visible{outline:3px s
   font-size:.6em;color:rgba(255,255,255,.78);
   font-weight:400;margin-left:.35em;letter-spacing:.06em;
 }
-/* FIX: raised from .7 → .88 (was ~4:1, now ~6:1) */
-.hero-sub{
-  font-size:.97rem;color:rgba(255,255,255,.88);
+/* FIX: use .hero-v2 p to beat .article-wrap p specificity */
+.hero-v2 p,.hero-sub{
+  font-size:.97rem;color:rgba(255,255,255,.88) !important;
   line-height:1.72;max-width:44rem;margin-bottom:1.5rem;
   font-family:'Source Serif 4',serif;
 }
