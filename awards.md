@@ -23,6 +23,18 @@ description: Publications, education, and awards of Chaoyu Fan — PhD researche
     </div>
 
     <div class="pub-entry">
+      <div class="pub-badge pub-badge-conf">Conference</div>
+      <div class="pub-body">
+        <div class="pub-title">Robust Heterogeneous Federated Learning via Data-Free Knowledge Amalgamation</div>
+        <div class="pub-authors">Jun Ma, Zheng Fan, <strong>Chaoyu Fan</strong>, Qi Kang</div>
+        <div class="pub-venue">International Conference on Swarm Intelligence (ICSI 2024) · LNCS Vol. 14789, pp. 61–71 · Springer</div>
+        <div class="pub-links">
+          <a class="pub-link" href="https://link.springer.com/chapter/10.1007/978-981-97-7184-4_6" target="_blank">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
       <div class="pub-badge pub-badge-jour">Journal</div>
       <div class="pub-body">
         <div class="pub-title">The Entity Relationship Extraction Method Using Improved RoBERTa and Multi-Task Learning</div>
