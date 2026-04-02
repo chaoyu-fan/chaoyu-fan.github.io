@@ -388,40 +388,7 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
 .mfp-fade.mfp-ready.mfp-bg{opacity:0.8;}
 .mfp-fade.mfp-removing.mfp-bg{opacity:0;}
 @media print{*{background:transparent !important;color:black !important;box-shadow:none !important;text-shadow:none !important;filter:none !important;-ms-filter:none !important;position:static !important;} @page {margin:0.5cm;}h2,h3{orphans:3;widows:3;page-break-after:avoid;} p{orphans:3;widows:3;} pre,blockquote{border:1px solid #333;page-break-inside:avoid;padding:1em;} abbr[title]:after{content:" (" attr(title) ")";} a,a:visited{text-decoration:underline;} a[href]:after{content:" (" attr(href) ")";} a[href^="javascript:"]:after,a[href^="#"]:after{content:"";} img{max-width:100% !important;page-break-inside:avoid;} thead{display:table-header-group;} tr{page-break-inside:avoid;}}@media only screen and (min-width:30em){.image-grid li{width:33.333333%;}}@media only screen and (min-width:37.5em){html{font-size:95%;} .site-name{display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;} .top-navigation{display:inline;float:left;width:75%;margin-left:0%;margin-right:0%;} .image-wrap .headline-wrap,.image-wrap:after{left:25%;} .image-wrap .headline-wrap{margin-left:0;} #main article{display:inline;float:left;width:50%;margin-left:0%;margin-right:0%;} #index{display:inline;float:left;width:50%;margin-left:0%;margin-right:0%;} .footer-wrap footer{display:inline;float:left;width:50%;margin-left:25%;margin-right:25%;} .article-author-top{display:block;display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;} .article-author-bottom{display:none;} .toc{display:block;display:inline;float:left;width:16.666666666666668%;margin-left:4.166666666666667%;margin-right:4.166666666666667%;position:fixed;top:120px;right:0;-webkit-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);-moz-box-shadow:0 0 5px rgba(0, 0, 0, 0.5);box-shadow:0 0 5px rgba(0, 0, 0, 0.5);} .image-grid li{width:25%;} .related-articles{display:inline;float:left;width:50%;margin-left:25%;margin-right:25%;}}@media only screen and (min-width:48em){html{font-size:100%;} .image-grid li{width:20%;}}@media only screen and (min-width:62em){html{font-size:112.5%;} .image-grid li{width:16.666666666%;}}@media only screen and (min-width:86.375em){.site-name{display:inline;float:left;width:12.5%;margin-left:16.666666666666668%;} .top-navigation{display:inline;float:left;width:66.66666666666667%;} .image-wrap:after{left:33.333333333%;} .image-wrap .headline-wrap{margin-left:8.333333333333334%;} #main article{display:inline;float:left;width:37.5%;} #index{display:inline;float:left;width:37.5%;} .related-articles{display:inline;float:left;width:37.5%;margin-left:33.333333333333336%;margin-right:29.166666666666668%;} .footer-wrap footer{display:inline;float:left;width:37.5%;margin-left:33.333333333333336%;margin-right:29.166666666666668%;} .article-author-top{display:inline;float:left;width:12.5%;margin-left:16.666666666666668%;}}@media (-webkit-min-device-pixel-ratio:2),(min-resolution:192dpi){}
-.hero-card{margin:0 0 2.5em;padding:2.3em;background:linear-gradient(135deg,#f8f5ef 0%,#edf2f4 100%);border:1px solid #d8e0e6;border-radius:18px;box-shadow:0 16px 40px rgba(24,38,50,0.07);}
-.hero-card h1{font-size:3rem;line-height:1.05;margin-bottom:0.4em;max-width:11em;}
-.hero-card p{margin:0 0 1.1em;}
-.eyebrow{font-family:'Source Sans 3',sans-serif;text-transform:uppercase;letter-spacing:0.14em;color:#4e6476;font-size:0.84rem;}
-.hero-lead{font-size:1.08rem;color:#31424f;max-width:42em;}
-.hero-actions{margin:1.35em 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.72rem;max-width:54rem;}
-.hero-actions .btn{margin:0;border:1px solid #1c3f5a;border-radius:999px;background:#1c3f5a;color:#f7f5ef;padding:0.23em 0.61em;letter-spacing:0.05em;display:flex;align-items:center;justify-content:center;min-height:1.2rem;font-size:0.69rem;width:50%;justify-self:center;text-align:center;}
-.hero-actions .btn:hover{border-color:#10293d;background:#10293d;color:#ffffff;}
-.tag-row{display:flex;flex-wrap:wrap;gap:0.6em;}
-.tag-row span{display:inline-block;padding:0.45em 0.9em;border-radius:999px;background:rgba(255,255,255,0.8);border:1px solid rgba(28,63,90,0.14);font-family:'Source Sans 3',sans-serif;text-transform:uppercase;font-size:0.78rem;letter-spacing:0.07em;color:#27475f;}
-.section-block{margin:0 0 2.4em;}
-.section-block p+p{text-indent:0;margin-top:0;}
-.section-note{font-size:0.95rem;color:#536676;}
-.fact-list{margin:1em 0 0;padding-left:1.1em;}
-.fact-list li{margin-bottom:0.35em;list-style-type:square;}
-.feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1em;margin-top:1em;}
-.feature-card{padding:1.2em 1.15em;background:#fcfbf8;border:1px solid #dde4e9;border-radius:14px;box-shadow:0 10px 30px rgba(30,35,33,0.04);}
-.feature-card h3{margin-bottom:0.5em;}
-.feature-card p{margin-bottom:0;}
-.timeline-list{display:grid;gap:0.9em;margin-top:1em;}
-.timeline-item{padding:1em 1.1em;border-left:4px solid #1f4b6e;background:#fbfbf9;border-radius:0 12px 12px 0;}
-.timeline-item p{margin:0.45em 0 0;}
-.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1em;margin-top:1em;}
-.project-card{padding:1.25em;background:#fffdf9;border:1px solid #dbe4ea;border-radius:14px;box-shadow:0 10px 28px rgba(25,36,48,0.05);}
-.project-card h3{margin-bottom:0.45em;font-size:1.35rem;}
-.project-card p{margin-bottom:0.8em;}
-.project-meta{font-family:'Source Sans 3',sans-serif;font-size:0.8rem;letter-spacing:0.08em;text-transform:uppercase;color:#5b7082;}
-.project-tags{font-family:'Source Sans 3',sans-serif;font-size:0.9rem;color:#425765;}
-.contact-panel{padding:1.6em 1.4em;background:#162633;color:#f1eee8;border-radius:16px;box-shadow:0 16px 40px rgba(17,27,24,0.14);}
-.contact-panel h2,.contact-panel p,.contact-panel li,.contact-panel a{color:#f2efe7;}
-.contact-list{margin:0;padding-left:1.2em;}
-.contact-list li{margin-bottom:0.45em;list-style-type:square;}
-.article-author-top img.bio-photo,.article-author-bottom img.bio-photo{border-radius:18px;border:1px solid #d9e2e8;box-shadow:0 8px 24px rgba(20,33,45,0.08);}
-@media only screen and (max-width:48em){.hero-card{padding:1.4em;} .hero-card h1{font-size:2.2rem;max-width:none;} .feature-grid,.project-grid{grid-template-columns:1fr;} .tag-row{gap:0.45em;}}
+/* legacy v1 styles removed */
 
 /* Accessibility and readability refinements */
 .article-wrap{max-width:42rem;}
@@ -438,36 +405,7 @@ img.mfp-img{width:auto;max-width:100%;height:auto;display:block;line-height:0;-w
 a:focus-visible,.btn:focus-visible,.top-navigation a:focus-visible{outline:3px solid #8fb4d1;outline-offset:3px;border-radius:6px;}
 @media only screen and (max-width:48em){.project-card{min-height:auto;} .article-wrap{max-width:none;}}
 
-/* Compact academic homepage redesign */
-.compact-hero{padding:1.8em 2em 1.75em;display:grid;row-gap:0.35rem;}
-.compact-hero .eyebrow{margin-bottom:0.05em;}
-.compact-hero h1{font-size:2.45rem;max-width:16em;line-height:1.1;margin-bottom:0.14em;}
-.compact-hero .hero-lead{max-width:48rem;margin-bottom:0.15em;}
-.profile-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1rem;}
-.profile-card{background:#fffdf9;border:1px solid #dbe4ea;border-radius:14px;padding:1.15em 1.2em;box-shadow:0 10px 28px rgba(25,36,48,0.05);}
-.profile-card h2{margin-bottom:0.55em;font-size:1.45rem;}
-.profile-card p{margin-bottom:0.7em;}
-.facts-card{background:linear-gradient(180deg,#f9fbfc 0%,#f4f7f8 100%);}
-.compact-list{margin:0;padding-left:1.05rem;}
-.compact-list li{margin-bottom:0.4rem;list-style-type:square;}
-.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.9rem;}
-.mini-card{background:#fffdf9;border:1px solid #dbe4ea;border-radius:14px;padding:1em 1.05em;box-shadow:0 8px 22px rgba(25,36,48,0.04);}
-.mini-card h3{margin-bottom:0.4em;font-size:1.15rem;}
-.mini-card p{margin:0;color:#334652;}
-.compact-project-grid{gap:0.9rem;}
-.compact-project-card{min-height:11.5rem;padding:1.05em 1.1em;}
-.compact-project-card h3{font-size:1.15rem;line-height:1.3;margin-bottom:0.35em;}
-.compact-project-card p{margin-bottom:0.55em;}
-.slim-contact{padding:1.15em 1.2em;}
-.slim-contact h2{margin-bottom:0.5em;}
-.slim-contact .contact-list{padding-left:1.05rem;}
-@media only screen and (max-width:48em){
-  .compact-hero{padding:1.25em;}
-  .compact-hero h1{font-size:2rem;}
-  .hero-actions{grid-template-columns:1fr;max-width:none;}
-  .profile-grid,.mini-grid{grid-template-columns:1fr;}
-  .compact-project-card{min-height:auto;}
-}
+/* legacy v2 compact styles removed */
 
 /* Wider desktop content area */
 .article-wrap{max-width:64rem;}
@@ -976,3 +914,68 @@ html{scroll-behavior:smooth;}
   opacity:1;
   transform:translateY(0);
 }
+
+/* =====================================================
+   PASS 2 — visual refinements
+   ===================================================== */
+
+/* 1. Off-white page background — white cards gain depth against the ground */
+html,body{background:#f1f3f6;}
+
+/* 2. Hero name: Source Serif 4 for editorial weight against the dark hero */
+.hero-name{font-family:'Source Serif 4',serif;font-size:2.85rem;letter-spacing:-.01em;}
+
+/* 3. Hero: subtle dot-grid texture baked into the background */
+.hero-v2{
+  background:
+    radial-gradient(circle,rgba(255,255,255,.055) 1px,transparent 1px),
+    linear-gradient(145deg,#0c1e30 0%,#153350 50%,#0f2844 100%);
+  background-size:22px 22px, 100% 100%;
+}
+
+/* 4. Hero glow: larger, more atmospheric radius */
+.hero-v2::after{
+  width:520px;height:520px;top:-110px;right:-90px;
+  background:radial-gradient(circle,rgba(94,234,212,.12) 0%,transparent 56%);
+}
+
+/* 5. Research cards: tinted backgrounds (color system fully expressed, not just borders) */
+.ri-card.c-blue  {background:#f7fbff;}
+.ri-card.c-violet{background:#f8f6ff;}
+.ri-card.c-teal  {background:#f4faf9;}
+.ri-card.c-blue:hover  {background:#eef5ff;transform:translateY(-3px);}
+.ri-card.c-violet:hover{background:#f0eaff;transform:translateY(-3px);}
+.ri-card.c-teal:hover  {background:#e7f7f5;transform:translateY(-3px);}
+
+/* 6. Facts table: alternating row tint for scannability */
+.ft-row:nth-child(even){background:#f6f9fc;}
+
+/* 7. Nav site name: teal accent dot prefix */
+.site-name a::before{content:'·';color:#5eead4;margin-right:.35em;font-size:1.1em;line-height:1;}
+
+/* 8. Scroll reveal: expo-out spring easing (more refined than generic ease) */
+.js-loaded .blk-v2,
+.js-loaded .contact-v2{
+  transition:opacity .6s cubic-bezier(0.16,1,0.3,1),transform .6s cubic-bezier(0.16,1,0.3,1) !important;
+}
+.js-loaded .hero-v2{
+  transition:opacity .5s cubic-bezier(0.16,1,0.3,1),transform .5s cubic-bezier(0.16,1,0.3,1) !important;
+}
+
+/* 9. Publication entries: colored left accent bar */
+.pub-entry{border-left:3px solid #dde5ef;}
+.pub-entry:hover{border-left-color:#2563eb;}
+
+/* 10. Award entry: gold left accent */
+.award-entry{border-left:3px solid #eab308;}
+
+/* 11. Footer: match off-white page theme */
+.footer-wrap{background:#e9ecf0;border-top:1px solid #d8dee6;}
+.footer-wrap footer{font-size:.78rem;color:#4f6777;padding:.9rem 0;}
+.footer-wrap footer a{color:#2e4f63;border-bottom:1px dotted #3d6070 !important;}
+.footer-wrap footer a:hover{color:#1d4ed8;border-bottom-color:#1d4ed8 !important;}
+
+/* 12. Ensure project cards remain white against off-white page */
+.proj-card{background:#fff;}
+.pub-entry{background:#fff;}
+.award-entry{background:#fff;}
