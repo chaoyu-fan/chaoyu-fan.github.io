@@ -714,6 +714,7 @@ a:focus-visible,.btn:focus-visible,.top-navigation a:focus-visible{outline:3px s
   font-family:'Source Sans 3',sans-serif;
   font-size:.62rem;font-weight:700;letter-spacing:.06em;
   padding:.22em .55em;border-radius:5px;white-space:nowrap;
+  width:5.2rem;text-align:center;box-sizing:border-box;
 }
 .pub-badge-conf{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;}
 .pub-badge-jour{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;}
