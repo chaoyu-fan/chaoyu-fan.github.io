@@ -46,8 +46,8 @@
 {% include scripts.html %}
 
 <script>
+// Scroll-reveal (IntersectionObserver progressive enhancement)
 (function(){
-  // Progressive enhancement: only hide elements if JS + IntersectionObserver available
   if (!('IntersectionObserver' in window)) return;
   document.documentElement.classList.add('js-loaded');
   var targets = document.querySelectorAll('.blk-v2, .hero-v2, .contact-v2');
@@ -60,6 +60,44 @@
     });
   }, {threshold: 0.05});
   targets.forEach(function(el){ obs.observe(el); });
+})();
+
+// Scroll progress bar
+(function(){
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.prepend(bar);
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }, {passive: true});
+})();
+
+// Sliding nav underline indicator
+(function(){
+  var wrapper = document.querySelector('.navigation-wrapper');
+  var current = document.querySelector('.top-navigation-current');
+  if (!wrapper || !current) return;
+  var ind = document.createElement('div');
+  ind.className = 'nav-indicator';
+  wrapper.appendChild(ind);
+  function pos(el){
+    var wr = wrapper.getBoundingClientRect(), er = el.getBoundingClientRect();
+    ind.style.left = (er.left - wr.left) + 'px';
+    ind.style.width = er.width + 'px';
+  }
+  // Set initial position without animation, then enable transition
+  pos(current);
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      ind.style.transition = 'left .22s cubic-bezier(0.16,1,0.3,1), width .22s cubic-bezier(0.16,1,0.3,1)';
+    });
+  });
+  document.querySelectorAll('.top-navigation a').forEach(function(a){
+    a.addEventListener('mouseenter', function(){ pos(a); });
+    a.addEventListener('mouseleave', function(){ pos(current); });
+  });
 })();
 </script>
 

@@ -978,3 +978,146 @@ html,body{background:#f1f3f6;}
 .proj-card{background:#fff;}
 .pub-entry{background:#fff;}
 .award-entry{background:#fff;}
+
+/* =====================================================
+   PASS 3 — typographic identity, warmth, motion detail
+   ===================================================== */
+
+/* Warm parchment canvas — academic/editorial over cold corporate grey */
+html,body{background:#f3efe9 !important;}
+.footer-wrap{background:#e9e4dc !important;border-top-color:#d2ccc4 !important;}
+.footer-wrap footer{color:#4e6070 !important;}
+
+/* Text selection: brand-matched teal */
+::selection{background:rgba(94,234,212,.3);color:#0c1e30;}
+::-moz-selection{background:rgba(94,234,212,.3);color:#0c1e30;}
+
+/* Font rendering */
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+
+/* Scroll progress bar — teal→blue gradient */
+.scroll-progress{
+  position:fixed;top:0;left:0;z-index:9999;
+  height:2px;width:0%;
+  background:linear-gradient(90deg,#5eead4 0%,#2563eb 100%);
+  pointer-events:none;
+}
+
+/* Nav sliding underline indicator */
+.nav-indicator{
+  position:absolute;bottom:0;
+  height:2px;background:#5eead4;border-radius:1px;
+  pointer-events:none;
+}
+
+/* ---- HERO: Fraunces display font ---- */
+/* Fraunces is a variable optical-size serif — literary authority,
+   completely distinct from the generic sans used before */
+.hero-name{
+  font-family:'Fraunces',serif !important;
+  font-size:3.5rem !important;
+  font-weight:600;
+  letter-spacing:-.03em;
+  line-height:1.0;
+  font-optical-sizing:auto;
+}
+.hero-cn{font-family:'Fraunces',serif !important;}
+@media only screen and (max-width:48em){.hero-name{font-size:2.1rem !important;}}
+
+/* ---- SECTION HEADERS: upgraded from 0.68rem labels to real headings ---- */
+/* The single biggest UX failure was 0.68rem uppercase section headers —
+   the page had no visual hierarchy. Fraunces 1.45rem fixes this. */
+.sh-v2{
+  font-family:'Fraunces',serif !important;
+  font-size:1.45rem !important;
+  font-weight:600 !important;
+  letter-spacing:-.022em !important;
+  text-transform:none !important;
+  color:#0e1c28 !important;
+  padding-bottom:.5rem !important;
+  gap:.5rem !important;
+  align-items:flex-start !important;
+  margin-bottom:1.1rem !important;
+}
+/* Vertical bar accent — suits a taller heading better than horizontal pill */
+.sh-v2::before{
+  width:3px !important;
+  height:1.1em !important;
+  border-radius:2px !important;
+  flex-shrink:0 !important;
+  margin-top:.16em !important;
+  background:#5eead4 !important;
+}
+.sh-dark{color:rgba(255,255,255,.96) !important;}
+.sh-note{
+  margin-top:-.4rem !important;
+  margin-bottom:1rem !important;
+}
+
+/* ---- SUB-LABELS (Education / Industry) ---- */
+.ee-sub{
+  font-family:'Fraunces',serif !important;
+  font-size:1.02rem !important;
+  font-weight:500 !important;
+  letter-spacing:-.01em !important;
+  color:#1a2d3e !important;
+  text-transform:none !important;
+  margin-bottom:.8rem !important;
+}
+
+/* ---- CARD TITLES: Fraunces for identity ---- */
+.ri-title{
+  font-family:'Fraunces',serif !important;
+  font-size:.98rem !important;
+  font-weight:500 !important;
+  letter-spacing:-.01em !important;
+  color:#0e1c28 !important;
+  margin-bottom:.45rem !important;
+}
+.pc-name{
+  font-family:'Fraunces',serif !important;
+  font-size:.96rem !important;
+  font-weight:500 !important;
+  letter-spacing:-.01em !important;
+}
+
+/* ---- WARM CARD SURFACES on parchment ---- */
+.ri-card{background:#faf6f0 !important;}
+.ri-card.c-blue  {background:#f5f9ff !important;}
+.ri-card.c-violet{background:#f6f3ff !important;}
+.ri-card.c-teal  {background:#f2f9f7 !important;}
+.ri-card.c-blue:hover  {background:#eaf4ff !important;}
+.ri-card.c-violet:hover{background:#ece6ff !important;}
+.ri-card.c-teal:hover  {background:#e4f5f1 !important;}
+.proj-card{background:#faf6f0 !important;}
+.pub-entry{background:#faf6f0 !important;}
+.award-entry{background:#faf6f0 !important;}
+.facts-tbl{background:#faf6f0 !important;}
+
+/* ---- TIMELINE: pulsing dot on current position ---- */
+.tl-v2 .tl-entry:first-child .tl-body::before{
+  background:#0d9488 !important;
+  width:10px !important;height:10px !important;
+  left:-6px !important;top:4px !important;
+  box-shadow:0 0 0 2.5px rgba(13,148,136,.2) !important;
+  animation:tl-pulse 2.6s ease infinite;
+}
+@keyframes tl-pulse{
+  0%,100%{box-shadow:0 0 0 2.5px rgba(13,148,136,.18);}
+  50%{box-shadow:0 0 0 7px rgba(13,148,136,.06);}
+}
+
+/* ---- PROJECT CARDS: directional arrow decoration ---- */
+.proj-card::after{
+  content:'↗';
+  position:absolute;top:.85rem;right:.85rem;
+  font-size:.82rem;color:#bccad6;
+  line-height:1;
+  transition:color .2s,transform .24s cubic-bezier(0.16,1,0.3,1);
+}
+.proj-card:hover::after{color:#1d4ed8;transform:translate(2px,-2px);}
+
+/* Focus: teal outline matches brand */
+a:focus-visible,button:focus-visible{
+  outline:2px solid #5eead4;outline-offset:3px;border-radius:3px;
+}
