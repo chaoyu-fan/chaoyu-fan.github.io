@@ -23,6 +23,18 @@ description: Publications, education, and awards of Chaoyu Fan — PhD researche
     </div>
 
     <div class="pub-entry">
+      <div class="pub-badge pub-badge-jour">Journal</div>
+      <div class="pub-body">
+        <div class="pub-title">Mechanical Property Prediction of Non-oriented Electrical Steel using Machine Learning Methods</div>
+        <div class="pub-authors">Wangya Huang, <strong>Chaoyu Fan</strong>, Qi Deng, Qi Kang</div>
+        <div class="pub-venue">International Journal of Bio-Inspired Computation (IJBIC), 2025 · Inderscience</div>
+        <div class="pub-links">
+          <a class="pub-link" href="https://doi.org/10.1504/IJBIC.2025.10077197" target="_blank">Paper</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub-entry">
       <div class="pub-badge pub-badge-conf">Conference</div>
       <div class="pub-body">
         <div class="pub-title">Robust Heterogeneous Federated Learning via Data-Free Knowledge Amalgamation</div>
