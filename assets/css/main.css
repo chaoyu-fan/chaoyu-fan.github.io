@@ -1136,8 +1136,9 @@ a:focus-visible,button:focus-visible{
   --va-text:#111827;
   --va-text-secondary:#374151;
   --va-text-tertiary:#6b7280;
-  --va-accent:#00b87c;
-  --va-accent-soft:#009f6b;
+  --va-accent:#306cce;
+  --va-accent-soft:#2554a0;
+  --va-focus:#3b82f6;
   --va-radius-sm:6px;
   --va-radius-md:8px;
   --va-space-1:8px;
@@ -1323,6 +1324,14 @@ a:hover{color:var(--va-accent);}
 .footer-wrap a:hover{color:var(--va-accent) !important;border-bottom-color:var(--va-accent) !important;}
 
 .scroll-progress{background:var(--va-accent) !important;height:2px;}
+
+a:focus-visible,
+button:focus-visible,
+.btn-v2:focus-visible,
+.top-navigation li a:focus-visible{
+  outline:2px solid var(--va-focus) !important;
+  outline-offset:3px;
+}
 
 /* Motion should be subtle; respect reduced motion */
 .hero-v2,.blk-v2,.contact-v2,.proj-card,.ri-card,.pub-entry,.award-entry{animation:none !important;}
