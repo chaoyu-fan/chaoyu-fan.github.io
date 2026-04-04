@@ -1220,6 +1220,7 @@ a:hover{color:var(--va-accent);}
 }
 .hero-v2{
   background:linear-gradient(180deg,#ffffff 0%,#fbfffd 100%) !important;
+  margin-bottom:2.6rem !important;
 }
 .contact-v2{
   background:linear-gradient(180deg,#f7fffb 0%,#f2fbf7 100%) !important;
@@ -1237,6 +1238,18 @@ a:hover{color:var(--va-accent);}
 }
 .hero-cn{color:var(--va-text-tertiary) !important;}
 .hero-v2 p,.hero-sub{color:var(--va-text-secondary) !important;}
+.hero-micro{
+  margin:-.35rem 0 1.1rem !important;
+}
+.hero-micro code{
+  background:var(--va-surface-soft) !important;
+  color:var(--va-text-secondary) !important;
+  border:1px solid var(--va-border);
+  border-radius:6px;
+  padding:.35em .55em;
+  font-size:.82rem;
+  white-space:normal;
+}
 
 .sh-v2{
   color:var(--va-text) !important;
@@ -1279,6 +1292,16 @@ a:hover{color:var(--va-accent);}
   background:rgba(0,0,0,.2) !important;
   color:var(--va-accent-soft) !important;
   border-color:var(--va-accent) !important;
+}
+.hero-cta .btn-primary{
+  background:var(--va-accent) !important;
+  color:#ffffff !important;
+  border-color:var(--va-accent) !important;
+}
+.hero-cta .btn-primary:hover{
+  background:var(--va-accent-soft) !important;
+  color:#ffffff !important;
+  border-color:var(--va-accent-soft) !important;
 }
 .btn-ghost,
 .cl-btn,
