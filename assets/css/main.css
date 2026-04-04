@@ -1270,11 +1270,15 @@ a:hover{color:var(--va-accent);}
   font-family:Inter,system-ui,sans-serif !important;
 }
 .btn-primary{
-  background:#101010 !important;
-  color:var(--va-accent-soft) !important;
-  border:1px solid #101010 !important;
+  background:var(--va-accent) !important;
+  color:#ffffff !important;
+  border:1px solid var(--va-accent) !important;
 }
-.btn-primary:hover{background:#1f2937 !important;color:var(--va-accent) !important;}
+.btn-primary:hover{
+  background:var(--va-accent-soft) !important;
+  color:#ffffff !important;
+  border-color:var(--va-accent-soft) !important;
+}
 .btn-ghost,
 .cl-btn,
 .pub-link{
