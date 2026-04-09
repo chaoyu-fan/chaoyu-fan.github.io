@@ -34,11 +34,16 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
     <div class="ri-card c-blue">
+      <div class="ri-title">Claude Code 开始长成一个生态了</div>
+      <p>从教程、skills 到多智能体编排，整理这轮热门项目真正说明了什么，以及更稳的入场顺序。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/claude-code-ecosystem/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
+    <div class="ri-card c-teal">
       <div class="ri-title">初创公司股权分配：把“出资”和“出力”拆开算</div>
       <p>从三人合伙的真实场景出发，聊清楚创业初期怎么分股更稳，并附上几份能直接改的协议模板骨架。</p>
       <p style="margin-top:.6rem;"><a href="/blogs/startup-equity-split/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
     </div>
-    <div class="ri-card c-teal">
+    <div class="ri-card c-blue">
       <div class="ri-title">Claude 风控“证据链”拆解</div>
       <p>从设备指纹、遥测通道到行为节奏，整理 7 张图并做工程化技术解读。</p>
       <p style="margin-top:.6rem;"><a href="/blogs/claude-risk-control/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
