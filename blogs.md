@@ -33,6 +33,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
+    <div class="ri-card c-blue">
+      <div class="ri-title">初创公司股权分配：把“出资”和“出力”拆开算</div>
+      <p>从一张抖音图文出发，扩展成适用于三人合伙与初创团队的股权设计笔记。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/startup-equity-split/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
     <div class="ri-card c-teal">
       <div class="ri-title">Claude 风控“证据链”拆解</div>
       <p>从设备指纹、遥测通道到行为节奏，整理 7 张图并做工程化技术解读。</p>
