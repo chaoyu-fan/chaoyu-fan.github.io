@@ -34,8 +34,8 @@ description: 从一条抖音图文出发，梳理这轮 Claude Code 热门项目
 </div>
 
 <style>
-.dy-fig{margin:1rem auto 1.2rem;display:flex;justify-content:center}
-.dy-fig img{width:min(100%,460px);height:auto;display:block;border-radius:12px;box-shadow:0 8px 26px rgba(0,0,0,.08)}
+.dy-fig{margin:1rem auto 1.2rem;display:block}
+.dy-fig img{width:min(100%,460px);height:auto;display:block;margin:0 auto;border-radius:12px;box-shadow:0 8px 26px rgba(0,0,0,.08)}
 .dy-note{color:#586674;font-size:.92rem;line-height:1.8}
 .cc-callout{background:#f6fbfd;border-left:4px solid #4a7a8c;padding:1rem 1rem .9rem;border-radius:10px;margin:1rem 0}
 .cc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0 1.2rem}
@@ -47,11 +47,13 @@ description: 从一条抖音图文出发，梳理这轮 Claude Code 热门项目
 .cc-table th{color:#405361}
 .cc-source-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:1rem 0 1.2rem}
 .cc-source-grid figure{margin:0}
+.cc-source-grid .dy-fig{margin:0}
 .cc-source-grid figcaption{margin-top:.45rem;color:#5f6b76;font-size:.86rem;line-height:1.65}
 .cc-details{margin:1rem 0 1.2rem;padding:1rem;border:1px solid #dce5ec;border-radius:10px;background:#fbfcfe}
 .cc-details summary{cursor:pointer;color:#2f4756;font-weight:600}
 .cc-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem;margin-top:1rem}
 .cc-gallery figure{margin:0}
+.cc-gallery img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
 .cc-gallery figcaption{margin-top:.35rem;color:#61707d;font-size:.82rem;text-align:center}
 @media (max-width: 720px){
   .cc-grid,.cc-source-grid,.cc-gallery{grid-template-columns:1fr}
