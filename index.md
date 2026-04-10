@@ -11,7 +11,7 @@ description: Chaoyu Fan is a PhD researcher at Tongji University working on agen
   <p class="hero-micro"><code>Current Focus: Multi-agent Orchestration and Agent Harness (2026)</code></p>
   <div class="hero-cta">
     <a class="btn-v2 btn-primary" href="mailto:2410202@tongji.edu">Email</a>
-    <a class="btn-v2 btn-ghost" href="https://github.com/JakeFn123">GitHub</a>
+    <a class="btn-v2 btn-ghost" href="https://github.com/chaoyu-fan">GitHub</a>
     <a class="btn-v2 btn-ghost" href="/awards/">Academic Profile</a>
     <a class="btn-v2 btn-ghost btn-cv" href="/assets/cv/ChaoyuFan_CV.pdf" target="_blank">CV (PDF)</a>
   </div>
@@ -116,9 +116,9 @@ description: Chaoyu Fan is a PhD researcher at Tongji University working on agen
 <!-- PROJECTS -->
 <div class="blk-v2">
   <div class="sh-v2">Selected Projects</div>
-  <p class="sh-note">Recent open-source work · <a href="https://github.com/JakeFn123">View all on GitHub</a></p>
+  <p class="sh-note">Recent open-source work · <a href="https://github.com/chaoyu-fan">View all on GitHub</a></p>
   <div class="proj-grid">
-    <a class="proj-card" href="https://github.com/JakeFn123/research_nanobot">
+    <a class="proj-card" href="https://github.com/chaoyu-fan/research_nanobot">
       <div class="pc-top">
         <span class="pc-badge">Python</span>
         <span class="pc-when">Mar 2026</span>
@@ -127,7 +127,7 @@ description: Chaoyu Fan is a PhD researcher at Tongji University working on agen
       <p>Lightweight AI assistant and multi-agent workflow framework for research automation.</p>
       <div class="pc-tags"><span>Agents</span><span>Workflow</span><span>AI Systems</span></div>
     </a>
-    <a class="proj-card" href="https://github.com/JakeFn123/openspec-zh-tutorial">
+    <a class="proj-card" href="https://github.com/chaoyu-fan/openspec-zh-tutorial">
       <div class="pc-top">
         <span class="pc-badge pc-badge-docs">Docs</span>
         <span class="pc-when">Mar 2026</span>
@@ -136,7 +136,7 @@ description: Chaoyu Fan is a PhD researcher at Tongji University working on agen
       <p>Chinese tutorial for OpenSpec and specification-first AI workflow design patterns.</p>
       <div class="pc-tags"><span>Specs</span><span>AI Collab</span><span>Tutorial</span></div>
     </a>
-    <a class="proj-card" href="https://github.com/JakeFn123/paperrank">
+    <a class="proj-card" href="https://github.com/chaoyu-fan/paperrank">
       <div class="pc-top">
         <span class="pc-badge">Python</span>
         <span class="pc-when">Mar 2026</span>
@@ -154,7 +154,7 @@ description: Chaoyu Fan is a PhD researcher at Tongji University working on agen
   <p>Open to collaboration, research discussions, and interesting opportunities.</p>
   <div class="cl-grid">
     <a class="cl-btn" href="mailto:2410202@tongji.edu">2410202@tongji.edu</a>
-    <a class="cl-btn" href="https://github.com/JakeFn123">github.com/JakeFn123</a>
+    <a class="cl-btn" href="https://github.com/chaoyu-fan">github.com/chaoyu-fan</a>
     <a class="cl-btn" href="https://linkedin.com/in/chaoyu-fan">LinkedIn</a>
     <a class="cl-btn" href="/assets/cv/ChaoyuFan_CV.pdf" target="_blank">Download CV</a>
   </div>

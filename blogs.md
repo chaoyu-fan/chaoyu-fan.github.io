@@ -26,7 +26,7 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
       <p>Practical notes on applying machine learning to industrial optimization problems — what works, what doesn't, and why.</p>
     </div>
   </div>
-  <p style="color:#3d5060;margin-top:1.5rem;font-size:.9rem;">First posts coming soon. Subscribe via <a href="https://github.com/JakeFn123" style="color:#2e4f63;">GitHub</a> or check back here.</p>
+  <p style="color:#3d5060;margin-top:1.5rem;font-size:.9rem;">First posts coming soon. Subscribe via <a href="https://github.com/chaoyu-fan" style="color:#2e4f63;">GitHub</a> or check back here.</p>
 </div>
 
 

@@ -1,6 +1,6 @@
 # Chaoyu Fan Personal Website
 
-This repository powers [https://jakefn123.github.io/](https://jakefn123.github.io/), the personal website of **Chaoyu Fan (范朝宇)**.
+This repository powers [https://chaoyu-fan.github.io/](https://chaoyu-fan.github.io/), the personal website of **Chaoyu Fan (范朝宇)**.
 
 ## What This Site Is For
 

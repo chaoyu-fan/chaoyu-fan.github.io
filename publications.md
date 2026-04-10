@@ -7,11 +7,11 @@ description: Open-source research projects by Chaoyu Fan — multi-agent workflo
 
 <div class="blk-v2">
   <div class="sh-v2">Open-Source Projects</div>
-  <p class="sh-note">Selected work on GitHub · <a href="https://github.com/JakeFn123">github.com/JakeFn123</a></p>
+  <p class="sh-note">Selected work on GitHub · <a href="https://github.com/chaoyu-fan">github.com/chaoyu-fan</a></p>
 
   <div class="proj-grid">
 
-    <a class="proj-card" href="https://github.com/JakeFn123/research_nanobot">
+    <a class="proj-card" href="https://github.com/chaoyu-fan/research_nanobot">
       <div class="pc-top">
         <span class="pc-badge">Python</span>
         <span class="pc-when">Mar 2026</span>
@@ -21,7 +21,7 @@ description: Open-source research projects by Chaoyu Fan — multi-agent workflo
       <div class="pc-tags"><span>Multi-Agent</span><span>Workflow</span><span>LLM</span><span>Python</span></div>
     </a>
 
-    <a class="proj-card" href="https://github.com/JakeFn123/paperrank">
+    <a class="proj-card" href="https://github.com/chaoyu-fan/paperrank">
       <div class="pc-top">
         <span class="pc-badge">Python</span>
         <span class="pc-when">Mar 2026</span>
@@ -31,7 +31,7 @@ description: Open-source research projects by Chaoyu Fan — multi-agent workflo
       <div class="pc-tags"><span>Retrieval</span><span>NLP</span><span>Agents</span><span>Python</span></div>
     </a>
 
-    <a class="proj-card" href="https://github.com/JakeFn123/openspec-zh-tutorial">
+    <a class="proj-card" href="https://github.com/chaoyu-fan/openspec-zh-tutorial">
       <div class="pc-top">
         <span class="pc-badge pc-badge-docs">Docs</span>
         <span class="pc-when">Mar 2026</span>
