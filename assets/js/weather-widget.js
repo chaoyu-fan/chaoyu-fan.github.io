@@ -7,7 +7,7 @@
   'use strict';
 
   const API_BASE_URL = 'https://weatherdash-esc4hch2.manus.space/api/trpc';
-  const DEFAULT_CITY = '北京';
+  const DEFAULT_CITY = '上海';
   const STORAGE_KEY = 'weather_widget_city';
 
   class WeatherWidget {
@@ -54,24 +54,63 @@
     }
 
     attachEventListeners() {
+      // 移除旧的事件监听器
+      this.detachEventListeners();
+      
       const toggleBtn = this.container.querySelector('.weather-widget-toggle');
       const searchBtn = this.container.querySelector('.widget-search-btn');
       const cityInput = this.container.querySelector('.widget-city-input');
 
-      toggleBtn.addEventListener('click', () => this.toggleCollapse());
-      searchBtn.addEventListener('click', () => this.handleSearch());
-      cityInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') this.handleSearch();
-      });
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', this.toggleCollapseHandler);
+      }
+      if (searchBtn) {
+        searchBtn.addEventListener('click', this.handleSearchHandler);
+      }
+      if (cityInput) {
+        cityInput.addEventListener('keypress', this.handleKeyPressHandler);
+      }
+    }
+
+    detachEventListeners() {
+      const toggleBtn = this.container.querySelector('.weather-widget-toggle');
+      const searchBtn = this.container.querySelector('.widget-search-btn');
+      const cityInput = this.container.querySelector('.widget-city-input');
+
+      if (toggleBtn) {
+        toggleBtn.removeEventListener('click', this.toggleCollapseHandler);
+      }
+      if (searchBtn) {
+        searchBtn.removeEventListener('click', this.handleSearchHandler);
+      }
+      if (cityInput) {
+        cityInput.removeEventListener('keypress', this.handleKeyPressHandler);
+      }
+    }
+
+    toggleCollapseHandler = () => {
+      this.toggleCollapse();
+    }
+
+    handleSearchHandler = () => {
+      this.handleSearch();
+    }
+
+    handleKeyPressHandler = (e) => {
+      if (e.key === 'Enter') this.handleSearch();
     }
 
     toggleCollapse() {
       const widget = this.container.querySelector('.weather-widget');
+      if (!widget) return;
+      
       this.isCollapsed = !this.isCollapsed;
-      widget.classList.toggle('collapsed');
+      widget.classList.toggle('collapsed', this.isCollapsed);
       
       const toggleBtn = this.container.querySelector('.weather-widget-toggle');
-      toggleBtn.textContent = this.isCollapsed ? '+' : '−';
+      if (toggleBtn) {
+        toggleBtn.textContent = this.isCollapsed ? '+' : '−';
+      }
     }
 
     handleSearch() {
