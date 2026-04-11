@@ -1,0 +1,466 @@
+/* ============================================
+   Weather Widget - Minimalist Style
+   Integrated into Chaoyu Fan's personal website
+   ============================================ */
+
+:root {
+  --widget-accent: #306cce;
+  --widget-accent-soft: #2554a0;
+  --widget-text: #111827;
+  --widget-text-secondary: #374151;
+  --widget-text-tertiary: #6b7280;
+  --widget-bg: #ffffff;
+  --widget-surface-soft: #f8fafc;
+  --widget-border: #d4d8de;
+  --widget-radius: 8px;
+  --widget-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --widget-transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   Widget Container
+   ============================================ */
+
+.weather-widget-container {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
+}
+
+.weather-widget {
+  background: var(--widget-bg);
+  border: 1px solid var(--widget-border);
+  border-radius: var(--widget-radius);
+  box-shadow: var(--widget-shadow);
+  overflow: hidden;
+  transition: var(--widget-transition);
+  width: 280px;
+  max-width: 90vw;
+}
+
+.weather-widget.collapsed {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.weather-widget.collapsed .weather-widget-content {
+  display: none;
+}
+
+.weather-widget.collapsed .weather-widget-toggle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================================
+   Widget Header / Toggle
+   ============================================ */
+
+.weather-widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, var(--widget-surface-soft), var(--widget-bg));
+  border-bottom: 1px solid var(--widget-border);
+}
+
+.weather-widget-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--widget-text);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weather-widget-title::before {
+  content: '🌤️';
+  font-size: 1rem;
+}
+
+.weather-widget-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--widget-text-secondary);
+  font-size: 1.2rem;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--widget-transition);
+}
+
+.weather-widget-toggle:hover {
+  color: var(--widget-accent);
+  transform: rotate(90deg);
+}
+
+/* ============================================
+   Widget Content
+   ============================================ */
+
+.weather-widget-content {
+  padding: 1rem;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.weather-widget-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.weather-widget-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.weather-widget-content::-webkit-scrollbar-thumb {
+  background: var(--widget-border);
+  border-radius: 2px;
+}
+
+.weather-widget-content::-webkit-scrollbar-thumb:hover {
+  background: var(--widget-text-tertiary);
+}
+
+/* ============================================
+   City Selection
+   ============================================ */
+
+.widget-city-selector {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.widget-city-input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--widget-border);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: var(--widget-text);
+  background: var(--widget-surface-soft);
+  transition: var(--widget-transition);
+  font-family: inherit;
+}
+
+.widget-city-input:focus {
+  outline: none;
+  border-color: var(--widget-accent);
+  background: var(--widget-bg);
+  box-shadow: 0 0 0 2px rgba(48, 108, 206, 0.1);
+}
+
+.widget-search-btn {
+  padding: 0.5rem 0.75rem;
+  background: var(--widget-accent);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: var(--widget-transition);
+  font-family: inherit;
+}
+
+.widget-search-btn:hover {
+  background: var(--widget-accent-soft);
+  transform: translateY(-1px);
+}
+
+.widget-search-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   Weather Display
+   ============================================ */
+
+.widget-weather-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--widget-border);
+}
+
+.widget-temp-display {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.widget-temp-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--widget-accent);
+  line-height: 1;
+}
+
+.widget-temp-unit {
+  font-size: 0.875rem;
+  color: var(--widget-text-secondary);
+  margin-top: 0.25rem;
+}
+
+.widget-weather-desc {
+  flex: 1;
+}
+
+.widget-weather-status {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--widget-text);
+  margin: 0 0 0.25rem 0;
+}
+
+.widget-feels-like {
+  font-size: 0.75rem;
+  color: var(--widget-text-tertiary);
+  margin: 0;
+}
+
+.widget-city-name {
+  font-size: 0.75rem;
+  color: var(--widget-text-secondary);
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   Weather Details Grid
+   ============================================ */
+
+.widget-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--widget-border);
+}
+
+.widget-detail-item {
+  padding: 0.5rem;
+  background: var(--widget-surface-soft);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.widget-detail-label {
+  font-size: 0.7rem;
+  color: var(--widget-text-tertiary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.widget-detail-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--widget-text);
+}
+
+/* ============================================
+   Oil Prices
+   ============================================ */
+
+.widget-oil-section {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--widget-border);
+}
+
+.widget-oil-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--widget-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.widget-oil-prices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.widget-oil-item {
+  padding: 0.5rem;
+  background: linear-gradient(135deg, #fff9e6 0%, var(--widget-surface-soft) 100%);
+  border-left: 2px solid var(--widget-accent);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.widget-oil-type {
+  font-size: 0.7rem;
+  color: var(--widget-text-tertiary);
+  font-weight: 500;
+}
+
+.widget-oil-price {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--widget-accent);
+}
+
+/* ============================================
+   Update Time
+   ============================================ */
+
+.widget-update-time {
+  font-size: 0.7rem;
+  color: var(--widget-text-tertiary);
+  text-align: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--widget-border);
+}
+
+/* ============================================
+   Loading State
+   ============================================ */
+
+.widget-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.widget-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--widget-border);
+  border-top-color: var(--widget-accent);
+  border-radius: 50%;
+  animation: widget-spin 1s linear infinite;
+  margin-bottom: 0.75rem;
+}
+
+@keyframes widget-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.widget-loading-text {
+  font-size: 0.875rem;
+  color: var(--widget-text-secondary);
+  margin: 0;
+}
+
+/* ============================================
+   Error State
+   ============================================ */
+
+.widget-error {
+  padding: 1rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: var(--widget-radius);
+  text-align: center;
+}
+
+.widget-error-text {
+  font-size: 0.875rem;
+  color: #991b1b;
+  margin: 0;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 768px) {
+  .weather-widget-container {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .weather-widget {
+    width: 260px;
+  }
+
+  .widget-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .widget-oil-prices {
+    grid-template-columns: 1fr;
+  }
+
+  .widget-weather-main {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .widget-temp-display {
+    flex-direction: row;
+  }
+
+  .widget-temp-value {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-widget-container {
+    bottom: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .weather-widget {
+    width: calc(100vw - 1.5rem);
+    max-width: 100%;
+  }
+
+  .weather-widget.collapsed {
+    width: 50px;
+    height: 50px;
+  }
+
+  .widget-temp-value {
+    font-size: 1.5rem;
+  }
+
+  .widget-details-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .widget-oil-prices {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+
+@media print {
+  .weather-widget-container {
+    display: none;
+  }
+}
