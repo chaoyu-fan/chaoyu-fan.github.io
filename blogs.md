@@ -33,6 +33,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
+    <div class="ri-card c-violet">
+      <div class="ri-title">Terminal-Bench 2.0 完全导读</div>
+      <p>从评分方式、89 个任务分类到 agent 提分路径，系统拆解这套 benchmark 到底在测什么，以及该怎么用它评估自己的 coding agent。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/terminal-bench-2/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
     <div class="ri-card c-blue">
       <div class="ri-title">Claude Code 开始长成一个生态了</div>
       <p>从教程、skills 到多智能体编排，整理这轮热门项目真正说明了什么，以及更稳的入场顺序。</p>
