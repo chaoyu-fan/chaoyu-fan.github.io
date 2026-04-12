@@ -207,16 +207,49 @@
 }
 
 /* ============================================
-   Weather Display
+   Weather Card Display
    ============================================ */
 
-.widget-weather-main {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+.widget-weather-card {
+  background: linear-gradient(135deg, #e6f2ff 0%, #f0f7ff 100%);
+  border: 1px solid #d0e8ff;
+  border-radius: 12px;
+  padding: 1.25rem;
   margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--widget-border);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.widget-card-date {
+  font-size: 0.875rem;
+  color: var(--widget-text-secondary);
+  font-weight: 500;
+}
+
+.widget-card-status {
+  font-size: 0.875rem;
+  color: var(--widget-text);
+  font-weight: 500;
+}
+
+.widget-card-temp {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--widget-accent);
+  line-height: 1;
+}
+
+.widget-card-range {
+  font-size: 0.75rem;
+  color: var(--widget-text-secondary);
+  font-weight: 500;
+}
+
+/* Legacy weather display (hidden) */
+.widget-weather-main {
+  display: none;
 }
 
 .widget-temp-display {

@@ -251,16 +251,11 @@
           <button class="widget-search-btn">搜索</button>
         </div>
 
-        <div class="widget-weather-main">
-          <div class="widget-temp-display">
-            <div class="widget-temp-value">${Math.round(current.temp)}</div>
-            <div class="widget-temp-unit">°C</div>
-          </div>
-          <div class="widget-weather-desc">
-            <p class="widget-weather-status">${current.weather?.[0]?.description || '多云'}</p>
-            <p class="widget-feels-like">体感: ${Math.round(current.feels_like)}°C</p>
-            <p class="widget-city-name">${this.currentCity}</p>
-          </div>
+        <div class="widget-weather-card">
+          <div class="widget-card-date">${new Date().toLocaleDateString('zh-CN', { month: '2-digit', day: '2-digit' }).replace(/\//g, '月')}日</div>
+          <div class="widget-card-status">${current.weather?.[0]?.description || '多云'}</div>
+          <div class="widget-card-temp">${Math.round(current.temp)}°</div>
+          <div class="widget-card-range">${Math.round(current.feels_like)}°~${Math.round(current.temp + 2)}°</div>
         </div>
 
         <div class="widget-details-grid">
