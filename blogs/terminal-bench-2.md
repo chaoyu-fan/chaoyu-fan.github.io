@@ -785,10 +785,11 @@ harbor --version
 </code></pre>
   </div>
 
-  <p>然后再跑自己的 agent。以官方文档里的 Claude Code 例子来说：</p>
+  <p>然后再跑自己的 agent。这里要分清两件事：<strong>官方教程里明确给出的 Claude Code 命令，是 Daytona 版</strong>；如果你只是想在本地小并发试跑自己的 agent，可以把并发数调小，但那属于你自己的运行策略，不是官方固定示例。</p>
 
   <div class="tb-code">
-<pre><code>export ANTHROPIC_API_KEY=&lt;YOUR-KEY&gt;
+<pre><code># 下面这段是本地小并发试跑思路，不是 Harbor 官方教程原文
+export ANTHROPIC_API_KEY=&lt;YOUR-KEY&gt;
 
 harbor run \
   -d terminal-bench/terminal-bench-2 \
@@ -798,7 +799,7 @@ harbor run \
 </code></pre>
   </div>
 
-  <p class="tb-note">这里有一个容易混淆的小点：Harbor 的一些旧文档和旧示例里还能看到 <code>terminal-bench@2.0</code> 这种写法，但我在 2026/04/17 核对的当前官方教程页，使用的是 <code>terminal-bench/terminal-bench-2</code>。如果你今天照着官方教程跑，优先用 slash 这一版。</p>
+  <p class="tb-note">这里还有一个容易混淆的小点：我在 2026/04/17 核对时，<strong>Harbor 的 “Running Terminal-Bench” 专题教程页</strong>使用的是 <code>terminal-bench/terminal-bench-2</code>；但 Harbor 的其他通用 eval 文档里，仍然还能看到 <code>terminal-bench@2.0</code> 这种 versioned 写法。也就是说，这两种写法都出现在官方文档中，只是当前 Terminal-Bench 专题教程页展示的是 slash 这一版。</p>
 
   <p>如果你要上 Daytona 跑更高并发，官方教程给的是：</p>
 
