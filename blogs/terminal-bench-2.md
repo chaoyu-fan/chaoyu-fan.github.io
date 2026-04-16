@@ -41,6 +41,10 @@ description: 基于 tbench.ai、Harbor 与 Hugging Face 官方说明，纠正上
 .tb-code pre{margin:0;white-space:pre-wrap;word-break:break-word}
 .tb-mini{font-size:.9rem;color:#61707d}
 .tb-source li{margin:.45rem 0;line-height:1.72;color:#42586a}
+.tb-task-group{margin:1.1rem 0 1.35rem}
+.tb-task-group h4{margin:0 0 .7rem;color:#2f4756}
+.tb-task-group ul{margin:.3rem 0 0 1.1rem}
+.tb-task-group li{margin:.34rem 0;line-height:1.72;color:#42586a}
 @media (max-width: 720px){
   .tb-card-grid{grid-template-columns:1fr}
 }
@@ -66,6 +70,196 @@ description: 基于 tbench.ai、Harbor 与 Hugging Face 官方说明，纠正上
   </ul>
   <p>但官方并没有在我这次核对的文档里，给出一份与我上一版完全对应的“89 个任务中文重分组清单”。所以继续保留那份清单，只会让文章看起来更完整，却更不准确。</p>
   <p class="tb-note">如果你真想逐题看，最稳妥的方法是直接用官方任务页：<a href="https://www.tbench.ai/benchmarks/terminal-bench-2">tbench.ai/benchmarks/terminal-bench-2</a>。它本身就是当前最准确的任务浏览入口。</p>
+</div>
+
+<div class="blk-v2">
+  <div class="sh-v2">89 个官方任务清单（中文对照）</div>
+  <p class="tb-mini">下面这份清单是我在 2026/04/17 直接从 <a href="https://www.tbench.ai/benchmarks/terminal-bench-2">官网任务页</a>抓下来的当前显示结果。英文 <code>slug</code>、官方 <code>category</code> 和 <code>difficulty</code> 保持官网原样；中文名称是我做的直译 / 意译，仅用于帮助阅读。</p>
+
+  <div class="tb-task-group">
+    <h4>Data Processing（4）</h4>
+    <ul>
+      <li><code>financial-document-processor</code>：金融文档处理器（官方类别：data-processing；难度：medium）</li>
+      <li><code>log-summary-date-ranges</code>：日志摘要日期区间提取（官方类别：data-processing；难度：medium）</li>
+      <li><code>multi-source-data-merger</code>：多源数据合并（官方类别：data-processing；难度：medium）</li>
+      <li><code>regex-log</code>：日志正则提取（官方类别：data-processing；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Data Querying（1）</h4>
+    <ul>
+      <li><code>sparql-university</code>：大学数据 SPARQL 查询（官方类别：data-querying；难度：hard）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Data Science（8）</h4>
+    <ul>
+      <li><code>hf-model-inference</code>：Hugging Face 模型推理服务（官方类别：data-science；难度：medium）</li>
+      <li><code>mcmc-sampling-stan</code>：Stan 的 MCMC 采样（官方类别：data-science；难度：hard）</li>
+      <li><code>mteb-leaderboard</code>：MTEB 榜单处理（官方类别：data-science；难度：medium）</li>
+      <li><code>mteb-retrieve</code>：MTEB 检索任务（官方类别：data-science；难度：medium）</li>
+      <li><code>query-optimize</code>：查询优化（官方类别：data-science；难度：medium）</li>
+      <li><code>reshard-c4-data</code>：重切分 C4 数据（官方类别：data-science；难度：medium）</li>
+      <li><code>rstan-to-pystan</code>：RStan 迁移到 PyStan（官方类别：data-science；难度：medium）</li>
+      <li><code>sam-cell-seg</code>：SAM 细胞分割（官方类别：data-science；难度：hard）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Debugging（5）</h4>
+    <ul>
+      <li><code>build-cython-ext</code>：构建 Cython 扩展（官方类别：debugging；难度：medium）</li>
+      <li><code>custom-memory-heap-crash</code>：自定义内存堆崩溃排查（官方类别：debugging；难度：medium）</li>
+      <li><code>merge-diff-arc-agi-task</code>：合并 diff 的 ARC-AGI 任务（官方类别：debugging；难度：medium）</li>
+      <li><code>overfull-hbox</code>：修复 Overfull hbox（官方类别：debugging；难度：easy）</li>
+      <li><code>sqlite-db-truncate</code>：截断损坏的 SQLite 数据库恢复（官方类别：debugging；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>File Operations（5）</h4>
+    <ul>
+      <li><code>db-wal-recovery</code>：数据库 WAL 恢复（官方类别：file-operations；难度：medium）</li>
+      <li><code>extract-elf</code>：提取 ELF 内容（官方类别：file-operations；难度：medium）</li>
+      <li><code>extract-moves-from-video</code>：从视频中提取动作序列（官方类别：file-operations；难度：hard）</li>
+      <li><code>gcode-to-text</code>：G-code 转文本（官方类别：file-operations；难度：medium）</li>
+      <li><code>large-scale-text-editing</code>：大规模文本编辑（官方类别：file-operations；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Games（1）</h4>
+    <ul>
+      <li><code>chess-best-move</code>：国际象棋最佳着法（官方类别：games；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Machine Learning（3）</h4>
+    <ul>
+      <li><code>caffe-cifar-10</code>：Caffe 训练 CIFAR-10（官方类别：machine-learning；难度：medium）</li>
+      <li><code>distribution-search</code>：分布搜索（官方类别：machine-learning；难度：medium）</li>
+      <li><code>llm-inference-batching-scheduler</code>：LLM 推理批处理调度器（官方类别：machine-learning；难度：hard）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Mathematics（4）</h4>
+    <ul>
+      <li><code>feal-differential-cryptanalysis</code>：FEAL 差分密码分析（官方类别：mathematics；难度：hard）</li>
+      <li><code>feal-linear-cryptanalysis</code>：FEAL 线性密码分析（官方类别：mathematics；难度：hard）</li>
+      <li><code>largest-eigenval</code>：最大特征值计算（官方类别：mathematics；难度：medium）</li>
+      <li><code>model-extraction-relu-logits</code>：ReLU logits 模型提取（官方类别：mathematics；难度：hard）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Model Training（4）</h4>
+    <ul>
+      <li><code>count-dataset-tokens</code>：统计数据集 token 数（官方类别：model-training；难度：medium）</li>
+      <li><code>pytorch-model-cli</code>：PyTorch 模型命令行接口（官方类别：model-training；难度：medium）</li>
+      <li><code>pytorch-model-recovery</code>：PyTorch 模型恢复（官方类别：model-training；难度：medium）</li>
+      <li><code>train-fasttext</code>：训练 FastText 模型（官方类别：model-training；难度：hard）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Optimization（1）</h4>
+    <ul>
+      <li><code>portfolio-optimization</code>：投资组合优化（官方类别：optimization；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Personal Assistant（1）</h4>
+    <ul>
+      <li><code>constraints-scheduling</code>：约束式日程安排（官方类别：personal-assistant；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Scientific Computing（8）</h4>
+    <ul>
+      <li><code>adaptive-rejection-sampler</code>：自适应拒绝采样器（官方类别：scientific-computing；难度：medium）</li>
+      <li><code>bn-fit-modify</code>：贝叶斯网络拟合与修改（官方类别：scientific-computing；难度：hard）</li>
+      <li><code>dna-assembly</code>：DNA 组装（官方类别：scientific-computing；难度：hard）</li>
+      <li><code>dna-insert</code>：DNA 插入（官方类别：scientific-computing；难度：medium）</li>
+      <li><code>modernize-scientific-stack</code>：现代化科学计算栈（官方类别：scientific-computing；难度：medium）</li>
+      <li><code>protein-assembly</code>：蛋白质组装（官方类别：scientific-computing；难度：hard）</li>
+      <li><code>raman-fitting</code>：拉曼光谱拟合（官方类别：scientific-computing；难度：medium）</li>
+      <li><code>tune-mjcf</code>：调优 MJCF 模型（官方类别：scientific-computing；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Security（8）</h4>
+    <ul>
+      <li><code>break-filter-js-from-html</code>：突破 HTML 中的 JS 过滤（官方类别：security；难度：medium）</li>
+      <li><code>crack-7z-hash</code>：破解 7z 哈希（官方类别：security；难度：medium）</li>
+      <li><code>filter-js-from-html</code>：过滤 HTML 中的 JS（官方类别：security；难度：medium）</li>
+      <li><code>fix-code-vulnerability</code>：修复代码漏洞（官方类别：security；难度：hard）</li>
+      <li><code>openssl-selfsigned-cert</code>：生成 OpenSSL 自签证书（官方类别：security；难度：medium）</li>
+      <li><code>password-recovery</code>：密码恢复（官方类别：security；难度：hard）</li>
+      <li><code>sanitize-git-repo</code>：清洗 Git 仓库敏感信息（官方类别：security；难度：medium）</li>
+      <li><code>vulnerable-secret</code>：提取脆弱程序中的 secret（官方类别：security；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Software Engineering（26）</h4>
+    <ul>
+      <li><code>build-pmars</code>：构建 pMARS（官方类别：software-engineering；难度：medium）</li>
+      <li><code>build-pov-ray</code>：构建 POV-Ray（官方类别：software-engineering；难度：medium）</li>
+      <li><code>cancel-async-tasks</code>：取消异步任务（官方类别：software-engineering；难度：hard）</li>
+      <li><code>circuit-fibsqrt</code>：电路实现 fibsqrt（官方类别：software-engineering；难度：hard）</li>
+      <li><code>cobol-modernization</code>：COBOL 现代化改造（官方类别：software-engineering；难度：easy）</li>
+      <li><code>code-from-image</code>：从图像还原代码（官方类别：software-engineering；难度：medium）</li>
+      <li><code>fix-git</code>：修复 Git 问题（官方类别：software-engineering；难度：easy）</li>
+      <li><code>fix-ocaml-gc</code>：修复 OCaml 垃圾回收（官方类别：software-engineering；难度：hard）</li>
+      <li><code>git-leak-recovery</code>：Git 泄露恢复（官方类别：software-engineering；难度：medium）</li>
+      <li><code>gpt2-codegolf</code>：GPT-2 代码高尔夫（官方类别：software-engineering；难度：hard）</li>
+      <li><code>headless-terminal</code>：无头终端模式（官方类别：software-engineering；难度：medium）</li>
+      <li><code>kv-store-grpc</code>：gRPC 键值存储（官方类别：software-engineering；难度：medium）</li>
+      <li><code>make-doom-for-mips</code>：让 Doom 跑在 MIPS 上（官方类别：software-engineering；难度：hard）</li>
+      <li><code>make-mips-interpreter</code>：编写 MIPS 解释器（官方类别：software-engineering；难度：hard）</li>
+      <li><code>path-tracing</code>：路径追踪实现（官方类别：software-engineering；难度：hard）</li>
+      <li><code>path-tracing-reverse</code>：逆向路径追踪（官方类别：software-engineering；难度：hard）</li>
+      <li><code>polyglot-c-py</code>：C / Python 多语程序（官方类别：software-engineering；难度：medium）</li>
+      <li><code>polyglot-rust-c</code>：Rust / C 多语程序（官方类别：software-engineering；难度：hard）</li>
+      <li><code>prove-plus-comm</code>：证明加法交换律（官方类别：software-engineering；难度：easy）</li>
+      <li><code>pypi-server</code>：搭建 PyPI 服务（官方类别：software-engineering；难度：medium）</li>
+      <li><code>regex-chess</code>：正则国际象棋（官方类别：software-engineering；难度：hard）</li>
+      <li><code>schemelike-metacircular-eval</code>：类 Scheme 元循环求值器（官方类别：software-engineering；难度：medium）</li>
+      <li><code>torch-pipeline-parallelism</code>：Torch 流水线并行（官方类别：software-engineering；难度：hard）</li>
+      <li><code>torch-tensor-parallelism</code>：Torch 张量并行（官方类别：software-engineering；难度：hard）</li>
+      <li><code>winning-avg-corewars</code>：平均胜率更高的 Corewars（官方类别：software-engineering；难度：medium）</li>
+      <li><code>write-compressor</code>：编写压缩器（官方类别：software-engineering；难度：hard）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>System Administration（9）</h4>
+    <ul>
+      <li><code>compile-compcert</code>：编译 CompCert（官方类别：system-administration；难度：medium）</li>
+      <li><code>configure-git-webserver</code>：配置 Git Web 服务器（官方类别：system-administration；难度：hard）</li>
+      <li><code>git-multibranch</code>：多分支 Git 管理（官方类别：system-administration；难度：medium）</li>
+      <li><code>install-windows-3.11</code>：安装 Windows 3.11（官方类别：system-administration；难度：hard）</li>
+      <li><code>mailman</code>：配置 Mailman（官方类别：system-administration；难度：medium）</li>
+      <li><code>nginx-request-logging</code>：Nginx 请求日志配置（官方类别：system-administration；难度：medium）</li>
+      <li><code>qemu-alpine-ssh</code>：QEMU Alpine SSH（官方类别：system-administration；难度：medium）</li>
+      <li><code>qemu-startup</code>：QEMU 启动问题（官方类别：system-administration；难度：medium）</li>
+      <li><code>sqlite-with-gcov</code>：带 gcov 的 SQLite 构建（官方类别：system-administration；难度：medium）</li>
+    </ul>
+  </div>
+
+  <div class="tb-task-group">
+    <h4>Video Processing（1）</h4>
+    <ul>
+      <li><code>video-processing</code>：视频处理（官方类别：video-processing；难度：hard）</li>
+    </ul>
+  </div>
 </div>
 
 <div class="blk-v2">
