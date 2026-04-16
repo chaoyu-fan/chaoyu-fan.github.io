@@ -40,7 +40,7 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
     </div>
     <div class="ri-card c-violet">
       <div class="ri-title">Terminal-Bench 2.0 完全导读</div>
-      <p>从评分方式、89 个任务分类到 agent 提分路径，系统拆解这套 benchmark 到底在测什么，以及该怎么用它评估自己的 coding agent。</p>
+      <p>基于 tbench.ai、Harbor 与 Hugging Face 官方说明，纠正上一版不准确的任务清单，并补齐运行、结果文件与提交要求。</p>
       <p style="margin-top:.6rem;"><a href="/blogs/terminal-bench-2/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
     </div>
     <div class="ri-card c-blue">
