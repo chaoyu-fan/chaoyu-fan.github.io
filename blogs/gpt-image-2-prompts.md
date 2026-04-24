@@ -6,12 +6,12 @@ description: 按原 GitHub README 结构镜像整理 EvoLinkAI 的 awesome-gpt-i
 ---
 
 <style>
-.gi2-wrap img{max-width:100%;height:auto;border-radius:10px}
-.gi2-wrap table{display:table;width:100%;border-collapse:collapse;margin:1rem 0 1.2rem}
-.gi2-wrap th,.gi2-wrap td{border-bottom:1px solid #dde4ea;padding:.7rem .55rem;text-align:center;vertical-align:middle}
-.gi2-wrap pre{white-space:pre-wrap;word-break:break-word;background:#fbfcfe;border:1px solid #dce5ec;border-radius:10px;padding:1rem;line-height:1.68;overflow:auto}
-.gi2-wrap code{white-space:pre-wrap}
-.gi2-wrap blockquote{background:#f6fbfd;border-left:4px solid #4a7a8c;margin:1rem 0;padding:.8rem 1rem;border-radius:8px}
+.post img{max-width:100%;height:auto;border-radius:10px}
+.post table{display:table;width:100%;border-collapse:collapse;margin:1rem 0 1.2rem}
+.post th,.post td{border-bottom:1px solid #dde4ea;padding:.7rem .55rem;text-align:center;vertical-align:middle}
+.post pre{white-space:pre-wrap;word-break:break-word;background:#fbfcfe;border:1px solid #dce5ec;border-radius:10px;padding:1rem;line-height:1.68;overflow:auto}
+.post code{white-space:pre-wrap}
+.post blockquote{background:#f6fbfd;border-left:4px solid #4a7a8c;margin:1rem 0;padding:.8rem 1rem;border-radius:8px}
 .gi2-note{color:#586674;font-size:.92rem;line-height:1.8}
 </style>
 
@@ -24,9 +24,6 @@ description: 按原 GitHub README 结构镜像整理 EvoLinkAI 的 awesome-gpt-i
 原始仓库：<a href="https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts">https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts</a><br>
 原始中文 README：<a href="https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts/blob/main/README_zh-CN.md">README_zh-CN.md</a>
 </p>
-
-<div class="gi2-wrap">
-<div align="center">
 
 <a href="https://evolink.ai/gpt-image-2?utm_source=github&utm_medium=banner&utm_campaign=awesome-gpt-image-2-prompts"><img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/logo.png" alt="项目 Logo"></a>
 
@@ -47,8 +44,6 @@ description: 按原 GitHub README 结构镜像整理 EvoLinkAI 的 awesome-gpt-i
 [![🇹🇼 繁體中文](https://img.shields.io/badge/🇹🇼_繁體中文-查看-8338ec)](https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts/blob/main/README_zh-TW.md)
 [![🇨🇳 简体中文](https://img.shields.io/badge/🇨🇳_简体中文-查看-ef476f)](https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts/blob/main/README_zh-CN.md)
 [![🇷🇺 Русский](https://img.shields.io/badge/🇷🇺_Русский-Смотреть-577590)](https://github.com/EvoLinkAI/awesome-gpt-image-2-prompts/blob/main/README_ru.md)
-
-</div>
 
 ## 简介
 
@@ -508,7 +503,7 @@ mobile phone photo, old CCD camera aesthetic, harsh flash, grainy, dim messy ind
 
 | Output |
 | :----: |
-| <img src="images/portrait_case70/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/portrait_case70/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -538,7 +533,7 @@ High-detail, ultra-realistic hybrid of editorial photography and print design.
 
 | Output |
 | :----: |
-| <img src="images/portrait_case71/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/portrait_case71/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -551,7 +546,7 @@ Create image of Magazine feature article [travel] guide page, cute, information 
 
 | Output |
 | :----: |
-| <img src="images/portrait_case77/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/portrait_case77/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -580,7 +575,7 @@ the #1 tell on AI photos is flat colors and a grainy look. this method removes b
 
 | Output |
 | :----: |
-| <img src="images/portrait_case78/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/portrait_case78/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -593,7 +588,7 @@ CALMING GREEN TEA Film Kit displayed frontally, the open box shows soft sage-gre
 
 | Output |
 | :----: |
-| <img src="images/portrait_case79/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/portrait_case79/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -616,7 +611,7 @@ Mood: fresh, premium, modern, and inviting — aligned with upscale U.S. dessert
 
 | Output |
 | :----: |
-| <img src="images/portrait_case80/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/portrait_case80/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -629,7 +624,7 @@ A hyper-realistic UI/UX mockup displayed on a slim modern laptop placed on a min
 
 | Output |
 | :----: |
-| <img src="images/portrait_case81/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/portrait_case81/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1474,7 +1469,7 @@ AI 必须依据【主题】自动决定最合适的:
 
 | Output |
 | :----: |
-| <img src="images/poster_case60/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case60/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1487,7 +1482,7 @@ A full-body outdoor shot captures a young Caucasian woman, possibly in her late 
 
 | Output |
 | :----: |
-| <img src="images/poster_case62/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case62/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1514,7 +1509,7 @@ Commercial product photography, ultra-detailed, 8K.
 
 | Output |
 | :----: |
-| <img src="images/poster_case75/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case75/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1529,7 +1524,7 @@ Online 360° Panorama Viewer VR
 
 | Output |
 | :----: |
-| <img src="images/poster_case82/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case82/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1546,7 +1541,7 @@ Two children in calm conversation,soft connection forming.
 
 | Output |
 | :----: |
-| <img src="images/poster_case85/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case85/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1595,7 +1590,7 @@ Fabric & Craft: The main fabric is real zhijin jin (woven gold brocade) with pal
 
 | Output |
 | :----: |
-| <img src="images/poster_case87/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case87/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1608,7 +1603,7 @@ Fabric & Craft: The main fabric is real zhijin jin (woven gold brocade) with pal
 
 | Output |
 | :----: |
-| <img src="images/poster_case89/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case89/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1623,7 +1618,7 @@ Fabric & Craft: The main fabric is real zhijin jin (woven gold brocade) with pal
 
 | Output |
 | :----: |
-| <img src="images/poster_case90/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case90/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1638,7 +1633,7 @@ Fabric & Craft: The main fabric is real zhijin jin (woven gold brocade) with pal
 
 | Output |
 | :----: |
-| <img src="images/poster_case103/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case103/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1653,7 +1648,7 @@ Fabric & Craft: The main fabric is real zhijin jin (woven gold brocade) with pal
 
 | Output |
 | :----: |
-| <img src="images/poster_case104/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case104/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1666,7 +1661,7 @@ Fabric & Craft: The main fabric is real zhijin jin (woven gold brocade) with pal
 
 | Output |
 | :----: |
-| <img src="images/poster_case105/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case105/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -1679,7 +1674,7 @@ generate an image of a racing car poster with its spec and pricing
 
 | Output |
 | :----: |
-| <img src="images/poster_case106/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/poster_case106/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2238,7 +2233,7 @@ Create a commercial ad from the storyboard @[image1]
 
 | Output |
 | :----: |
-| <img src="images/ui_case63/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/ui_case63/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2251,7 +2246,7 @@ based on the generated character help me generate a screenshot of screenshot of 
 
 | Output |
 | :----: |
-| <img src="images/ui_case64/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/ui_case64/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2264,7 +2259,7 @@ Create a landing page using this image as a reference for style and color gradin
 
 | Output |
 | :----: |
-| <img src="images/ui_case88/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/ui_case88/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2571,7 +2566,7 @@ A dusk shindig  with multiple fake imagination projections all aligned in the 14
 
 | Output |
 | :----: |
-| <img src="images/case_case61/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case61/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2584,7 +2579,7 @@ Based on the video content and this current frame, use GPT to generate a YouTube
 
 | Output |
 | :----: |
-| <img src="images/case_case65/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case65/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2597,7 +2592,7 @@ Generate an image of the most significant event of 2020
 
 | Output |
 | :----: |
-| <img src="images/case_case66/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case66/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2610,7 +2605,7 @@ Edit this image so that total amount changes to 244.5 baht. You can change the q
 
 | Output |
 | :----: |
-| <img src="images/case_case67/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case67/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2623,7 +2618,7 @@ Generate an image of the most significant event of 2001
 
 | Output |
 | :----: |
-| <img src="images/case_case69/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case69/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2636,7 +2631,7 @@ Generate an image of the most significant event of 2025.
 
 | Output |
 | :----: |
-| <img src="images/case_case73/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case73/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2650,7 +2645,7 @@ Idea: @icreatelife
 
 | Output |
 | :----: |
-| <img src="images/case_case74/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case74/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2664,7 +2659,7 @@ Idea: @icreatelife
 
 | Output |
 | :----: |
-| <img src="images/case_case76/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case76/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2677,7 +2672,7 @@ Conociendo todo lo que sabes sobre mí, crea una infografía de mí. Haz una ima
 
 | Output |
 | :----: |
-| <img src="images/case_case83/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case83/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2690,7 +2685,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case84/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case84/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2703,7 +2698,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case86/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case86/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2716,7 +2711,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case91/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case91/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2729,7 +2724,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case92/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case92/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2742,7 +2737,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case93/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case93/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2779,7 +2774,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case94/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case94/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2792,7 +2787,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case95/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case95/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2805,7 +2800,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case96/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case96/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2820,7 +2815,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case97/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case97/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2833,7 +2828,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case98/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case98/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2846,7 +2841,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case99/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case99/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2859,7 +2854,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case100/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case100/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2872,7 +2867,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case101/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case101/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2885,7 +2880,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case102/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case102/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2898,7 +2893,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case107/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case107/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2911,7 +2906,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case108/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case108/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2924,7 +2919,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case109/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case109/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2947,7 +2942,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case110/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case110/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2968,7 +2963,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case111/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case111/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -2983,7 +2978,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case112/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case112/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -3041,7 +3036,7 @@ Research LIME Drug Design and make a detailed infographic about it
 
 | Output |
 | :----: |
-| <img src="images/case_case113/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case113/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -3057,7 +3052,7 @@ GPT Image-2で生成したやつ→
 
 | Output |
 | :----: |
-| <img src="images/case_case114/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case114/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -3070,7 +3065,7 @@ GPT Image-2で生成したやつ→
 
 | Output |
 | :----: |
-| <img src="images/case_case115/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case115/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -3083,7 +3078,7 @@ GPT Image-2で生成したやつ→
 
 | Output |
 | :----: |
-| <img src="images/case_case116/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case116/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -3098,7 +3093,7 @@ GPT Image-2で生成したやつ→
 
 | Output |
 | :----: |
-| <img src="images/case_case117/output.jpg" width="300" alt="Output image"> |
+| <img src="https://raw.githubusercontent.com/EvoLinkAI/awesome-gpt-image-2-prompts/main/images/case_case117/output.jpg" width="300" alt="Output image"> |
 
 **提示词:**
 
@@ -3123,5 +3118,3 @@ GPT Image-2で生成したやつ→
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=EvoLinkAI/awesome-gpt-image-2-prompts&type=Date)](https://www.star-history.com/#EvoLinkAI/awesome-gpt-image-2-prompts&Date)
-
-</div>
