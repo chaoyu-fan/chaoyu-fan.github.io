@@ -33,6 +33,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
+    <div class="ri-card c-blue">
+      <div class="ri-title">Terminal-Bench 2.0 提分日志：把 Wecode GPT-5.5 从 83.8% 推到 88.1%</div>
+      <p>记录 2026/04/30 这次更高分提交：从 373/445 到 392/445，以及背后的 agent harness 工程、trace 分析、错题闭环和同一个 Hugging Face PR 替换提交。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/terminal-bench-score-update-2026-04-30/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
     <div class="ri-card c-teal">
       <div class="ri-title">Terminal-Bench 2.0 提交复盘：从跑分、轨迹清理到 Hugging Face PR</div>
       <p>记录一次 Wecode GPT-5.5 leaderboard submission 的完整工程过程：跑分、误差范围、metadata、trajectory、system prompt 清理、目录结构和 PR 提交。</p>
