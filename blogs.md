@@ -33,6 +33,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
+    <div class="ri-card c-violet">
+      <div class="ri-title">学术写作 AI 提示词手册：从论文润色、翻译到审稿回复</div>
+      <p>整理一套面向学术写作场景的 AI 提示词，覆盖角色预设、论文撰写、学术润色、中英翻译、降重改写、参考文献、投稿审稿和文献阅读。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/academic-ai-prompts/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
     <div class="ri-card c-teal">
       <div class="ri-title">LLM Agent Harness 的协议适配问题：从一次 GLM-5.1 接入失败说起</div>
       <p>记录一次把硅基流动 GLM-5.1 接入 Codex/Wecode 类 harness 的真实排障过程，并分析 Responses API 与 Chat Completions API 在 agent 系统里的协议边界。</p>
