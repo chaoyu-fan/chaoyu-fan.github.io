@@ -10,6 +10,8 @@ description: 整理一套面向学术写作场景的 AI 提示词，覆盖角色
 > 更新时间：2026/05/08  
 > 使用建议：先选场景，再替换括号中的变量；涉及中英文提示词的部分已完整保留，方便直接复制。
 
+本文基于知乎文章《[50个顶级的ChatGPT学术论文指令，强烈建议收藏！](https://zhuanlan.zhihu.com/p/688171911)》整理，并对原文提示词逐条做了排版和可复制化处理。原文中少量明显影响使用的笔误已在本文中修正，例如中译英提示词的中文说明、代码示例中的初始化函数等；其余英文拼写和占位符基本按原文保留，方便读者对照。
+
 这篇文章整理的是一套学术写作场景下的 AI 提示词。它不适合当作“万能咒语”逐条硬背，更适合当作一个可复用的工作台：写标题、写摘要、润色段落、检查语法、做中英互译、处理参考文献、读论文、准备投稿材料时，都可以从对应章节里挑一条，再把自己的研究方向、论文题目、期刊名称、段落内容替换进去。
 
 我会建议按下面这个顺序使用：
@@ -139,7 +141,7 @@ Act as an academic research expert. Draft a comprehensive research paper outline
 ### 1. 英文润色
 
 ```text
-The following is a paragraph from a n academic paper. Refinish writing to conform to academic style，improve spelling，grammar，clarity, conciseness and overall readability. If necessary, rewrite the entire sentence. In addition,list all modifications in the Markdown table and explain the reasons for doing so.Paragraph ：（+the paragraph that requires polishing）
+The following is a paragraph from an academic paper. Refine the writing to conform to academic style, improve spelling, grammar, clarity, conciseness, and overall readability. If necessary, rewrite the entire sentence. In addition, list all modifications in the Markdown table and explain the reasons for doing so. Paragraph: （+the paragraph that requires polishing）
 ```
 
 ```text
@@ -189,7 +191,7 @@ If I wish to publish a paper at a XXX conference, please polish the above conten
 ### 6. 润色英文段落结构和句子逻辑
 
 ```text
-I am a researcher studying +（你的研究方向） and now trying to revise my manuscript which willbe subrnitted to the +（你的投稿期刊）. want you to analyze the logic and coherence amongsentences within each paragraph in the following text, ldentify any areas where the flow orconnections between sentences could be improved,and provide specific suagestions toenhance the overall quality and readabllity to the content. Please only provide the text aftelimproving and then give a list of the improvements in Chinese. lf you understand the abovetask, please reply with yes, and then I will provide you with the text.
+I am a researcher studying +（你的研究方向） and now trying to revise my manuscript which will be submitted to the +（你的投稿期刊）. I want you to analyze the logic and coherence among sentences within each paragraph in the following text, identify any areas where the flow or connections between sentences could be improved, and provide specific suggestions to enhance the overall quality and readability of the content. Please only provide the text after improving and then give a list of the improvements in Chinese. If you understand the above task, please reply with yes, and then I will provide you with the text.
 ```
 
 ### 7. 直接润色段落
@@ -246,7 +248,7 @@ Can you help me ensure that the grammar and the spelling is correct? Do not try 
 ### 12. 语法校正
 
 ```text
-I am a researcher studying +（你的研究方向） and now trying to revise my manuscript which willbe submitted to the +（你的投稿期刊）. Please help me to ensure the grammar and spellingare correct. Do not try to improve the text, if no mistake found, tell me this paragraph is good.If you find grammar or spelling mistakes, please list the mistakes you find in a two-columnmark down table, put the original text in the first column, put the corrected text in the second column, and do highlight the key words you fixed in bold.
+I am a researcher studying +（你的研究方向） and now trying to revise my manuscript which will be submitted to the +（你的投稿期刊）. Please help me to ensure the grammar and spelling are correct. Do not try to improve the text; if no mistake is found, tell me this paragraph is good. If you find grammar or spelling mistakes, please list the mistakes you find in a two-column Markdown table, put the original text in the first column, put the corrected text in the second column, and highlight the key words you fixed in bold.
 ```
 
 ### 13. 语法句法
@@ -376,7 +378,7 @@ Please translate following sentence to English:XXX
 ```
 
 ```text
-请将以下句子翻译成中文：XXX
+请将以下句子翻译成英文：XXX
 ```
 
 ### 3. 中译英，论文风格
@@ -392,7 +394,7 @@ Translate the above Chinese into the corresponding English, requiring the writin
 ### 4. 中译英，Markdown 表格双版本
 
 ```text
-I am a researcher studying +（Your research direction） and now trying to revise my manuscript which willbe submitted to the+（Your submission journal）. I want you to act as a scentiic English-Chnesetranslator,I will provide you with some paragraphs in one language and your task is toaccurately and academically translate the paragraphs only into the other language. I want you to give the output in a markdown table where the first colurrn is the onginal language andthe second is the first version of translation and third column is the second version of thetranslation, and give each row only one sentence. lf you understand the above task, pleasereply with yes, and then l will provide you with the paragraphs.
+I am a researcher studying +（Your research direction） and now trying to revise my manuscript which will be submitted to the +（Your submission journal）. I want you to act as a scientific English-Chinese translator. I will provide you with some paragraphs in one language, and your task is to accurately and academically translate the paragraphs only into the other language. I want you to give the output in a Markdown table where the first column is the original language, the second column is the first version of the translation, and the third column is the second version of the translation, with each row containing only one sentence. If you understand the above task, please reply with yes, and then I will provide you with the paragraphs.
 ```
 
 ```text
@@ -666,7 +668,7 @@ I want you to act as a scientific manuscript matcher. I will provide you with th
 ### 3. 解释代码
 
 ```text
-请解释以下代码：import torch import torch.nn as nn # 定义输入层、隐藏层和输出层的神经元数量 input_layer_size = 4 hidden_layer_size = 5 output_layer_size = 3 # 定义前馈神经网络类 class FeedForwardNN(nn.Module): def init(self): super(FeedForwardNN, self).init() self.fc1 = nn.Linear(input_layer_size, hidden_layer_size) self.fc2 = nn.Linear(hidden_layer_size, output_layer_size) self.sigmoid = nn.Sigmoid() def forward(self, x): x = self.fc1(x) x = self.sigmoid(x) x = self.fc2(x) x = self.sigmoid(x) return x # 创建神经网络实例 model = FeedForwardNN() # 测试前馈函数 X = torch.randn(1, input_layer_size) y = model(X) print(y)
+请解释以下代码：import torch import torch.nn as nn # 定义输入层、隐藏层和输出层的神经元数量 input_layer_size = 4 hidden_layer_size = 5 output_layer_size = 3 # 定义前馈神经网络类 class FeedForwardNN(nn.Module): def __init__(self): super(FeedForwardNN, self).__init__() self.fc1 = nn.Linear(input_layer_size, hidden_layer_size) self.fc2 = nn.Linear(hidden_layer_size, output_layer_size) self.sigmoid = nn.Sigmoid() def forward(self, x): x = self.fc1(x) x = self.sigmoid(x) x = self.fc2(x) x = self.sigmoid(x) return x # 创建神经网络实例 model = FeedForwardNN() # 测试前馈函数 X = torch.randn(1, input_layer_size) y = model(X) print(y)
 ```
 
 ### 4. 提供独特见解
