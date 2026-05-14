@@ -33,6 +33,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
+    <div class="ri-card c-blue">
+      <div class="ri-title">AI agents 如何重组 SCI 写作流程</div>
+      <p>基于一条抖音视频口播稿，拆解 SCI 写作的模块化套路、真正卡住研究生的四座山，以及 AI agents 在选题、文献综述、数据分析和初稿生成中的合理位置。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/ai-agents-sci-writing-workflow/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
     <div class="ri-card c-violet">
       <div class="ri-title">学术写作 AI 提示词手册：从论文润色、翻译到审稿回复</div>
       <p>整理一套面向学术写作场景的 AI 提示词，覆盖角色预设、论文撰写、学术润色、中英翻译、降重改写、参考文献、投稿审稿和文献阅读。</p>
