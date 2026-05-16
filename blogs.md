@@ -34,8 +34,8 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
     <div class="ri-card c-violet">
-      <div class="ri-title">大模型 tool use 版图：协议、训练、优化与评测</div>
-      <p>整理 OpenAI、Anthropic、Gemini、DeepSeek、Mistral、Cohere 的 tool use 差异，并补上训练方法、优化研究和常用基准。</p>
+      <div class="ri-title">大模型 tool use 的真正分歧：谁拥有执行循环</div>
+      <p>比较 OpenAI、Anthropic、Gemini、DeepSeek、Mistral、xAI、Qwen、Cohere 的工具调用模式，并说明为什么 tool use 的关键不是 JSON，而是执行循环、状态回填和评测边界。</p>
       <p style="margin-top:.6rem;"><a href="/blogs/tool-use-landscape-2026/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
     </div>
     <div class="ri-card c-blue">
