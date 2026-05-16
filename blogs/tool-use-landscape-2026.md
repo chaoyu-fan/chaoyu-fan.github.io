@@ -226,14 +226,14 @@ OpenAI 正在把 tool use 收敛成平台级 agent surface；Anthropic 把工具
 
 这也解释了为什么很多模型在简单 demo 里表现不错，进到真实 agent 后会不稳定：demo 主要测格式学习，真实系统测的是轨迹学习和恢复能力。
 
-### 四、tool use optimization 研究在优化什么
+### 四、tool use optimization 的主流方法
 
 <div class="tu-badges">
   <span class="tu-badge">论文支持</span>
   <span class="tu-badge">工程映射为推断</span>
 </div>
 
-tool use optimization 不是单一问题。它至少分成六类。
+如果把现有工作合在一起看，tool use optimization 的 SOTA 不是某一个模型，而是四条并行的路线：先把数据做对，再把每一步决策做细，再把执行成本压下去，最后把评测做稳。
 
 <div class="tu-wrap">
 <table class="tu-table">
@@ -241,53 +241,54 @@ tool use optimization 不是单一问题。它至少分成六类。
     <tr>
       <th>优化对象</th>
       <th>代表研究</th>
-      <th>真正想解决的问题</th>
-      <th>工程映射</th>
+      <th>核心贡献</th>
+      <th>工程含义</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>工具调用数据</td>
-      <td><a href="https://arxiv.org/abs/2302.04761">Toolformer</a>, <a href="https://arxiv.org/abs/2305.15334">Gorilla</a>, <a href="https://arxiv.org/abs/2307.16789">ToolLLM</a>, <a href="https://arxiv.org/abs/2406.18518">APIGen</a>, <a href="https://arxiv.org/abs/2409.00920">ToolACE</a></td>
-      <td>缺少高质量、可执行、覆盖长尾工具的训练轨迹</td>
-      <td>为模型或小模型 adapter 构建 tool-call SFT 数据</td>
+      <td>可验证的训练数据</td>
+      <td><a href="https://arxiv.org/abs/2406.18518">APIGen</a>, <a href="https://arxiv.org/abs/2409.00920">ToolACE</a></td>
+      <td>把函数调用数据的生成、执行、语义验证系统化，补足长尾 API 和复杂轨迹</td>
+      <td>真正的瓶颈往往不是模型不会说 JSON，而是缺少足够多、足够干净、可执行的轨迹</td>
     </tr>
     <tr>
-      <td>API 检索与选择</td>
-      <td><a href="https://arxiv.org/abs/2305.15334">Gorilla</a>, <a href="https://arxiv.org/abs/2307.16789">ToolLLM</a>, <a href="https://arxiv.org/abs/2307.16789">ToolBench</a></td>
-      <td>工具数量一多，模型不知道该看哪个文档、选哪个 API</td>
-      <td>在 agent 前面加 tool retrieval 和 tool ranking</td>
+      <td>多步工具决策</td>
+      <td><a href="https://arxiv.org/abs/2410.07745">StepTool</a>, <a href="https://arxiv.org/abs/2503.09516">Search-R1</a></td>
+      <td>把工具调用视作逐步决策问题，直接优化“何时调用、何时继续、何时停止”</td>
+      <td>这是从单轮 function call 走向 trajectory optimization 的关键一步</td>
     </tr>
     <tr>
-      <td>评测稳定性</td>
-      <td><a href="https://arxiv.org/abs/2403.07714">StableToolBench</a></td>
-      <td>真实 API 会变、会限流、会失败，导致 benchmark 不可复现</td>
-      <td>用模拟 API、缓存、状态隔离和 deterministic evaluator 降低噪声</td>
+      <td>路径规划与成本控制</td>
+      <td><a href="https://arxiv.org/abs/2409.14826">ToolPlanner</a>, <a href="https://arxiv.org/abs/2411.16313">CATP-LLM</a>, <a href="https://arxiv.org/abs/2312.04511">LLMCompiler</a></td>
+      <td>把工具调用从“逐条生成”改成“带预算、带并行、带反馈”的计划问题</td>
+      <td>工具调用的主矛盾不只是正确率，还有延迟、预算和并行度</td>
     </tr>
     <tr>
-      <td>轨迹决策</td>
-      <td><a href="https://arxiv.org/abs/2503.09516">Search-R1</a></td>
-      <td>模型需要学会何时搜索、何时停止、如何把工具结果纳入推理</td>
-      <td>用 outcome reward 或 process reward 优化多轮工具策略</td>
+      <td>多 agent 角色优化</td>
+      <td><a href="https://arxiv.org/abs/2510.04678">MATPO</a></td>
+      <td>把 planner / worker 角色放进单个 LLM 里，用 RL 做角色化信用分配</td>
+      <td>multi-agent 不只是系统拆分，也可以是训练目标本身</td>
     </tr>
     <tr>
-      <td>并行与延迟</td>
-      <td><a href="https://arxiv.org/abs/2312.04511">LLMCompiler</a>, Asynchronous LLM Function Calling</td>
-      <td>多工具任务如果串行执行，延迟会急剧上升</td>
-      <td>把独立调用并行化，或让工具执行和模型推理异步交叠</td>
-    </tr>
-    <tr>
-      <td>成本与缓存</td>
-      <td><a href="https://arxiv.org/abs/2411.15399">Less is More</a>, ToolCaching</td>
-      <td>重复工具调用浪费 token、延迟和外部 API 预算</td>
-      <td>缓存工具结果，减少不必要调用，设计幂等和失效策略</td>
+      <td>评测与安全约束</td>
+      <td><a href="https://arxiv.org/abs/2403.07714">StableToolBench</a>, <a href="https://arxiv.org/abs/2501.12851">ACEBench</a>, <a href="https://arxiv.org/abs/2408.04682">ToolSandbox</a></td>
+      <td>把 statefulness、dialogue turn、tool trajectory 和执行稳定性纳入评价</td>
+      <td>没有稳定评测，就没有稳定优化；很多所谓提升只是 benchmark 噪声下降</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-这里最重要的变化是：**研究重点正在从“函数调用准确率”转向“工具轨迹的系统效率”。**
-在真实应用里，一个 agent 少调一次无用搜索、多并行两个独立 API、失败后能正确回滚，可能比单轮 JSON 准确率多 1 个百分点更有价值。
+这里的关键结论是：**tool use optimization 的重心正在从“会不会调用”转向“是否能在长轨迹里保持正确、便宜、可恢复”。**
+这也是为什么单轮 function calling 分数越来越不足以代表真实 agent 质量。真实系统里更有价值的是：少一次无效搜索、少一次重复写入、少一次错误回填，并在失败后正确恢复。
+
+现阶段仍然没有被完全解决的，是四个问题：
+
+- 长程信用分配，工具失败到底该奖励还是惩罚前面的哪一步
+- 工具发现与选择，API 数量上去后如何避免检索噪声
+- 状态连续性，长对话和多轮执行里如何保留可验证的中间态
+- 安全与成本，如何在调用前就约束不可逆操作，而不是事后补救
 
 ### 五、benchmark 应该怎么读
 
@@ -296,7 +297,7 @@ tool use optimization 不是单一问题。它至少分成六类。
   <span class="tu-badge">使用建议为推断</span>
 </div>
 
-不同 benchmark 的问题意识不同，不能混着看。
+不同 benchmark 测的是不同切面。把它们混成一个榜单，会直接误读模型能力。
 
 <div class="tu-wrap">
 <table class="tu-table">
@@ -313,49 +314,61 @@ tool use optimization 不是单一问题。它至少分成六类。
       <td><strong><a href="https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html">BFCL</a></strong></td>
       <td>函数选择、参数生成、格式遵循、多函数调用</td>
       <td>真实工具执行、状态回滚、用户交互</td>
-      <td>用来筛模型和 provider 的基础 function calling 能力</td>
+      <td>筛基础 function calling 能力</td>
     </tr>
     <tr>
       <td><strong><a href="https://arxiv.org/abs/2304.08244">API-Bank</a></strong></td>
       <td>工具增强 LLM 的基础任务、调用能力和对话场景</td>
       <td>复杂真实 API 环境和长期状态</td>
-      <td>用来理解 tool-augmented LLM 的早期能力边界</td>
+      <td>看早期 tool-augmented 能力边界</td>
     </tr>
     <tr>
       <td><strong><a href="https://arxiv.org/abs/2307.16789">ToolBench</a></strong></td>
-      <td>大规模真实 API 上的工具检索、选择和调用</td>
-      <td>API 漂移导致的可复现性问题</td>
-      <td>用来测长尾 API 生态下的工具选择能力</td>
+      <td>大规模真实 API 上的检索、选择和调用</td>
+      <td>API 漂移和执行环境噪声</td>
+      <td>测长尾 API 生态下的工具选择能力</td>
     </tr>
     <tr>
       <td><strong><a href="https://arxiv.org/abs/2403.07714">StableToolBench</a></strong></td>
-      <td>在更稳定的环境中复现实用工具调用评测</td>
+      <td>更稳定的工具调用评测环境</td>
       <td>真实生产系统里的权限、延迟和用户约束</td>
-      <td>用来减少 API 漂移对评测结论的污染</td>
+      <td>减少 API 漂移对结论的污染</td>
     </tr>
     <tr>
-      <td><strong><a href="https://arxiv.org/abs/2308.03688">AgentBench</a></strong></td>
-      <td>多环境 agent 能力，包括操作、规划、代码和决策</td>
-      <td>单一工具协议细节</td>
-      <td>用来看模型是否具备更广义的 agent 行为能力</td>
+      <td><strong><a href="https://arxiv.org/abs/2408.04682">ToolSandbox</a></strong></td>
+      <td>stateful、conversational、interactive 的工具使用</td>
+      <td>纯格式正确但状态不对的轨迹</td>
+      <td>测多轮、带状态的工具使用能力</td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://arxiv.org/abs/2501.12851">ACEBench</a></strong></td>
+      <td>atomic API calls、ambiguous instructions 和 multi-turn agentic tasks</td>
+      <td>真实业务权限与生产外部性</td>
+      <td>看工具使用是否真的覆盖多种交互形态</td>
     </tr>
     <tr>
       <td><strong><a href="https://arxiv.org/abs/2406.12045">tau-bench</a></strong></td>
       <td>真实业务域中的用户-代理-工具交互，以及多次试验下的可靠性</td>
       <td>纯 function call 格式细节</td>
-      <td>用来判断 agent 在业务流程里是否稳定，而不是只会调用函数</td>
+      <td>判断 agent 在业务流程里是否稳定</td>
+    </tr>
+    <tr>
+      <td><strong><a href="https://arxiv.org/abs/2308.03688">AgentBench</a></strong></td>
+      <td>更广义的 agent 行为，包括操作、规划、代码和决策</td>
+      <td>单一工具协议细节</td>
+      <td>看模型是否具备更广义的 agent 行为能力</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-我的建议是用三层评测，而不是押一个榜单：
+我更建议把评测拆成三层：
 
-1. **协议层**：用 BFCL 或自建 schema tests，看模型能否稳定生成正确 tool call。
-2. **轨迹层**：用 ToolBench、StableToolBench 或内部工具任务集，看多步调用是否可靠。
-3. **业务层**：用 tau-bench 风格的用户模拟和 policy checks，看 agent 是否真的完成业务目标。
+1. 协议层，用 BFCL 或自建 schema tests，看模型能否稳定生成正确 tool call。
+2. 轨迹层，用 ToolSandbox、ACEBench、ToolBench 或内部任务集，看多步调用是否可靠。
+3. 业务层，用 tau-bench 风格的用户模拟和 policy checks，看 agent 是否真的完成业务目标。
 
-这样评测才对应真实故障。否则你会得到一个“function call 很强，但业务流程经常失败”的模型。
+这样才更接近真实故障。否则你会得到一个“单轮 tool call 很强，但业务流程经常失败”的模型。
 
 ### 六、如果你在做类 Codex agent，应该怎么设计
 
@@ -462,12 +475,19 @@ tool use 最初看起来像模型能力：会不会调用函数。
 <a href="https://arxiv.org/abs/2304.08244">API-Bank</a>，
 <a href="https://arxiv.org/abs/2406.18518">APIGen</a>，
 <a href="https://arxiv.org/abs/2409.00920">ToolACE</a>，
+<a href="https://arxiv.org/abs/2410.07745">StepTool</a>，
+<a href="https://arxiv.org/abs/2409.14826">ToolPlanner</a>，
+<a href="https://arxiv.org/abs/2411.16313">CATP-LLM</a>，
 <a href="https://arxiv.org/abs/2403.07714">StableToolBench</a>，
+<a href="https://arxiv.org/abs/2408.04682">ToolSandbox</a>，
+<a href="https://arxiv.org/abs/2501.12851">ACEBench</a>，
 <a href="https://arxiv.org/abs/2308.03688">AgentBench</a>，
 <a href="https://arxiv.org/abs/2406.12045">tau-bench</a>，
 <a href="https://arxiv.org/abs/2503.09516">Search-R1</a>，
 <a href="https://arxiv.org/abs/2312.04511">LLMCompiler</a>，
 <a href="https://arxiv.org/abs/2411.15399">Less is More</a>，
+<a href="https://arxiv.org/abs/2510.04678">MATPO</a>，
+<a href="https://arxiv.org/abs/2503.01935">MultiAgentBench</a>，
 <a href="https://arxiv.org/abs/2502.11271">OctoTools</a>。
 
 本文对厂商训练细节的表述，依据公开论文、官方文档和可公开验证的接口行为。没有公开细节的部分，只作为工程推断处理。
