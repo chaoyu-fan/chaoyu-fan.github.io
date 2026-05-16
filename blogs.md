@@ -33,6 +33,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
+    <div class="ri-card c-violet">
+      <div class="ri-title">大模型 tool use 版图：协议、训练、优化与评测</div>
+      <p>整理 OpenAI、Anthropic、Gemini、DeepSeek、Mistral、Cohere 的 tool use 差异，并补上训练方法、优化研究和常用基准。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/tool-use-landscape-2026/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
     <div class="ri-card c-blue">
       <div class="ri-title">AI agents 如何重组 SCI 写作流程</div>
       <p>基于一条抖音视频口播稿，拆解 SCI 写作的模块化套路、真正卡住研究生的四座山，以及 AI agents 在选题、文献综述、数据分析和初稿生成中的合理位置。</p>
