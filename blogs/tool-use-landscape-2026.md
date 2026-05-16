@@ -387,118 +387,49 @@ DeepSeek、Gemini 这类模型对 thinking 或 thought signatures 有额外约�
 **第四，benchmark 要进入 CI。**
 不要只在接入当天跑一次 demo。应该维护一组小而稳定的工具任务：文件编辑、命令执行、搜索、失败重试、参数校验、并行工具、权限拒绝、工具超时。每接一个 provider，都跑同一套任务。
 
-### 七、同一个模型放进不同 harness，为什么会变
+### 七、模型换 harness 时，变的不是模型本身
 
-<div class="tu-badges">
-  <span class="tu-badge">官方事实</span>
-  <span class="tu-badge">工程推断</span>
-</div>
+不同模型接入不同 coding-agent harness 后，表现往往会发生显著变化。这个现象容易被误读成“某个模型突然变强或变弱”。更合理的解释是：模型没有孤立运行，它被放进了一个包含协议、工具、上下文压缩、权限和验证器的执行系统。
 
-这不是纯模型问题，而是 **model × harness 的交互效应**。这里的模型可以是 GLM、DeepSeek、Qwen、Claude、OpenAI Codex 系列或任何 OpenAI-compatible 模型；harness 可以是 Claude Code、Codex CLI、Roo/Cline、Aider、SWE-agent 或自研 agent。真正变化的是四层接口：
+这里的模型可以是 GLM、DeepSeek、Qwen、Claude、OpenAI Codex 系列或任何 OpenAI-compatible 模型；harness 可以是 Claude Code、Codex CLI、Roo/Cline、Aider、SWE-agent 或自研 agent。真正变化的是四层接口：
 
 <div class="tu-callout">
   <p><strong>native model protocol -> adapter/proxy -> harness action space -> verifier/evaluator</strong></p>
 </div>
 
-Claude Code 官方文档明确支持模型配置、MCP、Hooks、Skills、Subagents 等扩展层，也说明可以通过模型配置和外部 endpoint 重新路由请求；Codex 配置样例显示 provider 可以配置 `base_url`、`env_key` 和 `wire_api = "responses" | "chat"`，这正是接入 DeepSeek/Qwen/GLM 等 OpenAI-compatible 模型时最容易影响行为的协议层；Z.AI 的 GLM-4.5 文档明确写到它可以集成到 Claude Code，并且面向 agent、tool invocation、software engineering 和 structured output 设计；DeepSeek、Qwen 也都有各自的 tool/function calling 文档。来源：[Claude Code model config](https://code.claude.com/docs/en/model-config), [Claude Code features overview](https://code.claude.com/docs/en/features-overview), [Codex config sample](https://github.com/openai/codex/issues/2760), [GLM-4.5 overview](https://docs.z.ai/guides/llm/glm-4.5), [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls), [Qwen Function Calling](https://qwen.readthedocs.io/en/stable/framework/function_call.html)
+Claude Code 的模型配置、MCP、Hooks、Skills、Subagents 等扩展层说明，Claude Code 本身是一个带有强执行循环的 agent shell，而不只是模型前端。Codex 的 custom provider 配置样例显示，provider 可以在 `responses` 与 `chat` wire API 之间选择；这意味着 DeepSeek、Qwen、GLM 等模型接入 Codex 时，协议桥接方式本身就会影响 tool use 行为。GLM-4.5 官方文档把 Claude Code 集成、agent、tool invocation、software engineering 和 structured output 放在同一个能力叙述里；DeepSeek 和 Qwen 也分别提供自己的 tool/function calling 约定。这些资料共同指向同一个事实：跨 harness 接入是协议迁移，不是简单换模型。来源：[Claude Code model config](https://code.claude.com/docs/en/model-config), [Claude Code features overview](https://code.claude.com/docs/en/features-overview), [Codex config sample](https://github.com/openai/codex/issues/2760), [GLM-4.5 overview](https://docs.z.ai/guides/llm/glm-4.5), [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls), [Qwen Function Calling](https://qwen.readthedocs.io/en/stable/framework/function_call.html)
 
-所以，“把 GLM 放进 Claude Code”“把 DeepSeek 放进 Claude Code”“把 DeepSeek/Qwen/GLM 接入 Codex”“把 Claude/OpenAI 模型接入自研 agent”，都是同一类问题：**一个模型原生学会的工具协议和行为分布，是否匹配目标 harness 的 action space 和执行循环。**
+因此，“把 GLM 放进 Claude Code”“把 DeepSeek 放进 Claude Code”“把 DeepSeek/Qwen/GLM 接入 Codex”“把 Claude/OpenAI 模型接入自研 agent”，都应被看作同一类问题：一个模型原生学会的工具协议、推理节奏和错误恢复习惯，是否匹配目标 harness 的 action space 和执行循环。
 
-从工程上看，这种适配通常不会是恒定增益或恒定损失，而是随任务变化：
+这种适配不会稳定地带来增益或损失。短任务、单文件修改、中文需求、成本敏感任务，可能从成熟 harness 中获得明显收益，因为 harness 提供了文件、终端、权限、上下文和工作流骨架。长链路、多轮工具、复杂重构和大仓库修复，则更依赖协议细节和状态连续性。Claude Code + Claude、Codex + OpenAI coding model 这类原生组合，通常更少遇到 tool result 回填、thinking 状态、stop reason、streaming 格式和上下文压缩不匹配；非原生组合则需要 adapter 处理这些差异。
 
-- 对短任务、单文件修改、中文需求、成本敏感任务，GLM/DeepSeek/Qwen 这类模型接入成熟 harness 可能接近甚至更划算，因为 harness 提供了文件、终端、权限、上下文和工作流骨架。
-- 对长链路、多轮工具、复杂重构、大仓库修复，harness 原生模型通常更稳。例如 Claude Code + Claude、Codex + OpenAI coding model，往往比“非原生模型 + 转换 adapter”更少遇到 tool result 回填、thinking 状态、stop reason、streaming 格式和上下文压缩不匹配。
-- 对“同 harness 换模型”的比较，差异通常来自 protocol match，而不是单纯模型参数量。比如 Claude Code + DeepSeek/GLM 可能受 Anthropic-style 消息和工具协议影响；Codex + DeepSeek/Qwen/GLM 可能受 OpenAI Responses/Chat Completions 差异、custom provider 能力声明、sandbox/approval 交互影响。
-- 对“同模型换 harness”的比较，差异通常来自工具集合、状态回填、权限、压缩和 verifier。DeepSeek 在一个粗糙自研 harness 里可能差，在 Codex/Roo 这类成熟 harness 里可能明显更稳；反过来，如果 adapter 把 thinking/tool result 处理错，成熟 harness 也可能被拖垮。
+这也是为什么“能接入”不等于“行为等价”。GLM-4.5 官方页面给出了它在 Claude Code 上的 52 任务评测，并同时保留了与 Claude 4 Sonnet 的差距；这个差距并不只说明模型强弱，也说明 harness 可以放大模型的工程价值，但不能抹平协议和训练分布差异。
 
-这类判断不是空口。GLM-4.5 官方页面直接给了它在 Claude Code 上的 52 任务评测，并明确指出它在 tool invocation reliability 和 task completion rate 上已经有竞争力，但和 Claude 4 Sonnet 相比仍然有差距。Codex custom provider 文档也说明，OpenAI-compatible 接入可以让非 OpenAI provider 进入 Codex，但“能接入”不等于“行为等价”。这个差距很重要，因为它说明：**harness 可以放大模型的工程价值，但不能抹平协议和训练分布差异。**
+更可检验的写法是矩阵实验。固定任务、预算和工具权限后，比较同 harness 换模型、同模型换 harness、同模型同 harness 但不同 adapter 协议。指标不应只看 pass rate，还应包括 tool call parse success、invalid args、tool retries、false success、tests run rate、token cost 和人工接管次数。SWE-bench Verified 和 Terminal-Bench 更适合测最终工程完成度，BFCL 更适合测工具调用格式稳定性。来源：[SWE-bench Verified](https://www.swebench.com/verified.html), [Terminal-Bench](https://www.tbench.ai/), [BFCL](https://gorilla.cs.berkeley.edu/leaderboard.html)
 
-如果要严谨比较，应该固定一组任务和预算，做矩阵实验：
+### 八、multi-agent 改变的是工具调用拓扑
 
-1. 同 harness 换模型：Claude Code + Claude vs Claude Code + GLM/DeepSeek/Qwen；Codex + OpenAI model vs Codex + DeepSeek/Qwen/GLM。
-2. 同模型换 harness：DeepSeek + Codex vs DeepSeek + Claude Code vs DeepSeek + Roo/Cline vs DeepSeek + 自研 harness。
-3. 同 adapter 不同协议：DeepSeek Chat Completions adapter vs Responses-compatible bridge；Anthropic-compatible proxy vs OpenAI-compatible proxy。
-4. 同任务同预算，记录 tool call parse success、invalid args、tool retries、false success、tests run rate、token cost 和人工接管次数。
+multi-agent 并不是把多个模型简单相加。它改变的是工具调用拓扑：谁能调用工具，谁能看到工具结果，谁承担验证责任，谁在失败后继续推进。AutoGen 将 multi-agent 描述为多个 agent、tools 和 human 协作完成任务的框架；这一定义已经暗示，tool use 在 multi-agent 中不再是单个模型的 action，而是一个分布式执行过程。
 
-更直接一点说：**模型与 harness 的适配度，决定了 tool use 能不能从“会调用”走到“稳定完成任务”。**
-它不是一个纯语言建模问题，而是协议、上下文、工具日志和验证循环共同决定的系统问题。相关事实和案例分别来自 Claude Code/Codex 的模型配置和 custom provider 文档、GLM/DeepSeek/Qwen 的工具调用文档，以及 coding agent 评测框架如 SWE-bench Verified 和 Terminal-Bench。来源：[SWE-bench Verified](https://www.swebench.com/verified.html), [Terminal-Bench](https://www.tbench.ai/)
+论文结果也支持这种谨慎态度。`Towards a Science of Scaling Agent Systems` 表明，agent 系统的最优协调策略依赖任务结构；`Multi-Agent Tool-Integrated Policy Optimization` 则把 planner/worker 的角色化优化和 credit assignment 放在核心位置。换句话说，multi-agent 的收益不来自“agent 数量更多”，而来自角色、工具和验证边界是否与任务结构匹配。来源：[AutoGen multi-agent conversation framework](https://autogenhub.github.io/autogen/docs/Use-Cases/agent_chat/), [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296), [MATPO](https://arxiv.org/abs/2510.04678)
 
-### 八、multi-agent 会怎样改变 tool use
+这种拓扑变化有两面。角色拆分会缩小每个 agent 的工具选择空间，planner、coder、reviewer 不必面对同一套巨大工具表，局部 tool selection 可能更稳。与此同时，工具结果必须跨 agent 传递，stdout、exit code、文件路径、patch state 和 retry history 很容易在自然语言 handoff 中丢失。multi-agent 因此常常把“单点工具选择错误”转化为“状态同步和错误传播问题”。
 
-<div class="tu-badges">
-  <span class="tu-badge">官方事实</span>
-  <span class="tu-badge">论文支持</span>
-  <span class="tu-badge">工程推断</span>
-</div>
+因此，multi-agent 对 tool use 的作用不能简单概括为更好或更差。它在可并行检索、模块化代码分析、候选方案比较、实现和 review 分离时更有机会带来收益；在强顺序终端任务、共享状态密集任务和高权限写操作任务中，额外协调成本可能抵消收益。tool-heavy 任务尤其需要集中 router 和 verifier，因为完全分散式调用会放大重复搜索、重复测试和状态冲突。
 
-AutoGen 官方把 multi-agent 直接定义成“多个 agent 的对话框架”，其目标就是让多个 agent、tools 和 human 协同完成任务。论文层面，`Towards a Science of Scaling Agent Systems` 说明了 agent 系统的最优协调策略取决于任务结构，并且能预测多数配置的最优协调方式；`Multi-Agent Tool-Integrated Policy Optimization` 则说明 planner/worker 这样的角色可以通过角色化 RL 训练，在 tool-integrated 任务上得到提升。来源：[AutoGen multi-agent conversation framework](https://autogenhub.github.io/autogen/docs/Use-Cases/agent_chat/), [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296), [MATPO](https://arxiv.org/abs/2510.04678)
+### 九、multi-agent 的 tool use 优化
 
-这意味着 multi-agent 对 tool use 的影响不是简单的“更强”或“更弱”，而是把问题从单点工具调用，改成了 **工具调用 + 工具路由 + 状态 handoff + 结果验证** 的组合问题。
+multi-agent 场景下，tool use optimisation 的目标不是让每个 agent 都更会调用工具，而是降低系统层面的无效调用、冲突调用和不可恢复调用。最有效的做法通常不是增加 agent 数量，而是重新设计工具权限、结果存储和验证路径。
 
-更具体地说：
+第一，工具应按角色分区。planner 只需要检索和拆解工具，executor 才需要写入和运行工具，reviewer 应优先使用测试、lint、diff、policy check 这类确定性验证工具。这样做的直接收益是缩小每个 agent 的 action space，同时降低高权限误调用的概率。
 
-- 它通常会减少局部 tool selection 压力。planner、coder、reviewer 分工后，每个 agent 面对的工具子集更小。
-- 它也会增加 handoff 成本。工具结果一旦被摘要、转述或丢失结构字段，错误就会传播。
-- 它会放大工具调用次数和成本。如果没有缓存和去重，multi-agent 会重复搜索、重复测试、重复验证。
-- 它会提高对集中验证器的需求。没有 verifier 的 multi-agent，很容易把一个局部错误一路传下去。
+第二，工具调用应经过中央 router。router 不必负责推理，但应负责 schema validation、权限检查、幂等控制、缓存、rate limit 和审计日志。读操作可以并行，写操作应串行化。文件写入、数据库变更、git 操作和部署动作尤其需要 workspace lock，否则多个 agent 很容易互相覆盖状态。
 
-所以 multi-agent 不一定让 tool use 更好。它更可能让 **“局部调用更稳”**，但同时让 **“全局一致性更难”**。这也是为什么 tool-heavy 任务里，中央 router + 专门 worker + 中央 verifier 的拓扑通常比完全分散式更稳。
+第三，工具结果必须结构化保存。multi-agent 系统最脆弱的地方不是工具没有返回结果，而是结果在 agent 之间被自然语言摘要后丢失了关键字段。每次调用至少应保存 tool name、args、exit code、stdout/stderr 引用、artifact、workspace state 和 caller role。后续 agent 应引用 result id，而不是仅依赖上一位 agent 的口头转述。
 
-### 九、multi-agent 场景下如何做 tool use optimization
+第四，评测要分层。BFCL 能测 tool calling 格式稳定性；SWE-bench Verified 和 Terminal-Bench 能测工程任务完成度；tau-bench 能测 tool-agent-user 场景中的业务流程和规则遵循；MultiAgentBench 和 scaling-agent 类评测更适合观察多 agent 协调是否真的带来收益。仅看一个榜单，很难区分模型问题、harness 问题、tool router 问题和协调结构问题。来源：[BFCL](https://gorilla.cs.berkeley.edu/leaderboard.html), [SWE-bench Verified](https://www.swebench.com/verified.html), [Terminal-Bench](https://www.tbench.ai/), [tau-bench](https://arxiv.org/abs/2406.12045), [MultiAgentBench](https://arxiv.org/abs/2503.01935)
 
-<div class="tu-badges">
-  <span class="tu-badge">工程推断</span>
-  <span class="tu-badge">需要本地评测</span>
-</div>
-
-如果你的系统要上 multi-agent，我会按下面这些方式优化 tool use：
-
-1. **工具分区**。planner 只看检索和拆解工具，executor 只看写入和运行工具，reviewer 只看验证和 diff 工具。不要让每个 agent 都拿全权限。
-2. **中央 router**。每个 tool call 先过 schema、权限、幂等、去重和 rate limit，再真正执行。这样可以减少多 agent 同时乱调用。
-3. **结构化保存工具结果**。不要只传自然语言摘要，要保存 tool name、args、exit code、stdout/stderr 引用、workspace state 和 caller role。
-4. **写操作串行化，读操作并行化**。检索和分析可以并发，文件写入、数据库变更、git 操作要串行。
-5. **明确 stop condition**。每个 agent 只能在自己的职责范围内迭代，超过轮数就交给 verifier 或人类。
-6. **做 credit assignment**。失败后要能判断是 planner 拆错、executor 参数错、reviewer 漏检，还是 tool 本身失败。
-7. **先单 agent baseline，再上 multi-agent**。如果单 agent 已经足够稳定，multi-agent 可能只是增加成本和不一致性。
-
-这类优化思路和论文一致：AutoGen 提供的是多 agent 协作抽象，MATPO 说明 planner/worker 角色可以做角色化优化，而 scaling agent systems 的工作则提示，任务结构决定了集中式、分散式还是混合式协调更合适。也就是说，multi-agent 下的 tool use optimization 不是单纯“让多个模型一起做事”，而是让 **工具权限、角色职责和验证边界** 和任务结构匹配。
-
-### 这两问的共同结论
-
-无论是“GLM 放进 Claude Code”还是“multi-agent 里的 tool use”，本质上都不是一个纯模型分数问题，而是 **模型分布和系统拓扑是否匹配**。
-
-- 模型和 harness 不匹配，tool use 会看起来会调用，但经常不稳定。
-- multi-agent 和任务结构不匹配，tool use 会看起来更强，但实际更贵、更乱、错误传播更快。
-
-所以这两类问题都应该先用同一套可重复 benchmark 跑出来，再决定是换模型、换 harness，还是换协调架构。
-
-可以采用的评测框架也要分层：
-
-- tool calling 层：<a href="https://gorilla.cs.berkeley.edu/leaderboard.html">BFCL</a>，再加自建 schema tests。
-- coding/terminal 层：<a href="https://www.swebench.com/verified.html">SWE-bench Verified</a>、<a href="https://www.tbench.ai/">Terminal-Bench</a>。
-- tool-agent-user 层：<a href="https://arxiv.org/abs/2406.12045">tau-bench</a>。
-- multi-agent coordination 层：<a href="https://arxiv.org/abs/2512.08296">Towards a Science of Scaling Agent Systems</a>、<a href="https://arxiv.org/abs/2503.01935">MultiAgentBench</a>。
-
-这套分层很重要。BFCL 能告诉你工具调用格式是否稳定，但不能证明 coding agent 能修 issue；SWE-bench 和 Terminal-Bench 能测工程完成度，但不能单独解释是模型差、harness 差，还是 tool router 差；multi-agent benchmark 则用来判断协调结构到底带来增益还是只增加成本。
-
-### 十、这两问为什么有依据
-
-<div class="tu-badges">
-  <span class="tu-badge">事实 + 论文 + 推断</span>
-</div>
-
-上面两节不是拍脑袋，而是三层信息叠出来的。
-
-**第一层，模型和 harness 适配会影响结果。**
-Claude Code 官方文档明确支持模型配置、MCP、Hooks、Skills、Subagents 等扩展层，也支持外部模型 endpoint 配置；Codex 配置样例显示 custom provider 可以选择 `responses` 或 `chat` wire API；GLM-4.5 官方页面写到它可以集成到 Claude Code；DeepSeek 和 Qwen 也都有各自的 tool/function calling 文档。这个组合说明，跨 harness 接入不是“换个大模型”这么简单，而是“把一个模型的原生协议和行为分布，映射进另一个 agent shell”。来源：[Claude Code model config](https://code.claude.com/docs/en/model-config), [Claude Code features overview](https://code.claude.com/docs/en/features-overview), [Codex config sample](https://github.com/openai/codex/issues/2760), [GLM-4.5 overview](https://docs.z.ai/guides/llm/glm-4.5), [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls), [Qwen Function Calling](https://qwen.readthedocs.io/en/stable/framework/function_call.html)
-
-**第二层，multi-agent 会改变 tool use 的成本结构和错误传播。**
-AutoGen 的 multi-agent 框架就是把多个 agent、tools 和 human 串起来协作；`Towards a Science of Scaling Agent Systems` 在大规模配置上做了受控实验，指出 tool-heavy tasks 会引入 multi-agent overhead，且没有 centralized verification 的架构更容易传播错误；`Multi-Agent Tool-Integrated Policy Optimization` 则进一步说明 planner/worker 这类角色可以通过角色化 RL 和 credit assignment 在 tool-integrated 任务上得到提升。来源：[AutoGen multi-agent conversation framework](https://autogenhub.github.io/autogen/docs/Use-Cases/agent_chat/), [Towards a Science of Scaling Agent Systems](https://arxiv.org/abs/2512.08296), [MATPO](https://arxiv.org/abs/2510.04678)
-
-**第三层，真正可验证的回答必须落到 benchmark。**
-如果要比较“GLM/DeepSeek/Qwen + Claude Code”和“Claude + Claude Code”，或者比较“DeepSeek + Codex”和“DeepSeek + 自研 harness”，就不能只看主观体验，必须用统一 task set 和预算比较 tool call parse success、invalid args、retries、false success、tests run rate 和接管次数。对应评测层可以拆成 BFCL、SWE-bench Verified、Terminal-Bench、tau-bench 和 multi-agent coordination benchmark。来源：[BFCL](https://gorilla.cs.berkeley.edu/leaderboard.html), [SWE-bench Verified](https://www.swebench.com/verified.html), [Terminal-Bench](https://www.tbench.ai/), [tau-bench](https://arxiv.org/abs/2406.12045), [MultiAgentBench](https://arxiv.org/abs/2503.01935)
-
-所以，这两个问题的回答是：官方协议和产品文档支持基本事实，公开论文支持系统层观察，最终的“更好还是更差”只能通过你的 harness matrix eval 验证。本文给出的方向性结论属于工程推断，不能替代本地评测。
+综上，模型-harness 适配和 multi-agent tool use 是同一个系统问题的两个侧面。前者考察模型分布是否适配执行壳，后者考察系统拓扑是否适配任务结构。两者都不能靠主观体验判断，应通过同一批任务、同一预算、同一权限和同一 verifier 做矩阵评测。
 
 ### 结论：tool use 不是能力点，是系统边界
 
