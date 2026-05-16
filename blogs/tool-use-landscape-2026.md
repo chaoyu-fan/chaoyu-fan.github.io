@@ -40,7 +40,7 @@ description: 一篇面向 agent 工程的 tool use 技术综述：比较 OpenAI�
 - 谁保存中间推理和工具结果
 - 谁评估一次工具轨迹是否成功
 
-我的结论是：**主流厂商的 tool use 差异，本质上不是 API 字段名不同，而是对 agent 执行循环所有权的分配不同。**
+我的结论是：**主流厂商的 tool use 差异，本质上不是 API 字段名不同，而是对 agent 执行循环所有权的分配不同。** 这句话是本文的工程归纳，不是厂商官方分类。
 OpenAI 正在把 tool use 收敛成平台级 agent surface；Anthropic 把工具调用暴露成清晰的事件流；Gemini 把并行和串联工具调用做成 SDK 友好的编排能力；DeepSeek、Mistral、xAI 和 Qwen 更接近 OpenAI-compatible 或 chat-function calling 路线；Cohere 则更偏企业检索、引用和证据链。
 
 <div class="tu-lead">
@@ -81,7 +81,7 @@ OpenAI 正在把 tool use 收敛成平台级 agent surface；Anthropic 把工具
 </table>
 </div>
 
-下面所有“各家具体模式”以官方事实为主；“路线划分”“可靠性公式”“类 Codex agent 设计建议”属于本文工程推断，需要用你自己的 harness 和 benchmark 验证。
+下面所有“各家具体模式”以官方事实为主，表格中的厂商名直接链接到对应官方文档；“路线划分”“可靠性公式”“类 Codex agent 设计建议”属于本文工程推断，需要用你自己的 harness 和 benchmark 验证。
 
 ### 一、各家具体模式：差异在协议，不只在模型
 
@@ -103,56 +103,56 @@ OpenAI 正在把 tool use 收敛成平台级 agent surface；Anthropic 把工具
   </thead>
   <tbody>
     <tr>
-      <td><strong>OpenAI</strong></td>
+      <td><strong><a href="https://developers.openai.com/api/docs/guides/tools">OpenAI</a></strong></td>
       <td>Responses API 下的 function calling、built-in tools、remote MCP、structured outputs</td>
       <td>平台和应用共同拥有。模型提出工具调用，平台提供部分 hosted tools，应用也可执行自定义函数</td>
       <td>工具能力正在和 Responses API、Agents SDK、MCP、Computer Use 等统一到同一个 agent surface</td>
       <td>适合做统一 agent 平台，尤其是你希望 web search、file search、computer use、自定义函数在同一层被编排</td>
     </tr>
     <tr>
-      <td><strong>Anthropic</strong></td>
+      <td><strong><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview">Anthropic</a></strong></td>
       <td>Messages API 中的 <code>tool_use</code> / <code>tool_result</code> block，支持 <code>tool_choice</code> 和 parallel tool use</td>
       <td>应用拥有显式循环。模型输出 tool event，应用执行工具，再把结果作为下一轮消息返回</td>
       <td>事件边界清楚，client-side tools 和 server-side tools 分明，适合把工具调用作为可审计轨迹处理</td>
       <td>适合需要强控制、多轮回填、可观察性和人为审计的 agent 系统</td>
     </tr>
     <tr>
-      <td><strong>Gemini</strong></td>
+      <td><strong><a href="https://ai.google.dev/gemini-api/docs/function-calling">Gemini</a></strong></td>
       <td><code>function_declarations</code>、<code>functionCall</code>，支持 <code>AUTO</code> / <code>ANY</code> / <code>NONE</code>、parallel 和 compositional function calling</td>
       <td>SDK 可部分接管。Python SDK 可自动执行函数调用循环，开发者也可手动处理</td>
       <td>thinking model 场景下需要处理 thought signatures，否则多轮工具调用可能丢失推理连续性</td>
       <td>适合多工具并行、串联调用和 SDK 优先的应用开发</td>
     </tr>
     <tr>
-      <td><strong>DeepSeek</strong></td>
+      <td><strong><a href="https://api-docs.deepseek.com/guides/tool_calls">DeepSeek</a></strong></td>
       <td>Chat Completions 风格 <code>tools</code>，支持 <code>tool_choice</code>、thinking mode tool calls、beta strict schema</td>
       <td>主要由应用拥有循环。协议接近 OpenAI Chat Completions，但 thinking 内容和工具消息回放要小心处理</td>
       <td>strict mode 可以提高 JSON schema 遵循度，但 beta endpoint 和 thinking 回传规则会影响 adapter 设计</td>
       <td>适合已有 OpenAI-compatible adapter、又希望引入 DeepSeek 模型和严格 schema 的系统</td>
     </tr>
     <tr>
-      <td><strong>Mistral</strong></td>
+      <td><strong><a href="https://docs.mistral.ai/studio-api/conversations/function-calling">Mistral</a></strong></td>
       <td>function calling、tool call response、tool result replay、agent function calling</td>
       <td>应用拥有循环。整体是经典 chat-function calling 模式</td>
       <td>接口直接，支持 <code>tool_choice</code> 与 <code>parallel_tool_calls</code>，迁移成本相对低</td>
       <td>适合简单清晰的工具链，或已有 chat completions 架构的项目</td>
     </tr>
     <tr>
-      <td><strong>xAI</strong></td>
+      <td><strong><a href="https://docs.x.ai/developers/tools/function-calling">xAI</a></strong></td>
       <td>OpenAI-compatible chat + function calling，parallel function calling 默认开启</td>
       <td>应用拥有循环。工具调用形态接近 OpenAI-compatible 生态</td>
       <td>默认并行调用可能提高吞吐，也可能放大工具幂等性、限流和结果合并问题</td>
       <td>适合已有 OpenAI-compatible provider abstraction 的系统快速试接</td>
     </tr>
     <tr>
-      <td><strong>Qwen</strong></td>
+      <td><strong><a href="https://qwen.readthedocs.io/en/stable/framework/function_call.html">Qwen</a></strong></td>
       <td>Qwen-Agent、函数调用模板、OpenAI-compatible serving，常见于 vLLM、Ollama 等部署栈</td>
       <td>部署层和应用共同拥有。开源模型场景下，模板、parser、serving runtime 都会影响结果</td>
       <td>自托管时不能只看模型权重，要验证 chat template、tool parser、thinking 输出和工具 JSON 的边界</td>
       <td>适合私有化部署、国产/开源模型接入、需要控制推理成本和部署环境的团队</td>
     </tr>
     <tr>
-      <td><strong>Cohere</strong></td>
+      <td><strong><a href="https://docs.cohere.com/v2/docs/tool-use-overview">Cohere</a></strong></td>
       <td>single-step tool use、multi-step tool use、citations</td>
       <td>应用拥有工具执行，平台强调多步推理与引用输出</td>
       <td>产品重心更偏企业检索、证据追踪和可引用回答，不只是通用函数调用</td>
@@ -216,13 +216,13 @@ OpenAI 正在把 tool use 收敛成平台级 agent surface；Anthropic 把工具
 模型先要学会把自然语言意图映射成结构化调用。典型训练数据是“用户请求 -> 工具定义 -> 工具调用 JSON -> 工具结果 -> 最终回答”。这类数据可以来自人工标注，也可以来自合成轨迹。它解决的是“会不会按协议说话”。
 
 **第二层是轨迹学习。**
-Toolformer 的关键贡献不是某一个 API，而是让模型学习在文本生成过程中插入工具调用。Gorilla、ToolLLM 和 API-Bank 则把问题扩展到大量真实 API、API 文档检索和多工具任务。这里的目标已经不是“格式正确”，而是“在任务路径上调用正确工具”。
+<a href="https://arxiv.org/abs/2302.04761">Toolformer</a> 的关键贡献不是某一个 API，而是让模型学习在文本生成过程中插入工具调用。<a href="https://arxiv.org/abs/2305.15334">Gorilla</a>、<a href="https://arxiv.org/abs/2307.16789">ToolLLM</a> 和 <a href="https://arxiv.org/abs/2304.08244">API-Bank</a> 则把问题扩展到大量真实 API、API 文档检索和多工具任务。这里的目标已经不是“格式正确”，而是“在任务路径上调用正确工具”。
 
 **第三层是合成与自改进。**
-APIGen、ToolACE 这类工作说明，工具调用数据正在被系统化合成：先生成任务、工具、参数和调用轨迹，再过滤掉不可执行或低质量样本。合成数据的价值在于覆盖长尾 API 和组合调用，但风险是 synthetic trajectory 可能学到不真实的工具分布。
+<a href="https://arxiv.org/abs/2406.18518">APIGen</a>、<a href="https://arxiv.org/abs/2409.00920">ToolACE</a> 这类工作说明，工具调用数据正在被系统化合成：先生成任务、工具、参数和调用轨迹，再过滤掉不可执行或低质量样本。合成数据的价值在于覆盖长尾 API 和组合调用，但风险是 synthetic trajectory 可能学到不真实的工具分布。
 
 **第四层是奖励优化。**
-Search-R1 这类工作把搜索/工具交互放进强化学习框架里，让模型不只学会“调用”，还学习何时继续搜索、何时停止、如何利用外部结果。这个方向更接近 agent optimization，因为优化对象是整条 trajectory，而不是单个 JSON。
+<a href="https://arxiv.org/abs/2503.09516">Search-R1</a> 这类工作把搜索/工具交互放进强化学习框架里，让模型不只学会“调用”，还学习何时继续搜索、何时停止、如何利用外部结果。这个方向更接近 agent optimization，因为优化对象是整条 trajectory，而不是单个 JSON。
 
 这也解释了为什么很多模型在简单 demo 里表现不错，进到真实 agent 后会不稳定：demo 主要测格式学习，真实系统测的是轨迹学习和恢复能力。
 
@@ -248,37 +248,37 @@ tool use optimization 不是单一问题。它至少分成六类。
   <tbody>
     <tr>
       <td>工具调用数据</td>
-      <td>Toolformer, Gorilla, ToolLLM, APIGen, ToolACE</td>
+      <td><a href="https://arxiv.org/abs/2302.04761">Toolformer</a>, <a href="https://arxiv.org/abs/2305.15334">Gorilla</a>, <a href="https://arxiv.org/abs/2307.16789">ToolLLM</a>, <a href="https://arxiv.org/abs/2406.18518">APIGen</a>, <a href="https://arxiv.org/abs/2409.00920">ToolACE</a></td>
       <td>缺少高质量、可执行、覆盖长尾工具的训练轨迹</td>
       <td>为模型或小模型 adapter 构建 tool-call SFT 数据</td>
     </tr>
     <tr>
       <td>API 检索与选择</td>
-      <td>Gorilla, ToolLLM, ToolBench</td>
+      <td><a href="https://arxiv.org/abs/2305.15334">Gorilla</a>, <a href="https://arxiv.org/abs/2307.16789">ToolLLM</a>, <a href="https://arxiv.org/abs/2307.16789">ToolBench</a></td>
       <td>工具数量一多，模型不知道该看哪个文档、选哪个 API</td>
       <td>在 agent 前面加 tool retrieval 和 tool ranking</td>
     </tr>
     <tr>
       <td>评测稳定性</td>
-      <td>StableToolBench</td>
+      <td><a href="https://arxiv.org/abs/2403.07714">StableToolBench</a></td>
       <td>真实 API 会变、会限流、会失败，导致 benchmark 不可复现</td>
       <td>用模拟 API、缓存、状态隔离和 deterministic evaluator 降低噪声</td>
     </tr>
     <tr>
       <td>轨迹决策</td>
-      <td>Search-R1</td>
+      <td><a href="https://arxiv.org/abs/2503.09516">Search-R1</a></td>
       <td>模型需要学会何时搜索、何时停止、如何把工具结果纳入推理</td>
       <td>用 outcome reward 或 process reward 优化多轮工具策略</td>
     </tr>
     <tr>
       <td>并行与延迟</td>
-      <td>LLMCompiler, Asynchronous LLM Function Calling</td>
+      <td><a href="https://arxiv.org/abs/2312.04511">LLMCompiler</a>, Asynchronous LLM Function Calling</td>
       <td>多工具任务如果串行执行，延迟会急剧上升</td>
       <td>把独立调用并行化，或让工具执行和模型推理异步交叠</td>
     </tr>
     <tr>
       <td>成本与缓存</td>
-      <td>Less is More, ToolCaching</td>
+      <td><a href="https://arxiv.org/abs/2411.15399">Less is More</a>, ToolCaching</td>
       <td>重复工具调用浪费 token、延迟和外部 API 预算</td>
       <td>缓存工具结果，减少不必要调用，设计幂等和失效策略</td>
     </tr>
@@ -310,37 +310,37 @@ tool use optimization 不是单一问题。它至少分成六类。
   </thead>
   <tbody>
     <tr>
-      <td><strong>BFCL</strong></td>
+      <td><strong><a href="https://gorilla.cs.berkeley.edu/blogs/8_berkeley_function_calling_leaderboard.html">BFCL</a></strong></td>
       <td>函数选择、参数生成、格式遵循、多函数调用</td>
       <td>真实工具执行、状态回滚、用户交互</td>
       <td>用来筛模型和 provider 的基础 function calling 能力</td>
     </tr>
     <tr>
-      <td><strong>API-Bank</strong></td>
+      <td><strong><a href="https://arxiv.org/abs/2304.08244">API-Bank</a></strong></td>
       <td>工具增强 LLM 的基础任务、调用能力和对话场景</td>
       <td>复杂真实 API 环境和长期状态</td>
       <td>用来理解 tool-augmented LLM 的早期能力边界</td>
     </tr>
     <tr>
-      <td><strong>ToolBench</strong></td>
+      <td><strong><a href="https://arxiv.org/abs/2307.16789">ToolBench</a></strong></td>
       <td>大规模真实 API 上的工具检索、选择和调用</td>
       <td>API 漂移导致的可复现性问题</td>
       <td>用来测长尾 API 生态下的工具选择能力</td>
     </tr>
     <tr>
-      <td><strong>StableToolBench</strong></td>
+      <td><strong><a href="https://arxiv.org/abs/2403.07714">StableToolBench</a></strong></td>
       <td>在更稳定的环境中复现实用工具调用评测</td>
       <td>真实生产系统里的权限、延迟和用户约束</td>
       <td>用来减少 API 漂移对评测结论的污染</td>
     </tr>
     <tr>
-      <td><strong>AgentBench</strong></td>
+      <td><strong><a href="https://arxiv.org/abs/2308.03688">AgentBench</a></strong></td>
       <td>多环境 agent 能力，包括操作、规划、代码和决策</td>
       <td>单一工具协议细节</td>
       <td>用来看模型是否具备更广义的 agent 行为能力</td>
     </tr>
     <tr>
-      <td><strong>tau-bench</strong></td>
+      <td><strong><a href="https://arxiv.org/abs/2406.12045">tau-bench</a></strong></td>
       <td>真实业务域中的用户-代理-工具交互，以及多次试验下的可靠性</td>
       <td>纯 function call 格式细节</td>
       <td>用来判断 agent 在业务流程里是否稳定，而不是只会调用函数</td>
