@@ -20,6 +20,8 @@ description: 一篇面向 agent 工程的 tool use 技术综述：比较 OpenAI�
 .tu-card h3{margin:.05rem 0 .45rem;color:#2f4756;font-size:1.02rem}
 .tu-card p{margin:0;color:#536572;line-height:1.75}
 .tu-list li{margin:.35rem 0;line-height:1.75;color:#42586a}
+.tu-badges{display:flex;flex-wrap:wrap;gap:.45rem;margin:.85rem 0 0}
+.tu-badge{display:inline-block;border:1px solid #dce5ec;border-radius:999px;padding:.18rem .55rem;font-size:.82rem;color:#445a68;background:#fbfcfe}
 .tu-source{margin-top:1.35rem;padding-top:1rem;border-top:1px solid #dde4ea;color:#56636f;font-size:.92rem;line-height:1.8}
 @media (max-width: 840px){.tu-grid{grid-template-columns:1fr}}
 </style>
@@ -46,7 +48,47 @@ OpenAI 正在把 tool use 收敛成平台级 agent surface；Anthropic 把工具
   <p>因此，评估一个模型或 API 的 tool use 能力时，不能只看单轮 function call 命中率，还要看 schema 约束、并行调用、工具结果回填、失败重试、推理态保留和 benchmark 的任务形态。</p>
 </div>
 
+### 证据等级说明
+
+这篇文章混合了三类信息。为避免把工程判断写成官方结论，我先把证据等级标出来：
+
+<div class="tu-wrap">
+<table class="tu-table">
+  <thead>
+    <tr>
+      <th>标签</th>
+      <th>含义</th>
+      <th>本文中的例子</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="tu-badge">官方事实</span></td>
+      <td>来自厂商官方文档或 API 行为描述</td>
+      <td>Anthropic 的 <code>tool_use</code>/<code>tool_result</code>，Gemini 的 parallel/compositional function calling，DeepSeek thinking mode 支持工具调用</td>
+    </tr>
+    <tr>
+      <td><span class="tu-badge">论文支持</span></td>
+      <td>来自公开论文或 benchmark 论文的研究结论</td>
+      <td>Toolformer 的自监督工具调用、ToolLLM 的大规模 API 数据、StableToolBench 对评测稳定性的处理</td>
+    </tr>
+    <tr>
+      <td><span class="tu-badge">工程推断</span></td>
+      <td>基于官方协议、论文和 agent 工程经验做出的归纳，不是厂商原话</td>
+      <td>“执行循环所有权”“平台化路线 vs 协议化路线”“tool-use reliability 公式”</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+下面所有“各家具体模式”以官方事实为主；“路线划分”“可靠性公式”“类 Codex agent 设计建议”属于本文工程推断，需要用你自己的 harness 和 benchmark 验证。
+
 ### 一、各家具体模式：差异在协议，不只在模型
+
+<div class="tu-badges">
+  <span class="tu-badge">官方事实为主</span>
+  <span class="tu-badge">少量工程推断</span>
+</div>
 
 <div class="tu-wrap">
 <table class="tu-table">
@@ -120,13 +162,17 @@ OpenAI 正在把 tool use 收敛成平台级 agent surface；Anthropic 把工具
 </table>
 </div>
 
-这张表背后的 insight 是：**tool use 正在分成两条路线。**
+这张表背后的 insight 是：**tool use 正在分成两条路线。** 这是本文的工程推断，不是任何一家厂商的官方分类。
 
 第一条是平台化路线。OpenAI、Gemini 在往“工具、状态、推理、执行环境都能由平台承接一部分”的方向走。优点是开发者少写 glue code，缺点是 provider surface 更厚，迁移成本更高。
 
 第二条是协议化路线。Anthropic、DeepSeek、Mistral、xAI、Qwen 更强调消息协议中的工具事件，应用自己掌握执行循环。优点是可控、可观测、可替换，缺点是你必须自己处理并行、重试、幂等、状态和错误恢复。
 
 ### 二、为什么“会调用工具”还远远不够
+
+<div class="tu-badges">
+  <span class="tu-badge">工程推断</span>
+</div>
 
 一个可靠 tool-use agent 至少要过四关。
 
@@ -159,6 +205,11 @@ OpenAI 正在把 tool use 收敛成平台级 agent surface；Anthropic 把工具
 
 ### 三、tool use 是怎么训练出来的
 
+<div class="tu-badges">
+  <span class="tu-badge">论文支持</span>
+  <span class="tu-badge">部分推断</span>
+</div>
+
 公开论文和产品行为显示，tool use 训练不是单一技术，而是逐步叠加出来的能力。
 
 **第一层是格式学习。**
@@ -176,6 +227,11 @@ Search-R1 这类工作把搜索/工具交互放进强化学习框架里，让模
 这也解释了为什么很多模型在简单 demo 里表现不错，进到真实 agent 后会不稳定：demo 主要测格式学习，真实系统测的是轨迹学习和恢复能力。
 
 ### 四、tool use optimization 研究在优化什么
+
+<div class="tu-badges">
+  <span class="tu-badge">论文支持</span>
+  <span class="tu-badge">工程映射为推断</span>
+</div>
 
 tool use optimization 不是单一问题。它至少分成六类。
 
@@ -234,6 +290,11 @@ tool use optimization 不是单一问题。它至少分成六类。
 在真实应用里，一个 agent 少调一次无用搜索、多并行两个独立 API、失败后能正确回滚，可能比单轮 JSON 准确率多 1 个百分点更有价值。
 
 ### 五、benchmark 应该怎么读
+
+<div class="tu-badges">
+  <span class="tu-badge">论文支持</span>
+  <span class="tu-badge">使用建议为推断</span>
+</div>
 
 不同 benchmark 的问题意识不同，不能混着看。
 
@@ -297,6 +358,11 @@ tool use optimization 不是单一问题。它至少分成六类。
 这样评测才对应真实故障。否则你会得到一个“function call 很强，但业务流程经常失败”的模型。
 
 ### 六、如果你在做类 Codex agent，应该怎么设计
+
+<div class="tu-badges">
+  <span class="tu-badge">工程推断</span>
+  <span class="tu-badge">需要本地 benchmark 验证</span>
+</div>
 
 类 Codex agent 的核心不是聊天，而是把模型动作落到工作区、终端、文件、浏览器和外部服务上。这里 tool use 的设计要保守。
 
