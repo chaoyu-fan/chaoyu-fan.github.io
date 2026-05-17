@@ -33,6 +33,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
+    <div class="ri-card c-teal">
+      <div class="ri-title">用进化算法优化 LLM Agent 的工具调用</div>
+      <p>梳理 EvoTool、GEPA、SPRIG、EvoSkill、SkillMOO 等工作，讨论遗传/进化算法如何优化 tool-use policy，并提出 Causal-Pareto Tool Evolution 作为面向长链路 agent 的研究方案。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/evolutionary-tool-use-optimization/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
     <div class="ri-card c-violet">
       <div class="ri-title">大模型 tool use 的真正分歧：谁拥有执行循环</div>
       <p>比较 OpenAI、Anthropic、Gemini、DeepSeek、Mistral、xAI、Qwen、Cohere 的工具调用模式，并说明为什么 tool use 的关键不是 JSON，而是执行循环、状态回填和评测边界。</p>
