@@ -2,7 +2,7 @@
 layout: page
 permalink: /blogs/tool-use-landscape-2026/index.html
 title: 大模型 tool use 的真正分歧：谁拥有执行循环
-description: 一篇面向 agent 工程的 tool use 技术综述：比较 OpenAI、Anthropic、Gemini、DeepSeek、Mistral、xAI、Qwen、Cohere 的工具调用模式，并梳理训练方法、优化研究和评测基准。
+description: 一篇面向 agent 工程的 tool use 技术综述：比较 OpenAI、Anthropic、Gemini、DeepSeek、Mistral、xAI、Qwen、Cohere 的工具调用模式，并梳理训练方法、优化研究、评测基准和高维工具调用控制。
 ---
 
 <style>
@@ -28,7 +28,7 @@ description: 一篇面向 agent 工程的 tool use 技术综述：比较 OpenAI�
 
 ## 大模型 tool use 的真正分歧：谁拥有执行循环
 
-> 更新时间：2026/05/16
+> 更新时间：2026/05/17
 > 文章定位：技术综述 + agent 工程判断。
 
 讨论 tool use 时，最容易把问题说浅：模型返回一个 JSON，应用执行一个函数，再把结果塞回去。
@@ -444,7 +444,7 @@ multi-agent 场景下，tool use optimisation 的目标不是让每个 agent 都
 
 综上，模型-harness 适配和 multi-agent tool use 是同一个系统问题的两个侧面。前者考察模型分布是否适配执行壳，后者考察系统拓扑是否适配任务结构。两者都不能靠主观体验判断，应通过同一批任务、同一预算、同一权限和同一 verifier 做矩阵评测。
 
-### 结论：tool use 不是能力点，是系统边界
+### 阶段性结论：tool use 不是能力点，是系统边界
 
 tool use 最初看起来像模型能力：会不会调用函数。
 但在 agent 系统里，它更像系统边界：模型、工具执行器、状态存储、权限控制和评测器之间，谁对哪一步负责。
@@ -456,6 +456,400 @@ tool use 最初看起来像模型能力：会不会调用函数。
 </div>
 
 这也是为什么类 Codex agent 不应该把 provider 的 tool use 当成黑盒能力直接塞进主流程。你可以换模型，但执行循环、工具权限、状态回填和 benchmark 必须掌握在自己的系统里。
+
+### 十、补充技术报告：高维工具调用的规模、失效与控制
+
+<div class="tu-badges">
+  <span class="tu-badge">论文支持</span>
+  <span class="tu-badge">工程推断</span>
+  <span class="tu-badge">系统设计建议</span>
+</div>
+
+前面的讨论主要回答“各家 tool use 模式有什么不同”。但工程上更尖锐的问题是：当一次任务不再是 1 次或 3 次函数调用，而是几十、几百，甚至上千次工具调用时，系统还能不能保持正确。
+
+这里要先纠正一个说法。所谓“高维工具调用”，不是简单地说工具调用次数很多。真正的维度至少包括七个变量：
+
+<div class="tu-wrap">
+<table class="tu-table">
+  <thead>
+    <tr>
+      <th>维度</th>
+      <th>含义</th>
+      <th>典型量级</th>
+      <th>主要风险</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>工具库规模</td>
+      <td>系统可选择的工具/API 总数</td>
+      <td>从十几个内部工具，到 <a href="https://arxiv.org/abs/2307.16789">ToolBench</a> 的 16,464 个 RESTful APIs；<a href="https://arxiv.org/abs/2603.13594">EnterpriseOps-Gym</a> 给出 512 个企业工具和 164 张数据库表</td>
+      <td>工具检索噪声、相似工具混淆、上下文被 schema 挤占</td>
+    </tr>
+    <tr>
+      <td>候选工具宽度</td>
+      <td>每一步暴露给模型的候选工具数量</td>
+      <td>工程上应尽量收敛到少量 shortlist；直接暴露全部工具通常不可控</td>
+      <td>选错工具、无关工具调用、参数盲填</td>
+    </tr>
+    <tr>
+      <td>轨迹长度</td>
+      <td>一次任务执行中的工具调用步数</td>
+      <td>简单任务 1-3 次；业务流程 5-30 次；<a href="https://arxiv.org/abs/2605.10912">WildClawBench</a> 平均超过 20 次；<a href="https://arxiv.org/abs/2602.09514">EcoGym</a> 把 horizon 推到 1000+ steps</td>
+      <td>错误累积、状态漂移、目标遗忘</td>
+    </tr>
+    <tr>
+      <td>并行宽度</td>
+      <td>同一轮中并发发出的独立工具调用数</td>
+      <td>OpenAI、Anthropic、Gemini 等都支持或讨论 parallel tool use，但并行写操作必须受控</td>
+      <td>结果合并错误、竞态条件、重复调用、顺序依赖被破坏</td>
+    </tr>
+    <tr>
+      <td>参数维度</td>
+      <td>单个工具调用的字段数、类型、枚举、嵌套结构和格式约束</td>
+      <td>从单字段查询到多对象写入；OpenAI Structured Outputs 和 Claude strict tool use 主要控制这一层</td>
+      <td>schema 合法但语义错误，日期、单位、ID、权限字段错配</td>
+    </tr>
+    <tr>
+      <td>状态体积</td>
+      <td>工具结果、文件、日志、数据库状态、浏览器状态和中间 artifact 的总量</td>
+      <td>长链路任务常常远超上下文窗口，需要外置状态和引用 ID</td>
+      <td>上下文污染、旧结果覆盖新结果、摘要丢失关键字段</td>
+    </tr>
+    <tr>
+      <td>副作用强度</td>
+      <td>工具是否会改变外部世界或工作区状态</td>
+      <td>读操作风险较低；写文件、数据库变更、支付、部署、邮件发送风险高</td>
+      <td>不可逆错误、权限越界、错误成功</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+这七个维度共同决定了 tool use 的复杂度。一个 10 步任务，如果每步只从 3 个只读工具中选择，难度并不高；一个 10 步任务，如果每步要在 200 个相似企业工具中选择，并且中间有数据库写入、权限检查和用户确认，它已经是高风险 agent 任务。
+
+#### 1. 现有任务大概会调用多少次工具
+
+公开 benchmark 给出的量级并不一致，因为它们测的不是同一种任务。
+
+<div class="tu-wrap">
+<table class="tu-table">
+  <thead>
+    <tr>
+      <th>任务类型</th>
+      <th>调用量级</th>
+      <th>代表证据</th>
+      <th>工程解读</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>单轮 function calling</td>
+      <td>0-1 次，少数需要并行多调用</td>
+      <td><a href="https://gorilla.cs.berkeley.edu/leaderboard.html">BFCL</a> 的基础类别覆盖 simple、multiple、parallel function calling</td>
+      <td>主要测格式、函数选择和参数生成，不代表真实长链路 agent</td>
+    </tr>
+    <tr>
+      <td>多工具 API 任务</td>
+      <td>数次到十几次</td>
+      <td><a href="https://arxiv.org/abs/2307.16789">ToolLLM/ToolBench</a> 构建 single-tool、multi-tool 和 solution path 数据</td>
+      <td>核心难点是工具检索和路径选择，不是单个 JSON 是否有效</td>
+    </tr>
+    <tr>
+      <td>业务对话型 agent</td>
+      <td>通常 5-30 个交互步骤，具体取决于用户澄清和策略检查</td>
+      <td><a href="https://arxiv.org/abs/2406.12045">tau-bench</a> 通过用户模拟、工具和业务 policy 测最终数据库状态，并报告多次试验下的不一致性</td>
+      <td>成功率低往往不是因为不会调工具，而是因为对话、规则和状态更新没有对齐</td>
+    </tr>
+    <tr>
+      <td>CLI / coding / native-runtime agent</td>
+      <td>几十次工具调用很常见</td>
+      <td><a href="https://arxiv.org/abs/2605.10912">WildClawBench</a> 的 60 个真实长任务平均约 8 分钟、超过 20 次工具调用，并在真实 CLI harness 中运行</td>
+      <td>这里测的是模型、harness、工具和验证器的组合，而不是模型裸能力</td>
+    </tr>
+    <tr>
+      <td>企业状态型工作流</td>
+      <td>几十步，并且工具空间很宽</td>
+      <td><a href="https://arxiv.org/abs/2603.13594">EnterpriseOps-Gym</a> 使用 512 个工具、1,150 个专家任务和持久数据库状态</td>
+      <td>长期状态、权限协议、拒绝不可行任务，比单步调用更难</td>
+    </tr>
+    <tr>
+      <td>连续 plan-and-execute 环境</td>
+      <td>1000+ steps</td>
+      <td><a href="https://arxiv.org/abs/2602.09514">EcoGym</a> 将经济环境中的连续决策扩展到 365 day-loops，对应 1000+ steps</td>
+      <td>这已经接近控制系统问题，不能再按聊天轮次理解</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+因此，今天更合理的量级判断是：
+
+- demo 和普通 API 接入：`1-3` 次工具调用。
+- 真实业务流程：`5-30` 次工具调用。
+- coding agent、CLI agent、研究型 agent：`20-100+` 次工具调用并不罕见。
+- 连续经营、仿真、数据采集、长期监控类任务：可以自然走到 `1000+` steps。
+- `10000+` 次不应被看作一个连续的 LLM 上下文任务，而应被拆成批处理、队列、子任务和可验证状态机。
+
+#### 2. 为什么千次工具调用不能靠“单步准确率”解决
+
+长链路工具调用有一个简单但残酷的数学事实。假设每一步独立成功率是 `p`，连续 `n` 步都不出错的概率近似是：
+
+<div class="tu-callout">
+  <p><strong>P(success over n calls) = p^n</strong></p>
+</div>
+
+如果 `p = 0.99`，100 步全对的概率只有约 36.6%，1000 步约 0.004%。如果 `p = 0.999`，1000 步全对约 36.8%，10000 步约 0.0045%。要让 10000 步全对仍有约 36.8% 的概率，单步成功率要接近 `99.99%`。
+
+这个推算不是 benchmark 结论，而是工程边界。它说明：千次、万次 tool use 不能被设计成“每一步都必须一次成功”。系统必须假设错误一定会发生，并把错误限制在局部。
+
+这也是 <a href="https://arxiv.org/abs/2603.14465">AgentProcessBench</a> 这类 step-level 评测变重要的原因。该工作把真实工具轨迹拆成 8,509 个带人工标签的步骤，强调 tool-use failure 经常带来不可逆副作用，不能只看最终答案。<a href="https://arxiv.org/abs/2408.04682">ToolSandbox</a> 也把 stateful tool execution、隐式状态依赖、中间 milestone 纳入评价，说明“最终答对”不足以证明轨迹可靠。
+
+#### 3. 高维工具调用的主要失效模式
+
+高维 tool use 的错误通常不是随机散点，而是几个稳定模式。
+
+**第一，工具检索错误。**
+工具库越大，模型越容易在相似工具之间混淆。ToolBench 的 16,464 API 规模说明，真实 API 生态不可能全部塞进上下文。这里必须先做 tool retrieval，再把少量候选暴露给模型。否则，模型不是在“推理”，而是在被 schema 噪声淹没。
+
+**第二，参数合法但语义错误。**
+Strict schema 能减少字段缺失和类型错误，但不能保证业务语义正确。一个 `order_id` 可以符合字符串格式，却指向错误订单；一个日期可以符合 ISO 格式，却违反退改政策；一个权限字段可以存在，却不该由当前用户触发。OpenAI Structured Outputs 和 Claude strict tool use 解决的是参数结构，不是业务验证。
+
+**第三，状态漂移。**
+长链路任务中，模型经常忘记哪些工具已经调用、哪个结果是最新、哪个文件已经修改、哪个用户确认已经取得。tau-bench 把最终数据库状态作为评价对象，正是因为文本回答看起来正确时，底层状态也可能已经错了。
+
+**第四，错误恢复失败。**
+工具失败后，模型可能重复同一个错误调用，或者把错误输出当成有效结果继续推理。WildClawBench 这类 native-runtime benchmark 的价值在于，它让工具失败、文件状态、CLI 输出和 harness 行为真实参与评分，而不是只看模型是否生成了一个漂亮计划。
+
+**第五，效率腐败。**
+一个 agent 最终完成任务，不代表轨迹健康。重复搜索、重复测试、反复读取同一文件、无意义并行，都会把成本和延迟推高。对于上千次调用的任务，效率不是附加指标，而是可靠性的一部分。
+
+**第六，错误成功。**
+EnterpriseOps-Gym 报告当前模型在企业工作流中仍会失败于不可行任务拒绝，导致有害副作用。工程上最危险的不是“失败并停止”，而是“系统状态被改坏，但 agent 仍报告成功”。
+
+#### 4. 千次、万次调用时，系统应该怎么设计
+
+如果目标是让 agent 承受千次级调用，架构上要把 tool use 从“模型动作”升级成“受控执行系统”。我会按七层设计。
+
+<div class="tu-wrap">
+<table class="tu-table">
+  <thead>
+    <tr>
+      <th>层级</th>
+      <th>职责</th>
+      <th>关键机制</th>
+      <th>失败时如何处理</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>任务分解层</td>
+      <td>把一个大任务拆成可验证子任务</td>
+      <td>plan、milestone、预算、停止条件</td>
+      <td>子任务失败，不应污染全局任务</td>
+    </tr>
+    <tr>
+      <td>工具路由层</td>
+      <td>把几百或几千个工具压缩成每步少量候选</td>
+      <td>tool index、embedding retrieval、规则过滤、role-based shortlist</td>
+      <td>候选为空时返回“不可执行/需澄清”，而不是让模型猜</td>
+    </tr>
+    <tr>
+      <td>schema 与语义验证层</td>
+      <td>检查参数结构和业务规则</td>
+      <td>JSON schema、Pydantic/Zod、policy checker、权限 checker</td>
+      <td>验证失败直接拒绝执行，并给模型结构化错误</td>
+    </tr>
+    <tr>
+      <td>执行层</td>
+      <td>运行工具并控制副作用</td>
+      <td>timeout、retry、rate limit、sandbox、idempotency key、write lock</td>
+      <td>读操作可重试，写操作先 dry-run 或进入审批队列</td>
+    </tr>
+    <tr>
+      <td>状态层</td>
+      <td>保存真实世界状态和中间 artifact</td>
+      <td>result id、artifact store、database snapshot、workspace diff、event log</td>
+      <td>回滚到 checkpoint，而不是让模型凭记忆修复</td>
+    </tr>
+    <tr>
+      <td>验证层</td>
+      <td>判断每个 milestone 是否达成</td>
+      <td>unit test、SQL state check、DOM check、policy invariant、LLM judge 只做语义补充</td>
+      <td>失败时定位到最小可修复步骤</td>
+    </tr>
+    <tr>
+      <td>观测层</td>
+      <td>追踪成本、延迟、错误和重复调用</td>
+      <td>trace id、per-tool metrics、trajectory diff、budget dashboard</td>
+      <td>超过预算或重复无进展时自动停止</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+这套结构的核心不是让模型更自由，而是让模型在更窄、更可验证的动作空间里运行。高维问题要靠降维解决。
+
+#### 5. 控制准确性的五个工程原则
+
+**原则一：每一步只暴露必要工具。**
+不要把全量工具表交给模型。工具越多，schema 越长，模型越容易把注意力花在无关字段上。推荐做两级调用：先用 router 选工具族，再让 executor 选择具体工具。对于 coding agent，planner 不应该拥有写文件和部署权限；executor 不应该拥有宽泛搜索权限；reviewer 应主要拥有测试、diff 和 policy check。
+
+**原则二：每个工具结果都要结构化。**
+工具输出不能只是自然语言摘要。最低限度应保存：
+
+- `tool_name`
+- `args`
+- `result_id`
+- `status`
+- `exit_code`
+- `stdout_ref` / `stderr_ref`
+- `artifact_refs`
+- `state_delta`
+- `caller`
+- `timestamp`
+
+后续步骤引用 `result_id`，而不是引用上一轮自然语言总结。这样才能在第 300 步发现第 117 步状态错了，并回滚到对应 checkpoint。
+
+**原则三：读写分离，写操作串行化。**
+读操作可以并行，写操作必须经过锁、dry-run、幂等键和回滚策略。数据库写入、文件修改、邮件发送、支付、部署这类动作不能和普通检索工具放在同一级别。并行 tool use 对延迟有帮助，但只能用于没有顺序依赖、没有共享写状态的分支。
+
+**原则四：把验证做成工具，而不是提示词。**
+在长链路里，让模型自己判断“我是否完成了”很危险。验证应该由确定性工具优先承担：测试是否通过、数据库状态是否匹配、文件 diff 是否符合预期、权限是否满足、预算是否超限。LLM judge 可以补语义判断，但不应成为唯一裁判。
+
+**原则五：设置预算和熔断。**
+千次工具调用系统必须有 stop condition。常见熔断条件包括：连续 `k` 次无状态变化、同一工具同参重复超过阈值、错误率超过阈值、成本超过预算、关键写操作未获批准、milestone 超时。没有熔断的 agent 不是自主，是失控。
+
+#### 6. 一个可落地的高维 tool use 控制协议
+
+对于类 Codex agent，我建议把每个工具调用写成统一事件流，而不是散落在模型上下文里：
+
+```json
+{
+  "event": "tool_call_requested",
+  "task_id": "T-2026-05-17-001",
+  "step_id": 184,
+  "parent_step_id": 183,
+  "role": "executor",
+  "tool": "run_tests",
+  "args": {
+    "target": "unit",
+    "path": "tests/test_parser.py"
+  },
+  "risk": "read",
+  "budget": {
+    "timeout_sec": 120,
+    "max_retries": 1
+  },
+  "preconditions": [
+    "workspace_clean_or_known_dirty",
+    "patch_applied"
+  ],
+  "expected_observation": {
+    "type": "test_result",
+    "must_include": ["exit_code", "summary", "failure_refs"]
+  }
+}
+```
+
+执行后再写入：
+
+```json
+{
+  "event": "tool_call_succeeded",
+  "step_id": 184,
+  "result_id": "R-184",
+  "exit_code": 0,
+  "state_delta": {
+    "files_written": [],
+    "tests_passed": 17,
+    "tests_failed": 0
+  },
+  "verdict": "milestone_progress"
+}
+```
+
+这类事件结构有三个好处。第一，它让工具调用可以脱离上下文窗口保存。第二，它让 verifier 可以按事件回放轨迹。第三，它让不同模型、不同 harness 的输出被归一化到同一个系统协议里。
+
+#### 7. 评测指标应该从 pass rate 扩展到轨迹质量
+
+高维 tool use 的评测不能只看最终 pass/fail。至少要记录以下指标：
+
+<div class="tu-wrap">
+<table class="tu-table">
+  <thead>
+    <tr>
+      <th>指标</th>
+      <th>定义</th>
+      <th>为什么重要</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>tool selection accuracy</td>
+      <td>是否选择了正确工具或正确工具族</td>
+      <td>定位检索和路由问题</td>
+    </tr>
+    <tr>
+      <td>argument validity</td>
+      <td>参数是否通过 schema 和语义校验</td>
+      <td>区分格式错误和业务错误</td>
+    </tr>
+    <tr>
+      <td>execution success</td>
+      <td>工具是否成功运行并返回可解析结果</td>
+      <td>识别工具环境、权限和超时问题</td>
+    </tr>
+    <tr>
+      <td>state delta correctness</td>
+      <td>工具造成的状态变化是否符合预期</td>
+      <td>避免错误成功</td>
+    </tr>
+    <tr>
+      <td>recovery rate</td>
+      <td>失败后是否能换策略、回滚或请求澄清</td>
+      <td>长链路里失败不可避免，恢复能力决定上限</td>
+    </tr>
+    <tr>
+      <td>redundant call ratio</td>
+      <td>重复、无效、无进展调用占比</td>
+      <td>衡量效率腐败</td>
+    </tr>
+    <tr>
+      <td>checkpoint survival</td>
+      <td>跨 checkpoint 后是否仍保留关键约束</td>
+      <td>衡量长期状态连续性</td>
+    </tr>
+    <tr>
+      <td>safe success rate</td>
+      <td>任务成功且没有违反权限、政策或副作用约束</td>
+      <td>比普通成功率更接近生产要求</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+tau-bench 的 `pass^k` 思路很重要：同一个任务跑多次，如果结果不稳定，单次 pass rate 会高估真实可用性。对于生产 agent，我更关心 `pass^4`、`pass^8` 和轨迹方差。一个系统单次成功 80%，但重复 8 次只有 25% 全部成功，说明它还不能被交给无人值守工作流。
+
+#### 8. 最后的工程判断
+
+高维工具调用的上限，不由“模型能不能调用工具”决定，而由“系统能不能把工具调用组织成可验证的控制过程”决定。
+
+因此，千次、万次工具调用应该按以下方式理解：
+
+- 它不是一个超长 prompt 问题，而是一个执行系统问题。
+- 它不是让模型拥有更多工具，而是让每一步只面对更少、更准、更受约束的工具。
+- 它不是追求每一步零错误，而是让错误可检测、可隔离、可回滚。
+- 它不是只看最终答案，而是要记录和评估整个轨迹。
+- 它不是单 agent 自由发挥，而是 planner、router、executor、verifier、state store 和 policy gate 的组合。
+
+如果要给类 Codex agent 一个最低可行标准，我会设成这样：
+
+<div class="tu-callout">
+  <p><strong>不要让模型直接拥有上千工具；让模型拥有少量动作，让系统拥有工具宇宙。</strong></p>
+</div>
+
+也就是说，模型负责提出下一步意图，系统负责检索候选工具、验证参数、执行工具、保存状态、检查副作用、判断是否继续。只有这样，tool use 才能从 demo 级函数调用，走到千次级执行轨迹。
 
 <div class="tu-source">
 <strong>资料来源</strong>：
@@ -488,7 +882,13 @@ tool use 最初看起来像模型能力：会不会调用函数。
 <a href="https://arxiv.org/abs/2411.15399">Less is More</a>，
 <a href="https://arxiv.org/abs/2510.04678">MATPO</a>，
 <a href="https://arxiv.org/abs/2503.01935">MultiAgentBench</a>，
-<a href="https://arxiv.org/abs/2502.11271">OctoTools</a>。
+<a href="https://arxiv.org/abs/2502.11271">OctoTools</a>，
+<a href="https://arxiv.org/abs/2605.10912">WildClawBench</a>，
+<a href="https://arxiv.org/abs/2602.09514">EcoGym</a>，
+<a href="https://arxiv.org/abs/2603.13594">EnterpriseOps-Gym</a>，
+<a href="https://arxiv.org/abs/2603.14465">AgentProcessBench</a>，
+<a href="https://arxiv.org/abs/2601.20882">DevOps-Gym</a>，
+<a href="https://arxiv.org/abs/2605.01250">EO-Gym</a>。
 
 本文对厂商训练细节的表述，依据公开论文、官方文档和可公开验证的接口行为。没有公开细节的部分，只作为工程推断处理。
 </div>
