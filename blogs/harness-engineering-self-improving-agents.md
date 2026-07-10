@@ -32,6 +32,7 @@ description: 基于 Lilian Weng 的 Harness Engineering 文章，重新梳理 ag
 .he-refs{font-size:.9rem;line-height:1.72;color:#56636f}
 .he-refs li{margin:.48rem 0}
 .he-source{margin-top:1.4rem;padding:1rem;border:1px solid #dce5ec;border-radius:10px;background:#fbfcfe;color:#56636f;font-size:.92rem;line-height:1.8}
+.weather-widget-container{display:none!important}
 @media (max-width:840px){.he-grid{grid-template-columns:1fr}.he-table{min-width:760px}}
 </style>
 
