@@ -1,52 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">Layered Agent Harness and Trusted Boundary</title>
-  <desc id="desc">A layered agent harness with an immutable external safety kernel.</desc>
+  <title id="title">分层 Agent Harness 与可信边界</title>
+  <desc id="desc">可修改的上下文、编排、执行、验证与元优化层，以及位于系统外部、不可自修改的安全内核。</desc>
   <defs>
     <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#00d992"/></marker>
     <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#8b949e"/></marker>
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
   </defs>
   <rect width="1200" height="760" rx="18" fill="#050507"/>
-  <text x="54" y="55" fill="#f2f2f2" font-family="system-ui,-apple-system,sans-serif" font-size="29" font-weight="700">Layered Agent Harness and Trusted Boundary</text>
-  <text x="54" y="83" fill="#8b949e" font-family="Inter,system-ui,sans-serif" font-size="15">The model proposes actions. The harness organizes execution. The safety kernel defines what cannot self-modify.</text>
+  <text x="54" y="55" fill="#f2f2f2" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="29" font-weight="700">分层 Agent Harness 与可信边界</text>
+  <text x="54" y="83" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="15">模型负责提出动作，harness 负责组织执行，安全内核决定哪些东西永远不能被自我修改。</text>
 
   <rect x="48" y="112" width="820" height="586" rx="14" fill="#101010" stroke="#00d992" stroke-width="2" stroke-dasharray="8 7"/>
-  <text x="72" y="143" fill="#00d992" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" font-weight="700">MODIFIABLE REGION  H_phi  /  L1-L5</text>
+  <text x="72" y="143" fill="#00d992" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" font-weight="700">可修改区域 H_phi（L1–L5）</text>
 
-  <g font-family="system-ui,-apple-system,sans-serif">
+  <g font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif">
     <rect x="82" y="174" width="210" height="104" rx="9" fill="#161616" stroke="#3d3a39"/>
-    <text x="102" y="204" fill="#818cf8" font-size="13" font-weight="700">L1 / INFORMATION</text>
-    <text x="102" y="232" fill="#f2f2f2" font-size="20" font-weight="650">Context &amp; Memory</text>
-    <text x="102" y="258" fill="#b8b3b0" font-size="13">retrieval / files / playbooks</text>
+    <text x="102" y="204" fill="#818cf8" font-size="13" font-weight="700">L1 · 信息层</text>
+    <text x="102" y="232" fill="#f2f2f2" font-size="20" font-weight="650">上下文与记忆</text>
+    <text x="102" y="258" fill="#b8b3b0" font-size="13">检索 · 压缩 · 文件 · 经验库</text>
 
     <rect x="353" y="174" width="210" height="104" rx="9" fill="#161616" stroke="#3d3a39"/>
-    <text x="373" y="204" fill="#818cf8" font-size="13" font-weight="700">L2 / ORCHESTRATION</text>
-    <text x="373" y="232" fill="#f2f2f2" font-size="20" font-weight="650">Planning &amp; Routing</text>
-    <text x="373" y="258" fill="#b8b3b0" font-size="13">state / subagents / concurrency</text>
+    <text x="373" y="204" fill="#818cf8" font-size="13" font-weight="700">L2 · 编排层</text>
+    <text x="373" y="232" fill="#f2f2f2" font-size="20" font-weight="650">规划与路由</text>
+    <text x="373" y="258" fill="#b8b3b0" font-size="13">状态机 · 子代理 · 并发拓扑</text>
 
     <rect x="624" y="174" width="210" height="104" rx="9" fill="#101010" stroke="#00d992" stroke-width="2" filter="url(#glow)"/>
-    <text x="644" y="204" fill="#00d992" font-size="13" font-weight="700">FROZEN CORE / M_theta</text>
-    <text x="644" y="232" fill="#ffffff" font-size="20" font-weight="700">Base Model</text>
-    <text x="644" y="258" fill="#b8b3b0" font-size="13">reasoning / generation / protocol</text>
+    <text x="644" y="204" fill="#00d992" font-size="13" font-weight="700">冻结核心 · M_theta</text>
+    <text x="644" y="232" fill="#ffffff" font-size="20" font-weight="700">基础模型</text>
+    <text x="644" y="258" fill="#b8b3b0" font-size="13">推理 · 生成 · 原生工具协议</text>
 
     <rect x="82" y="394" width="210" height="104" rx="9" fill="#161616" stroke="#3d3a39"/>
-    <text x="102" y="424" fill="#8b949e" font-size="13" font-weight="700">TASKS &amp; ENVIRONMENT</text>
-    <text x="102" y="452" fill="#f2f2f2" font-size="20" font-weight="650">World State</text>
-    <text x="102" y="478" fill="#b8b3b0" font-size="13">repos / browsers / DBs / users</text>
+    <text x="102" y="424" fill="#8b949e" font-size="13" font-weight="700">任务与环境</text>
+    <text x="102" y="452" fill="#f2f2f2" font-size="20" font-weight="650">真实世界状态</text>
+    <text x="102" y="478" fill="#b8b3b0" font-size="13">仓库 · 浏览器 · 数据库 · 用户</text>
 
     <rect x="353" y="394" width="210" height="104" rx="9" fill="#161616" stroke="#3d3a39"/>
-    <text x="373" y="424" fill="#818cf8" font-size="13" font-weight="700">L3 / EXECUTION</text>
-    <text x="373" y="452" fill="#f2f2f2" font-size="20" font-weight="650">Tool Runtime</text>
-    <text x="373" y="478" fill="#b8b3b0" font-size="13">adapters / retries / cache / locks</text>
+    <text x="373" y="424" fill="#818cf8" font-size="13" font-weight="700">L3 · 执行层</text>
+    <text x="373" y="452" fill="#f2f2f2" font-size="20" font-weight="650">工具执行器</text>
+    <text x="373" y="478" fill="#b8b3b0" font-size="13">适配器 · 重试 · 缓存 · 写锁</text>
 
     <rect x="624" y="394" width="210" height="104" rx="9" fill="#161616" stroke="#3d3a39"/>
-    <text x="644" y="424" fill="#818cf8" font-size="13" font-weight="700">L4 / ASSURANCE</text>
-    <text x="644" y="452" fill="#f2f2f2" font-size="20" font-weight="650">Verify &amp; Recover</text>
-    <text x="644" y="478" fill="#b8b3b0" font-size="13">tests / critics / stop conditions</text>
+    <text x="644" y="424" fill="#818cf8" font-size="13" font-weight="700">L4 · 保证层</text>
+    <text x="644" y="452" fill="#f2f2f2" font-size="20" font-weight="650">验证与恢复</text>
+    <text x="644" y="478" fill="#b8b3b0" font-size="13">测试 · critic · 停止条件 · 修复</text>
 
     <rect x="218" y="575" width="480" height="84" rx="10" fill="#161616" stroke="#00d992"/>
-    <text x="242" y="607" fill="#00d992" font-size="13" font-weight="700">L5 / META OPTIMIZATION</text>
-    <text x="242" y="636" fill="#f2f2f2" font-size="19" font-weight="650">Traces - Attribution - Patches - Regression Tests</text>
+    <text x="242" y="607" fill="#00d992" font-size="13" font-weight="700">L5 · 元优化层</text>
+    <text x="242" y="636" fill="#f2f2f2" font-size="19" font-weight="650">轨迹 → 失败归因 → 候选补丁 → 回归评测</text>
   </g>
 
   <g fill="none" stroke-linecap="round">
@@ -59,24 +59,24 @@
     <path d="M729 498 V548 Q729 560 709 575" stroke="#8b949e" stroke-width="1.7" stroke-dasharray="5 5" marker-end="url(#arrowGray)"/>
     <path d="M458 575 V520" stroke="#00d992" stroke-width="1.7" stroke-dasharray="5 5" marker-end="url(#arrowGreen)"/>
   </g>
-  <g font-family="Inter,system-ui,sans-serif" font-size="11" fill="#8b949e">
-    <text x="304" y="216">structured context</text><text x="575" y="216">action request</text>
-    <text x="495" y="362">tool call</text><text x="305" y="437">state delta</text>
-    <text x="504" y="437">evidence</text><text x="375" y="544">bounded, reversible edits</text>
+  <g font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="11.5" fill="#8b949e">
+    <text x="300" y="216">结构化上下文</text><text x="571" y="216">动作请求</text>
+    <text x="495" y="362">工具调用</text><text x="305" y="437">状态变化</text>
+    <text x="500" y="437">执行证据</text><text x="368" y="544">局部、可回滚的修改</text>
   </g>
 
   <rect x="900" y="112" width="252" height="586" rx="14" fill="#101010" stroke="#f2f2f2" stroke-width="2.5"/>
-  <text x="925" y="143" fill="#f2f2f2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" font-weight="700">TRUSTED KERNEL  K_kappa</text>
+  <text x="925" y="143" fill="#f2f2f2" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="14" font-weight="700">安全内核 K_kappa</text>
   <line x1="925" y1="160" x2="1127" y2="160" stroke="#3d3a39"/>
-  <g font-family="system-ui,-apple-system,sans-serif">
-    <g transform="translate(925 191)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">Identity &amp; Auth Root</text><text x="15" y="47" fill="#8b949e" font-size="12">least privilege / approval</text></g>
-    <g transform="translate(925 269)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">Sandbox &amp; Budgets</text><text x="15" y="47" fill="#8b949e" font-size="12">network / files / time / cost</text></g>
-    <g transform="translate(925 347)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">Tamper-Evident Logs</text><text x="15" y="47" fill="#8b949e" font-size="12">trace signing / audit</text></g>
-    <g transform="translate(925 425)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">Hidden Evaluation</text><text x="15" y="47" fill="#8b949e" font-size="12">blind / OOD / attack sets</text></g>
-    <g transform="translate(925 503)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">Admit / Roll Back / Kill</text><text x="15" y="47" fill="#8b949e" font-size="12">signed updates / fail closed</text></g>
+  <g font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif">
+    <g transform="translate(925 191)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">身份、凭据、权限根</text><text x="15" y="47" fill="#8b949e" font-size="12">最小权限 · 人工审批</text></g>
+    <g transform="translate(925 269)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">沙箱与资源预算</text><text x="15" y="47" fill="#8b949e" font-size="12">网络 · 文件 · 时间 · 费用</text></g>
+    <g transform="translate(925 347)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">防篡改事件日志</text><text x="15" y="47" fill="#8b949e" font-size="12">轨迹签名 · 独立审计</text></g>
+    <g transform="translate(925 425)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">隐藏评测与计分器</text><text x="15" y="47" fill="#8b949e" font-size="12">盲测 · OOD · 安全攻击集</text></g>
+    <g transform="translate(925 503)"><rect width="202" height="62" rx="7" fill="#161616" stroke="#3d3a39"/><text x="15" y="25" fill="#f2f2f2" font-size="15" font-weight="650">准入、回滚、熔断</text><text x="15" y="47" fill="#8b949e" font-size="12">签名更新 · kill switch</text></g>
   </g>
   <path d="M900 615 H826 Q806 615 806 595" fill="none" stroke="#f2f2f2" stroke-width="2" marker-end="url(#arrowGray)"/>
-  <text x="918" y="620" fill="#b8b3b0" font-family="Inter,system-ui,sans-serif" font-size="12">admit / reject / revert</text>
-  <text x="925" y="665" fill="#00d992" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="650">May propose changes.</text>
-  <text x="925" y="684" fill="#00d992" font-family="Inter,system-ui,sans-serif" font-size="12" font-weight="650">Cannot self-approve them.</text>
+  <text x="918" y="620" fill="#b8b3b0" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="12">准入 / 拒绝 / 回滚</text>
+  <text x="925" y="665" fill="#00d992" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="12.5" font-weight="650">系统可以提出修改，</text>
+  <text x="925" y="684" fill="#00d992" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="12.5" font-weight="650">但不能自行批准边界变更。</text>
 </svg>

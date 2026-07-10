@@ -1,52 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
-  <title id="title">Causal Evaluation Matrix for Harness Research</title>
-  <desc id="desc">A factorial evaluation design for models, harness interventions, budgets, task blocks, outcomes, and hidden data splits.</desc>
+  <title id="title">Harness 研究的因果评测设计</title>
+  <desc id="desc">模型、harness 干预、预算与任务块的随机析因设计，加上冻结的数据切分和多维结果向量。</desc>
   <defs>
     <marker id="ag" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#00d992"/></marker>
   </defs>
   <rect width="1200" height="760" rx="18" fill="#050507"/>
-  <text x="54" y="55" fill="#f2f2f2" font-family="system-ui,-apple-system,sans-serif" font-size="29" font-weight="700">Turn "The Harness Works" into a Falsifiable Causal Question</text>
-  <text x="54" y="83" fill="#8b949e" font-family="Inter,system-ui,sans-serif" font-size="15">Fixed budgets, paired randomization, hidden tests. Treat tokens and tool calls as mediators, not simple covariates.</text>
+  <text x="54" y="55" fill="#f2f2f2" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="29" font-weight="700">把「Harness 有效」变成可证伪的因果问题</text>
+  <text x="54" y="83" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="15">固定预算、配对随机、隐藏测试；把 token 和工具调用当作处理中介，而不是普通协变量。</text>
 
-  <g font-family="system-ui,-apple-system,sans-serif">
-    <text x="55" y="132" fill="#00d992" font-size="13" font-weight="700">01 / RANDOMIZE AND BLOCK</text>
+  <g font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif">
+    <text x="55" y="132" fill="#00d992" font-size="13" font-weight="700">01 · 随机分配与阻断</text>
     <rect x="55" y="150" width="1090" height="112" rx="12" fill="#101010" stroke="#3d3a39"/>
-    <g transform="translate(80 176)"><rect width="220" height="60" rx="8" fill="#161616" stroke="#3d3a39"/><text x="16" y="25" fill="#f2f2f2" font-size="16" font-weight="650">Model M_theta</text><text x="16" y="47" fill="#8b949e" font-size="12">3 capability levels / 2 families</text></g>
-    <text x="315" y="213" fill="#8b949e" font-size="22">x</text>
-    <g transform="translate(345 176)"><rect width="220" height="60" rx="8" fill="#161616" stroke="#3d3a39"/><text x="16" y="25" fill="#f2f2f2" font-size="16" font-weight="650">Harness H_phi</text><text x="16" y="47" fill="#8b949e" font-size="12">L1 context x L2 flow x L4 verify</text></g>
-    <text x="580" y="213" fill="#8b949e" font-size="22">x</text>
-    <g transform="translate(610 176)"><rect width="220" height="60" rx="8" fill="#161616" stroke="#3d3a39"/><text x="16" y="25" fill="#f2f2f2" font-size="16" font-weight="650">Budget B</text><text x="16" y="47" fill="#8b949e" font-size="12">tokens / tools / time / cost</text></g>
-    <text x="845" y="213" fill="#8b949e" font-size="22">x</text>
-    <g transform="translate(875 176)"><rect width="245" height="60" rx="8" fill="#161616" stroke="#3d3a39"/><text x="16" y="25" fill="#f2f2f2" font-size="16" font-weight="650">Task Block X</text><text x="16" y="47" fill="#8b949e" font-size="12">repos / papers / families / time</text></g>
+    <g transform="translate(80 176)"><rect width="220" height="60" rx="8" fill="#161616" stroke="#3d3a39"/><text x="16" y="25" fill="#f2f2f2" font-size="16" font-weight="650">模型 M_theta</text><text x="16" y="47" fill="#8b949e" font-size="12">3 个能力等级 / 2 个家族</text></g>
+    <text x="315" y="213" fill="#8b949e" font-size="22">×</text>
+    <g transform="translate(345 176)"><rect width="220" height="60" rx="8" fill="#161616" stroke="#3d3a39"/><text x="16" y="25" fill="#f2f2f2" font-size="16" font-weight="650">Harness 干预 H_phi</text><text x="16" y="47" fill="#8b949e" font-size="12">L1 信息 × L2 编排 × L4 验证</text></g>
+    <text x="580" y="213" fill="#8b949e" font-size="22">×</text>
+    <g transform="translate(610 176)"><rect width="220" height="60" rx="8" fill="#161616" stroke="#3d3a39"/><text x="16" y="25" fill="#f2f2f2" font-size="16" font-weight="650">预算 B</text><text x="16" y="47" fill="#8b949e" font-size="12">token · 工具调用 · 时间 · 费用</text></g>
+    <text x="845" y="213" fill="#8b949e" font-size="22">×</text>
+    <g transform="translate(875 176)"><rect width="245" height="60" rx="8" fill="#161616" stroke="#3d3a39"/><text x="16" y="25" fill="#f2f2f2" font-size="16" font-weight="650">任务块 X</text><text x="16" y="47" fill="#8b949e" font-size="12">仓库 · 论文 · 任务族 · 时间</text></g>
 
-    <text x="55" y="310" fill="#00d992" font-size="13" font-weight="700">02 / FACTORIAL CONTROLS AND EXECUTION TRACES</text>
+    <text x="55" y="310" fill="#00d992" font-size="13" font-weight="700">02 · 析因对照与执行轨迹</text>
     <rect x="55" y="328" width="650" height="218" rx="12" fill="#101010" stroke="#3d3a39"/>
-    <g transform="translate(80 357)"><rect width="180" height="68" rx="8" fill="#161616" stroke="#818cf8"/><text x="15" y="27" fill="#818cf8" font-size="13" font-weight="700">L1 ON / OFF</text><text x="15" y="51" fill="#f2f2f2" font-size="15">Structured Context</text></g>
-    <g transform="translate(290 357)"><rect width="180" height="68" rx="8" fill="#161616" stroke="#818cf8"/><text x="15" y="27" fill="#818cf8" font-size="13" font-weight="700">L2 ON / OFF</text><text x="15" y="51" fill="#f2f2f2" font-size="15">Plans &amp; Workflows</text></g>
-    <g transform="translate(500 357)"><rect width="180" height="68" rx="8" fill="#161616" stroke="#818cf8"/><text x="15" y="27" fill="#818cf8" font-size="13" font-weight="700">L4 ON / OFF</text><text x="15" y="51" fill="#f2f2f2" font-size="15">Independent Verifier</text></g>
-    <g transform="translate(80 450)"><rect width="285" height="66" rx="8" fill="#161616" stroke="#3d3a39"/><text x="15" y="26" fill="#f2f2f2" font-size="15" font-weight="650">Sham Compute Control</text><text x="15" y="49" fill="#8b949e" font-size="12">same budget, no decision change</text></g>
-    <g transform="translate(395 450)"><rect width="285" height="66" rx="8" fill="#161616" stroke="#3d3a39"/><text x="15" y="26" fill="#f2f2f2" font-size="15" font-weight="650">Complete Event Trace</text><text x="15" y="49" fill="#8b949e" font-size="12">actions / evidence / deltas / cost / fails</text></g>
+    <g transform="translate(80 357)"><rect width="180" height="68" rx="8" fill="#161616" stroke="#818cf8"/><text x="15" y="27" fill="#818cf8" font-size="13" font-weight="700">L1 开 / 关</text><text x="15" y="51" fill="#f2f2f2" font-size="15">结构化上下文</text></g>
+    <g transform="translate(290 357)"><rect width="180" height="68" rx="8" fill="#161616" stroke="#818cf8"/><text x="15" y="27" fill="#818cf8" font-size="13" font-weight="700">L2 开 / 关</text><text x="15" y="51" fill="#f2f2f2" font-size="15">规划与工作流</text></g>
+    <g transform="translate(500 357)"><rect width="180" height="68" rx="8" fill="#161616" stroke="#818cf8"/><text x="15" y="27" fill="#818cf8" font-size="13" font-weight="700">L4 开 / 关</text><text x="15" y="51" fill="#f2f2f2" font-size="15">独立验证器</text></g>
+    <g transform="translate(80 450)"><rect width="285" height="66" rx="8" fill="#161616" stroke="#3d3a39"/><text x="15" y="26" fill="#f2f2f2" font-size="15" font-weight="650">Sham 额外计算对照</text><text x="15" y="49" fill="#8b949e" font-size="12">消耗同样预算，但不改变决策</text></g>
+    <g transform="translate(395 450)"><rect width="285" height="66" rx="8" fill="#161616" stroke="#3d3a39"/><text x="15" y="26" fill="#f2f2f2" font-size="15" font-weight="650">完整事件轨迹</text><text x="15" y="49" fill="#8b949e" font-size="12">动作 · 证据 · 状态差 · 代价 · 失败</text></g>
 
-    <text x="750" y="310" fill="#00d992" font-size="13" font-weight="700">03 / OUTCOME VECTOR, NOT ONLY PASS RATE</text>
+    <text x="750" y="310" fill="#00d992" font-size="13" font-weight="700">03 · 结果向量，而非单一 pass rate</text>
     <rect x="750" y="328" width="395" height="218" rx="12" fill="#101010" stroke="#3d3a39"/>
     <g font-size="14">
-      <rect x="775" y="354" width="160" height="39" rx="7" fill="#161616" stroke="#3d3a39"/><text x="791" y="379" fill="#f2f2f2">Capability / pass@1</text>
-      <rect x="960" y="354" width="160" height="39" rx="7" fill="#161616" stroke="#3d3a39"/><text x="976" y="379" fill="#f2f2f2">Reliability / CVaR</text>
-      <rect x="775" y="409" width="160" height="39" rx="7" fill="#161616" stroke="#3d3a39"/><text x="791" y="434" fill="#f2f2f2">Efficiency / resources</text>
-      <rect x="960" y="409" width="160" height="39" rx="7" fill="#161616" stroke="#3d3a39"/><text x="976" y="434" fill="#f2f2f2">Generalization / OOD</text>
-      <rect x="775" y="464" width="160" height="39" rx="7" fill="#161616" stroke="#00d992"/><text x="791" y="489" fill="#00d992">Improvement / Q(psi)</text>
-      <rect x="960" y="464" width="160" height="39" rx="7" fill="#161616" stroke="#00d992"/><text x="976" y="489" fill="#00d992">Safety / severe risk</text>
+      <rect x="775" y="354" width="160" height="39" rx="7" fill="#161616" stroke="#3d3a39"/><text x="791" y="379" fill="#f2f2f2">能力 · pass@1</text>
+      <rect x="960" y="354" width="160" height="39" rx="7" fill="#161616" stroke="#3d3a39"/><text x="976" y="379" fill="#f2f2f2">可靠性 · CVaR</text>
+      <rect x="775" y="409" width="160" height="39" rx="7" fill="#161616" stroke="#3d3a39"/><text x="791" y="434" fill="#f2f2f2">效率 · 原始资源量</text>
+      <rect x="960" y="409" width="160" height="39" rx="7" fill="#161616" stroke="#3d3a39"/><text x="976" y="434" fill="#f2f2f2">泛化 · OOD / 迁移</text>
+      <rect x="775" y="464" width="160" height="39" rx="7" fill="#161616" stroke="#00d992"/><text x="791" y="489" fill="#00d992">改进能力 · Q(ψ)</text>
+      <rect x="960" y="464" width="160" height="39" rx="7" fill="#161616" stroke="#00d992"/><text x="976" y="489" fill="#00d992">安全 · 严重违规率</text>
     </g>
   </g>
   <g fill="none" stroke="#00d992" stroke-width="2" marker-end="url(#ag)"><path d="M600 262v42"/><path d="M705 437h30"/></g>
 
-  <text x="55" y="594" fill="#00d992" font-family="system-ui,-apple-system,sans-serif" font-size="13" font-weight="700">04 / FREEZE THE DATA LIFECYCLE</text>
-  <g font-family="system-ui,-apple-system,sans-serif">
-    <rect x="55" y="613" width="190" height="73" rx="9" fill="#101010" stroke="#3d3a39"/><text x="75" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_dev / 30%</text><text x="75" y="666" fill="#8b949e" font-size="12">optimizer may observe</text>
-    <rect x="270" y="613" width="190" height="73" rx="9" fill="#101010" stroke="#3d3a39"/><text x="290" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_val / 15%</text><text x="290" y="666" fill="#8b949e" font-size="12">select thresholds</text>
-    <rect x="485" y="613" width="190" height="73" rx="9" fill="#101010" stroke="#3d3a39"/><text x="505" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_IID / 25%</text><text x="505" y="666" fill="#8b949e" font-size="12">one-shot blind test</text>
-    <rect x="700" y="613" width="190" height="73" rx="9" fill="#101010" stroke="#3d3a39"/><text x="720" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_OOD / 30%</text><text x="720" y="666" fill="#8b949e" font-size="12">new domains / repos / time</text>
-    <rect x="915" y="613" width="230" height="73" rx="9" fill="#101010" stroke="#f2f2f2" stroke-width="2"/><text x="935" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_safety / hidden</text><text x="935" y="666" fill="#8b949e" font-size="12">attacks / auth / tamper / rollback</text>
+  <text x="55" y="594" fill="#00d992" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="13" font-weight="700">04 · 冻结的数据生命周期</text>
+  <g font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif">
+    <rect x="55" y="613" width="190" height="73" rx="9" fill="#101010" stroke="#3d3a39"/><text x="75" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_dev · 30%</text><text x="75" y="666" fill="#8b949e" font-size="12">优化器可观察</text>
+    <rect x="270" y="613" width="190" height="73" rx="9" fill="#101010" stroke="#3d3a39"/><text x="290" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_val · 15%</text><text x="290" y="666" fill="#8b949e" font-size="12">选阈值与配置</text>
+    <rect x="485" y="613" width="190" height="73" rx="9" fill="#101010" stroke="#3d3a39"/><text x="505" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_IID · 25%</text><text x="505" y="666" fill="#8b949e" font-size="12">一次性冻结盲测</text>
+    <rect x="700" y="613" width="190" height="73" rx="9" fill="#101010" stroke="#3d3a39"/><text x="720" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_OOD · 30%</text><text x="720" y="666" fill="#8b949e" font-size="12">新领域 / 新仓库 / 时间外</text>
+    <rect x="915" y="613" width="230" height="73" rx="9" fill="#101010" stroke="#f2f2f2" stroke-width="2"/><text x="935" y="641" fill="#f2f2f2" font-size="16" font-weight="650">D_safety · 独立隐藏集</text><text x="935" y="666" fill="#8b949e" font-size="12">攻击 · 越权 · 篡改 · 回滚</text>
   </g>
-  <text x="55" y="724" fill="#8b949e" font-family="Inter,system-ui,sans-serif" font-size="13">Statistics: paired tasks / mixed effects / hierarchical bootstrap / Holm correction / preregistered minimum effect</text>
+  <text x="55" y="724" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="13">统计：任务级配对运行 · 混合效应模型 · 分层 bootstrap · Holm 多重校正 · 预注册最小实用效应</text>
 </svg>

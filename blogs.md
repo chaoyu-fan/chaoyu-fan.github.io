@@ -34,8 +34,8 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
     <div class="ri-card c-blue">
-      <div class="ri-title">Harness Engineering：自我改进智能体真正的系统边界</div>
-      <p>基于 Lilian Weng 的文章，重新梳理 agent harness 的分层、优化对象与证据边界，并提出可证伪的递归自我改进定义、因果实验和安全评测框架。</p>
+      <div class="ri-title">Harness Engineering：自我改进智能体的工程与边界</div>
+      <p>从 Lilian Weng 的 Harness Engineering 出发，讲清楚上下文工程、工作流搜索与 harness 自我修改各自如何工作，现有证据支持到哪一步，以及距离真正的递归自我改进还差什么。</p>
       <p style="margin-top:.6rem;"><a href="/blogs/harness-engineering-self-improving-agents/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
     </div>
     <div class="ri-card c-teal">

@@ -1,46 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
-  <title id="title">Harness Optimization versus Recursive Self-Improvement</title>
-  <desc id="desc">A flow that separates task utility improvement from improvement of the optimizer itself.</desc>
+  <title id="title">Harness 优化与递归自我改进的判别</title>
+  <desc id="desc">区分任务效用 J 的提升与优化器能力 Q 的提升：前者只是有界优化，后者才接近递归自我改进。</desc>
   <defs>
     <marker id="g" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#00d992"/></marker>
     <marker id="s" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0v6l9-3z" fill="#8b949e"/></marker>
   </defs>
   <rect width="1200" height="720" rx="18" fill="#050507"/>
-  <text x="54" y="55" fill="#f2f2f2" font-family="system-ui,-apple-system,sans-serif" font-size="29" font-weight="700">Harness Optimization Is Not Automatically Recursive Self-Improvement</text>
-  <text x="54" y="83" fill="#8b949e" font-family="Inter,system-ui,sans-serif" font-size="15">J is a preregistered scalar utility. Q measures improvement produced per search cost on unseen meta-tasks.</text>
+  <text x="54" y="55" fill="#f2f2f2" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="29" font-weight="700">Harness 优化不自动等于递归自我改进</text>
+  <text x="54" y="83" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="15">J 是预注册的标量效用，衡量当前系统；Q 衡量优化器在全新元任务上、单位搜索成本产生的改进。</text>
 
-  <g font-family="system-ui,-apple-system,sans-serif">
-    <g transform="translate(55 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#00d992" stroke-width="2"/><text x="20" y="34" fill="#00d992" font-size="13" font-weight="700">ROUND r</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">Harness H_r</text><text x="20" y="88" fill="#8b949e" font-size="12">current runtime</text></g>
-    <g transform="translate(252 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#3d3a39"/><text x="20" y="34" fill="#818cf8" font-size="13" font-weight="700">DEVELOPMENT</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">Tasks &amp; Env</text><text x="20" y="88" fill="#8b949e" font-size="12">feedback is visible</text></g>
-    <g transform="translate(449 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#3d3a39"/><text x="20" y="34" fill="#818cf8" font-size="13" font-weight="700">EVIDENCE</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">Traces &amp; Fails</text><text x="20" y="88" fill="#8b949e" font-size="12">events / state / cost</text></g>
-    <g transform="translate(646 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#3d3a39"/><text x="20" y="34" fill="#818cf8" font-size="13" font-weight="700">META-OPTIMIZER</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">U_psi,r</text><text x="20" y="88" fill="#8b949e" font-size="12">attribute / search / mutate</text></g>
-    <g transform="translate(843 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#3d3a39"/><text x="20" y="34" fill="#818cf8" font-size="13" font-weight="700">CANDIDATES</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">delta H / U</text><text x="20" y="88" fill="#8b949e" font-size="12">patches / new optimizer</text></g>
-    <g transform="translate(1040 155)"><rect width="115" height="104" rx="10" fill="#101010" stroke="#f2f2f2" stroke-width="2"/><text x="15" y="34" fill="#f2f2f2" font-size="13" font-weight="700">KERNEL</text><text x="15" y="63" fill="#f2f2f2" font-size="17" font-weight="700">Gate</text><text x="15" y="86" fill="#8b949e" font-size="11">reject / revert</text></g>
+  <g font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif">
+    <g transform="translate(55 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#00d992" stroke-width="2"/><text x="20" y="34" fill="#00d992" font-size="13" font-weight="700">第 r 轮</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">Harness H_r</text><text x="20" y="88" fill="#8b949e" font-size="12">当前可执行系统</text></g>
+    <g transform="translate(252 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#3d3a39"/><text x="20" y="34" fill="#818cf8" font-size="13" font-weight="700">开发集</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">任务与环境</text><text x="20" y="88" fill="#8b949e" font-size="12">反馈对优化器可见</text></g>
+    <g transform="translate(449 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#3d3a39"/><text x="20" y="34" fill="#818cf8" font-size="13" font-weight="700">可审计证据</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">轨迹与失败</text><text x="20" y="88" fill="#8b949e" font-size="12">事件 · 状态 · 代价</text></g>
+    <g transform="translate(646 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#3d3a39"/><text x="20" y="34" fill="#818cf8" font-size="13" font-weight="700">元优化器</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">U_psi,r</text><text x="20" y="88" fill="#8b949e" font-size="12">归因 · 搜索 · 变异</text></g>
+    <g transform="translate(843 155)"><rect width="155" height="104" rx="10" fill="#101010" stroke="#3d3a39"/><text x="20" y="34" fill="#818cf8" font-size="13" font-weight="700">候选集合</text><text x="20" y="65" fill="#f2f2f2" font-size="20" font-weight="700">ΔH / ΔU</text><text x="20" y="88" fill="#8b949e" font-size="12">局部补丁 · 新优化器</text></g>
+    <g transform="translate(1040 155)"><rect width="115" height="104" rx="10" fill="#101010" stroke="#f2f2f2" stroke-width="2"/><text x="15" y="34" fill="#f2f2f2" font-size="13" font-weight="700">可信内核</text><text x="15" y="63" fill="#f2f2f2" font-size="17" font-weight="700">准入门</text><text x="15" y="86" fill="#8b949e" font-size="11">拒绝 / 回滚</text></g>
   </g>
   <g fill="none" stroke-linecap="round" stroke-width="2">
     <path d="M210 207h31" stroke="#00d992" marker-end="url(#g)"/><path d="M407 207h31" stroke="#00d992" marker-end="url(#g)"/>
     <path d="M604 207h31" stroke="#00d992" marker-end="url(#g)"/><path d="M801 207h31" stroke="#00d992" marker-end="url(#g)"/>
     <path d="M998 207h31" stroke="#f2f2f2" marker-end="url(#s)"/><path d="M1097 259v58q0 20-20 20H143q-20 0-20-20v-47" stroke="#00d992" marker-end="url(#g)"/>
   </g>
-  <text x="458" y="326" fill="#00d992" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="13">Safety projection creates H_(r+1); rejected changes remain in the failure archive</text>
+  <text x="400" y="326" fill="#00d992" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="13">通过安全投影后形成 H_(r+1)；被拒绝的修改只进入失败档案</text>
 
   <rect x="55" y="371" width="1090" height="124" rx="12" fill="#101010" stroke="#3d3a39"/>
-  <text x="80" y="403" fill="#f2f2f2" font-family="system-ui,-apple-system,sans-serif" font-size="17" font-weight="700">Independent blind tests: results enter the research record, never the optimizer context</text>
-  <g font-family="system-ui,-apple-system,sans-serif">
-    <rect x="80" y="423" width="320" height="48" rx="7" fill="#161616" stroke="#3d3a39"/><text x="97" y="453" fill="#b8b3b0" font-size="14">IID / OOD / temporal / cross-model / retention</text>
-    <rect x="440" y="423" width="310" height="48" rx="7" fill="#161616" stroke="#3d3a39"/><text x="457" y="453" fill="#b8b3b0" font-size="14">J(phi): preregistered scalar utility</text>
-    <rect x="790" y="423" width="330" height="48" rx="7" fill="#161616" stroke="#3d3a39"/><text x="807" y="453" fill="#b8b3b0" font-size="14">Q(psi): unseen-task gain per unit search cost</text>
+  <text x="80" y="403" fill="#f2f2f2" font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif" font-size="17" font-weight="700">独立盲测：结果只写入研究记录，从不回流优化器上下文</text>
+  <g font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif">
+    <rect x="80" y="423" width="320" height="48" rx="7" fill="#161616" stroke="#3d3a39"/><text x="97" y="453" fill="#b8b3b0" font-size="14">IID / OOD / 时间外 / 跨模型 / 旧任务保持</text>
+    <rect x="440" y="423" width="310" height="48" rx="7" fill="#161616" stroke="#3d3a39"/><text x="457" y="453" fill="#b8b3b0" font-size="14">J(φ)：预注册的标量效用</text>
+    <rect x="790" y="423" width="330" height="48" rx="7" fill="#161616" stroke="#3d3a39"/><text x="807" y="453" fill="#b8b3b0" font-size="14">Q(ψ)：单位搜索成本的新任务增益</text>
   </g>
 
-  <g font-family="system-ui,-apple-system,sans-serif">
+  <g font-family="'PingFang SC','Hiragino Sans GB','Noto Sans SC',system-ui,sans-serif">
     <rect x="55" y="535" width="515" height="132" rx="12" fill="#101010" stroke="#818cf8" stroke-width="2"/>
-    <text x="80" y="569" fill="#818cf8" font-size="14" font-weight="700">WEAKER CLAIM / BOUNDED HARNESS OPTIMIZATION</text>
-    <text x="80" y="607" fill="#f2f2f2" font-size="23" font-weight="700">J(phi_(r+1)) &gt; J(phi_r)</text>
-    <text x="80" y="637" fill="#b8b3b0" font-size="14">The harness improved. The optimizer may not have improved.</text>
+    <text x="80" y="569" fill="#818cf8" font-size="14" font-weight="700">较弱结论 · 有界 HARNESS 优化</text>
+    <text x="80" y="607" fill="#f2f2f2" font-size="23" font-weight="700">J(φ_(r+1)) &gt; J(φ_r)</text>
+    <text x="80" y="637" fill="#b8b3b0" font-size="14">harness 变好了，但优化器不一定变强。</text>
 
     <rect x="630" y="535" width="515" height="132" rx="12" fill="#101010" stroke="#00d992" stroke-width="2"/>
-    <text x="655" y="569" fill="#00d992" font-size="14" font-weight="700">STRONGER CLAIM / RECURSIVE SELF-IMPROVEMENT</text>
-    <text x="655" y="607" fill="#ffffff" font-size="23" font-weight="700">J increases AND Q(psi_(r+1)) &gt; Q(psi_r)</text>
-    <text x="655" y="637" fill="#b8b3b0" font-size="14">Across rounds, unseen meta-tasks, fixed budgets, and safety gates.</text>
+    <text x="655" y="569" fill="#00d992" font-size="14" font-weight="700">较强结论 · 递归自我改进</text>
+    <text x="655" y="607" fill="#ffffff" font-size="23" font-weight="700">J 上升 且 Q(ψ_(r+1)) &gt; Q(ψ_r)</text>
+    <text x="655" y="637" fill="#b8b3b0" font-size="14">跨多轮、全新元任务、固定预算，并通过安全门。</text>
   </g>
 </svg>
