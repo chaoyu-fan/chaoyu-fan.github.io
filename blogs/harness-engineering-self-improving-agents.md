@@ -33,7 +33,7 @@ description: 基于 Lilian Weng 的 Harness Engineering 文章，重新梳理 ag
 .he-refs li{margin:.48rem 0}
 .he-source{margin-top:1.4rem;padding:1rem;border:1px solid #dce5ec;border-radius:10px;background:#fbfcfe;color:#56636f;font-size:.92rem;line-height:1.8}
 .weather-widget-container{display:none!important}
-@media (max-width:840px){.he-grid{grid-template-columns:1fr}.he-table{min-width:760px}}
+@media (max-width:840px){.he-grid{grid-template-columns:1fr}.he-table{min-width:760px}.he-figure{overflow-x:auto;-webkit-overflow-scrolling:touch}.he-figure img{width:760px;max-width:none}}
 </style>
 
 ## Harness Engineering：自我改进智能体真正的系统边界
