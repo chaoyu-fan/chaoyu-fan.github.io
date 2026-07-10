@@ -33,6 +33,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Latest Post</div>
   <div class="ri-grid">
+    <div class="ri-card c-blue">
+      <div class="ri-title">Harness Engineering：自我改进智能体真正的系统边界</div>
+      <p>基于 Lilian Weng 的文章，重新梳理 agent harness 的分层、优化对象与证据边界，并提出可证伪的递归自我改进定义、因果实验和安全评测框架。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/harness-engineering-self-improving-agents/" style="color:#2e4f63;font-weight:600;">阅读全文 →</a></p>
+    </div>
     <div class="ri-card c-teal">
       <div class="ri-title">用进化算法优化 LLM Agent 的工具调用</div>
       <p>梳理 EvoTool、GEPA、SPRIG、EvoSkill、SkillMOO 等工作，讨论遗传/进化算法如何优化 tool-use policy，并提出 Causal-Pareto Tool Evolution 作为面向长链路 agent 的研究方案。</p>
