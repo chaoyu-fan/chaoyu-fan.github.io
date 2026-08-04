@@ -13,6 +13,11 @@ description: Technical notes and essays by Chaoyu Fan on agent system design, re
 <div class="blk-v2">
   <div class="sh-v2">Planned Topics</div>
   <div class="ri-grid">
+    <div class="ri-card c-violet">
+      <div class="ri-title">论文中文化流水线：从源 PDF 到可校对中文阅读版</div>
+      <p>公开两篇 2607 论文的 PDF→Markdown→中文 PDF 工程：保留页级坐标、公式与代码对象，留下结构/文本/视觉 QA 证据，并明确机器译稿的边界。</p>
+      <p style="margin-top:.6rem;"><a href="/blogs/paper-translation-2607/" style="color:#2e4f63;font-weight:600;">查看项目 →</a></p>
+    </div>
     <div class="ri-card c-blue">
       <div class="ri-title">Agent System Design</div>
       <p>Notes on building reliable multi-agent workflows — memory management, tool orchestration, failure recovery, and evaluation.</p>

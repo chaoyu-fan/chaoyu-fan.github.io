@@ -1,0 +1,7 @@
+# Local source PDFs are fetched from arXiv and are not committed.
+sources/
+*.pdf.tmp
+tmp/
+qa_*.png
+*_extract.txt
+__pycache__/
